@@ -4,16 +4,19 @@ var server = require('koa-static')
 var render = require('koa-ejs')
 var Router = require('koa-router')
 var koaBody = require('koa-body')
-var views = require('koa-views')
-var cors = require('koa2-cors')
+var path = require('path')
 var router = new Router()
 var error = require('./router/error/index')
 var index = require('./router/index')
 app.use(koaBody())
 //set ejs
-app.use(views(__dirname + '/views',{
-	extension:'html'
-}))
+render(app, {
+  root: path.join(__dirname, 'views'),
+  layout: false,
+  viewExt: 'html',
+  cache: false,
+  debug: true
+})
 app.use(async (ctx, next) => {
 	try {
 		await next();
