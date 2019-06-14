@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/.bin/nodemon server"
+    "start": "./node_modules/.bin/nodemon server",
+    "production": "NODE_ENV=production pm2 start server.js",
   },
   "author": "",
   "license": "ISC",
@@ -14,7 +15,6 @@
     "koa-ejs": "^4.2.0",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
-    "koa-views": "^6.2.0",
     "nodemon": "^1.19.1"
   }
 }
