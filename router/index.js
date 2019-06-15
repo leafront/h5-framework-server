@@ -5,7 +5,7 @@ const {
 
 router.get('/', async (ctx,next) => {
 	await delay(120)
-	await ctx.render('index',{
+	await ctx.render('server',{
 		data: {
 			navList: [{
 			    "name": "演唱会",
