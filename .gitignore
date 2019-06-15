@@ -1,6 +1,6 @@
 .DS_Store
 node_modules
-views/index.html
+views/serve.html
 # Log files
 npm-debug.log*
 yarn-debug.log*
