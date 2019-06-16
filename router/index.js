@@ -100,7 +100,24 @@ router.get('/', async (ctx,next) => {
 			    "poster": "https://img.piaoniu.com/misc/e24df0d7cbcae0cd2a18e2f20fb91af9a7dcb5f4.png",
 			    "url": "/activity/96356?channel=zn_banner_sh_96356"
 			  }
-			]
+			],
+			operating: [{
+	      "logOpPositionId": 7983,
+	      "title": "https://assets.piaoniu.com/home/op1-title-v2@3x.png",
+	      "subTitle": "林俊杰0元看",
+	      "poster": "https://img.piaoniu.com/misc/9d529c2a11bffb583d784edb5cf6532531bbcd4e.png",
+	      "backgroundText": "https://assets.piaoniu.com/home/op1-bgtext@3x.png",
+	      "schema": "https://m.piaoniu.com/taro/index.html?channel=zn_yyw_sh_bawangpiao"
+	    },
+	    {
+	      "logOpPositionId": 8370,
+	      "title": "https://assets.piaoniu.com/home/op2-title@3x.png",
+	      "subTitle": "限时限量抢",
+	      "poster": "https://img.piaoniu.com/misc/5cb38fda616ebbccc7ef463f58b788d3526b96e7.png",
+	      "backgroundText": "https://assets.piaoniu.com/home/op2-bgtext@3x.png",
+	      "schema": "https://m.piaoniu.com/category-home.html?lowestPrice=0&highestPrice=150&channel=zn_yyw_sh_100"
+	    }
+	  ]
 		}
 	})
 })
