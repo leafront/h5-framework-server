@@ -4,7 +4,7 @@ const {
 } = require('../common/index')
 
 router.get('/', async (ctx,next) => {
-	await delay(120)
+	await delay(200)
 	await ctx.render('server',{
 		data: {
 			navList: [{
