@@ -3,19 +3,18 @@ var app = new koa()
 var server = require('koa-static')
 var render = require('koa-ejs')
 var Router = require('koa-router')
-var koaBody = require('koa-body')
 var path = require('path')
 var router = new Router()
 var error = require('./router/error/index')
 var index = require('./router/index')
-app.use(koaBody())
-//set ejs
+app.use(server(__dirname + '/public'))
+//set ej
 render(app, {
-  root: path.join(__dirname, 'views'),
+  root: path.join(__dirname,  process.env.NODE_ENV == 'production' ? 'views' : 'templates'),
   layout: false,
   viewExt: 'html',
   cache: false,
-  debug: true
+  debug: false
 })
 app.use(async (ctx, next) => {
 	try {

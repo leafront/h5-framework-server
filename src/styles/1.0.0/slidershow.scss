@@ -1,0 +1,39 @@
+.slideshow-wrap {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.slideshow-item {
+  width: 20000px;
+}
+
+.slideshow-item li {
+  width: 7.5rem;
+  float: left;
+}
+
+.slideshow-item img {
+  width: 100%;
+}
+
+.slideshow-dots{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  bottom: .15rem;
+  li {
+    width: .2rem;
+    height: .04rem;
+    border-radius: .03rem;
+    background-color: #EAEAEA;
+    margin-right:.14rem;
+    &.active {
+      background-color: #FF6900;
+    }
+  }
+
+}
