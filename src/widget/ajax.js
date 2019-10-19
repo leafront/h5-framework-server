@@ -3,7 +3,7 @@
  * @returns {Promise}
  */
 export default function ajax ({
-  hostPath = window.config.hostPath,
+  hostPath = location.origin,
   url,
   async = true,
   timeout = 30000,
@@ -16,7 +16,6 @@ export default function ajax ({
   return new Promise((resolve, reject) => {
 
     const xhr = new XMLHttpRequest()
-    console.log(hostPath + url)
 
     xhr.open(type, hostPath + url, async)
 

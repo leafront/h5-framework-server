@@ -10,12 +10,15 @@ module.exports = {
 		'1.0.0/store/index': './src/widget/store.js',
     '1.0.0/request/index': './src/widget/request.js',
 		'1.0.0/validate/index': './src/widget/validate.js',
+    '1.0.0/filter/index': './src/widget/filter.js',
     '1.0.0/loading/index': './src/components/loading/index.js',
     '1.0.0/showModal/index': './src/components/showModal/index.js',
     '1.0.0/toast/index': './src/components/toast/index.js',
     '1.0.0/downloadApp/index': './src/components/downloadApp/index.js',
     '1.0.0/lazyLoad/index': './src/components/lazyLoad/index.js',
-    'index': './src/pages/index/index.js'
+    '1.0.0/header/index': './src/components/header/index.js',
+    'index': './src/pages/index/index.js',
+    'user/personal': './src/pages/user/personal.js'
   },
   output: {
   	path: path.resolve(__dirname, './public/static/js'),

@@ -11,7 +11,7 @@
           <i></i>
           <span class="c9 fs30">搜索明星、演出、场馆</span>
         </div>
-        <div class="top-bar-user">
+        <div class="top-bar-user" @click="pageAction('/user/personal')">
           <i></i>
         </div>   
       </div>  
@@ -159,7 +159,7 @@
 
 <script type="text/javascript">
 
-import Banner from '@/components/common/banner.vue'
+import Banner from './banner.vue'
 import PageLoading from '@/components/common/pageLoading.vue'
 import * as Model from '@/model/index'
 const { navList, bannerList, operating, hotTicket, discountTicket } = window.__NUXT__
@@ -187,6 +187,9 @@ export default {
   methods: {
     loadImg (event) {
       event.currentTarget.style.backgroundColor = '#fff'
+    },
+    pageAction (url) {
+      location.href = url
     },
     getRecommendsList () {
       const { pageIndex } = this

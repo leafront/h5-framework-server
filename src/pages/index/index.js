@@ -1,10 +1,9 @@
-import App from './index.vue'
-import filter from '../../filter'
+import Index from './index.vue'
 
-Object.keys(filter).forEach(key => {
+Object.keys(window.filter).forEach(key => {
   Vue.filter(key, filter[key])
 })
 new Vue({
   el: '#app',
-  render: h => h(App)
+  render: h => h(Index)
 })

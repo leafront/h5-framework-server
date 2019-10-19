@@ -7,6 +7,8 @@ var path = require('path')
 var router = new Router()
 var error = require('./router/error/index')
 var index = require('./router/index')
+var user = require('./router/user')
+
 app.use(server(__dirname + '/public'))
 //set ej
 render(app, {
@@ -35,6 +37,7 @@ app.use(async (ctx, next) => {
 })
 
 router.use('/',index.routes())
+router.use('/user', user.routes())
 router.use('/error',error.routes())
 app.use(router.routes())
 app.listen(3000);

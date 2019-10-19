@@ -13,4 +13,7 @@ const httpsImg = (text) =>{
   return text.replace(pattern,'https://')
 }
 
-export default { price, httpsImg }
+window.filter ={
+	price,
+	httpsImg
+}
