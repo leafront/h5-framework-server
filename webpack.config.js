@@ -4,12 +4,12 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const path = require('path')
 module.exports = {
   entry: {
-		'1.0.0/utils/index':'./src/widget/utils.js',
-		'1.0.0/polyfill/index': './src/widget/polyfill.js',
-		'1.0.0/ajax/index': './src/widget/ajax.js',
-		'1.0.0/store/index': './src/widget/store.js',
+    '1.0.0/utils/index':'./src/widget/utils.js',
+    '1.0.0/polyfill/index': './src/widget/polyfill.js',
+    '1.0.0/ajax/index': './src/widget/ajax.js',
+    '1.0.0/store/index': './src/widget/store.js',
     '1.0.0/request/index': './src/widget/request.js',
-		'1.0.0/validate/index': './src/widget/validate.js',
+    '1.0.0/validate/index': './src/widget/validate.js',
     '1.0.0/filter/index': './src/widget/filter.js',
     '1.0.0/loading/index': './src/components/loading/index.js',
     '1.0.0/showModal/index': './src/components/showModal/index.js',
@@ -21,8 +21,8 @@ module.exports = {
     'user/personal': './src/pages/user/personal.js'
   },
   output: {
-  	path: path.resolve(__dirname, './public/static/js'),
-  	filename: '[name].js'
+    path: path.resolve(__dirname, './public/static/js'),
+    filename: '[name].js'
   },
   module: {
     rules: [{
@@ -59,16 +59,16 @@ module.exports = {
   },
   plugins: [
     new UglifyJsPlugin({
-        parallel: 4,
-        uglifyOptions: {
-            output: {
-                comments: false,
-                beautify: true
-            },
-            compress: {},
-            warnings: false
+      parallel: 4,
+      uglifyOptions: {
+        output: {
+          comments: false,
+          beautify: true
         },
-        cache: true
+        compress: {},
+        warnings: false
+      },
+      cache: true
     }),
     new VueLoaderPlugin()
   ]
