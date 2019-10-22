@@ -50,7 +50,7 @@ var isCORSRequest = function(url, host) {
 }
 
 var isNeedCache = function(url) {
-  var CACHE_HOST = ['assets.piaoniu.com','img.piaoniu.com']
+  var CACHE_HOST = ['img.whqietu.com','static.whqietu.com','assets.piaoniu.com','img.piaoniu.com']
   return CACHE_HOST.some(function(host) {
     return url.indexOf(host) !== -1
   })

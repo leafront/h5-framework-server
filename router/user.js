@@ -1,14 +1,16 @@
 const router = require('koa-router')()
 const {
   staticPath,
-  hostPath
+  hostPath,
+  imgPath
 } = require('../config/index')
 router.get('/personal', async (ctx,next) => {
   await ctx.render('user/personal',{
   	staticPath,
   	hostPath,
+  	imgPath,
   	data: {
-  		
+
   	}
   })
 })

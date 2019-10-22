@@ -1,10 +1,10 @@
 
 // 当前缓存版本的唯一标识符，用当前时间代替
-var VERSION = "201910211147"
+var VERSION = "201910212244"
 
 // 当前缓存白名单，在新脚本的 install 事件里将使用白名单里的 key
 
-var cacheFileList = ["/static/css/1.0.0/header.css","/static/css/1.0.0/main.css","/static/css/1.0.0/reset.css","/static/css/1.0.0/slidershow.css","/static/css/1.0.0/ui-dialog.css","/static/css/1.0.0/ui-download.css","/static/css/1.0.0/ui-pageLoading.css","/static/css/1.0.0/ui-showLoading.css","/static/css/1.0.0/ui-switch.css","/static/css/1.0.0/ui-toast.css","/static/css/index.css","/static/img/logo.png","/static/img/pageLoading_back.png","/static/img/touch-icon-iphone.png","/static/js/1.0.0/ajax/index.js","/static/js/1.0.0/downloadApp/index.js","/static/js/1.0.0/filter/index.js","/static/js/1.0.0/header/index.js","/static/js/1.0.0/lazyLoad/index.js","/static/js/1.0.0/loading/index.js","/static/js/1.0.0/polyfill/index.js","/static/js/1.0.0/request/index.js","/static/js/1.0.0/showModal/index.js","/static/js/1.0.0/store/index.js","/static/js/1.0.0/toast/index.js","/static/js/1.0.0/utils/index.js","/static/js/1.0.0/validate/index.js","/static/js/index.js","/static/js/user/personal.js","/static/vue/2.5.2/index.js","/static/vue-router/3.0.1/index.js","/static/vuex/3.0.1/index.js"]
+var cacheFileList = ["/static/.DS_Store","/static/css/.DS_Store","/static/css/1.0.0/header.css","/static/css/1.0.0/main.css","/static/css/1.0.0/reset.css","/static/css/1.0.0/slidershow.css","/static/css/1.0.0/ui-dialog.css","/static/css/1.0.0/ui-download.css","/static/css/1.0.0/ui-pageLoading.css","/static/css/1.0.0/ui-showLoading.css","/static/css/1.0.0/ui-switch.css","/static/css/1.0.0/ui-toast.css","/static/css/index.css","/static/img/logo.png","/static/img/pageLoading_back.png","/static/img/touch-icon-iphone.png","/static/js/1.0.0/ajax/index.js","/static/js/1.0.0/downloadApp/index.js","/static/js/1.0.0/filter/index.js","/static/js/1.0.0/header/index.js","/static/js/1.0.0/lazyLoad/index.js","/static/js/1.0.0/loading/index.js","/static/js/1.0.0/polyfill/index.js","/static/js/1.0.0/request/index.js","/static/js/1.0.0/showModal/index.js","/static/js/1.0.0/store/index.js","/static/js/1.0.0/toast/index.js","/static/js/1.0.0/utils/index.js","/static/js/1.0.0/validate/index.js","/static/js/index.js","/static/js/user/personal.js","/static/vue/2.5.2/index.js","/static/vue-router/3.0.1/index.js","/static/vuex/3.0.1/index.js"]
 self.addEventListener('install', function (event) {
   // 等待所有资源缓存完成时，才可以进行下一步
   event.waitUntil(
@@ -50,7 +50,7 @@ var isCORSRequest = function(url, host) {
 }
 
 var isNeedCache = function(url) {
-  var CACHE_HOST = ['assets.piaoniu.com','img.piaoniu.com']
+  var CACHE_HOST = ['img.whqietu.com','static.whqietu.com','assets.piaoniu.com','img.piaoniu.com']
   return CACHE_HOST.some(function(host) {
     return url.indexOf(host) !== -1
   })
