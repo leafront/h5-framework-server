@@ -34,7 +34,7 @@ gulp.task('sass', function () {
       remove: true
     }))
     .pipe(replace(/v=version\b/g, 'v=' + dataString))
-    .pipe(replace(/\/static\b/g, 'https://img.whqietu.com/static'))
+    //.pipe(replace(/\/static\b/g, 'https://img.whqietu.com/static'))
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(gulp.dest('./public/static/css'))
 })
