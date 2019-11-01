@@ -21,11 +21,7 @@ module.exports = {
       exclude: /node_modules/
     }, {
       test: /\.vue$/,
-      loader: 'vue-loader',
-      options: {
-        preserveWhitespace: true,
-       // loaders: ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader']
-      }
+      loader: 'vue-loader'
     }, {
       test: /\.scss$/,
       use: ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader']
