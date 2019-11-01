@@ -2,7 +2,20 @@ import resolve from 'rollup-plugin-node-resolve'
 import babel from 'rollup-plugin-babel'
 import {uglify} from 'rollup-plugin-uglify' 
 const pathName = 'public/static/js/'
-const config = []
+const config = [{
+  input: 'src/serviceWorker.js',
+  output: {
+    format: 'iife',
+    file: 'public/serviceWorker.js'
+  },
+  plugins: [
+    resolve(),
+    babel({
+      exclude: '**/node_modules/**'
+    }),
+    uglify()
+  ]
+}]
 const files = {
   '1.0.0/utils/index.js':'src/widget/utils.js',
   '1.0.0/polyfill/index.js': 'src/widget/polyfill.js',

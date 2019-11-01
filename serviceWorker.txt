@@ -1,1 +1,1 @@
-"/static/img/logo.png","/static/img/pageLoading_back.png","/static/img/touch-icon-iphone.png"
+"/static/img/home_sprite.png","/static/img/logo.png","/static/img/touch-icon-iphone.png"

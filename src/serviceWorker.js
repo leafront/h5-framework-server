@@ -4,18 +4,24 @@ var VERSION = "CACHE_VERSION"
 
 // 当前缓存白名单，在新脚本的 install 事件里将使用白名单里的 key
 
-var cacheFileList = [CONFIG,'/static/??vue/2.5.2/index.js,js/1.0.0/polyfill/index.js','/static/??css/1.0.0/reset.css,css/1.0.0/main.css,css/1.0.0/ui-toast.css,css/1.0.0/ui-showLoading.css,css/1.0.0/ui-dialog.css']
-self.addEventListener('install', function (event) {
+var cacheFileList = [
+  CONFIG,
+  '/static/??vue/2.5.2/index.js,js/1.0.0/polyfill/index.js',
+  '/static/js/index.js',
+  '/static/js/user/personal.js',
+  '/static/??css/1.0.0/reset.css,css/1.0.0/main.css,css/1.0.0/ui-toast.css,css/1.0.0/ui-showLoading.css,css/1.0.0/ui-dialog.css'
+]
+self.addEventListener('install', (event) =>  {
   // 等待所有资源缓存完成时，才可以进行下一步
   event.waitUntil(
     Promise.all[
-      caches.open(VERSION).then(function (cache) {
+      caches.open(VERSION).then((cache) => {
         // 要缓存的文件 URL 列表
         return cache.addAll(cacheFileList)
       }),
-      caches.keys().then(function (cacheNames) {
+      caches.keys().then((cacheNames) => {
         return Promise.all(
-          cacheNames.map(function (cacheName) {
+          cacheNames.map((cacheName) => {
             // 不在白名单的缓存全部清理掉
             if (cacheName !== VERSION) {
               // 删除缓存
@@ -29,11 +35,11 @@ self.addEventListener('install', function (event) {
   )
 })
 
-self.addEventListener('activate', function (event) {
+self.addEventListener('activate', (event) =>  {
   event.waitUntil(
-    caches.keys().then(function (cacheNames) {
+    caches.keys().then((cacheNames) => {
       return Promise.all(
-        cacheNames.map(function (cacheName) {
+        cacheNames.map((cacheName) => {
           // 不在白名单的缓存全部清理掉
           if (cacheName !== VERSION) {
             // 删除缓存
@@ -51,11 +57,11 @@ var isCORSRequest = function(url, host) {
 
 var isNeedCache = function(url) {
   var CACHE_HOST = ['img.whqietu.com','static.whqietu.com','assets.piaoniu.com','img.piaoniu.com']
-  return CACHE_HOST.some(function(host) {
+  return CACHE_HOST.some((host) => {
     return url.indexOf(host) !== -1
   })
 }
-self.addEventListener('fetch', function(event) {
+self.addEventListener('fetch',(event) => {
   var url = event.request.url
   var requestUrl = new URL(url)
   // Ignore not GET https origin request.
@@ -65,7 +71,7 @@ self.addEventListener('fetch', function(event) {
   var request = isCORSRequest(url) ? new Request(url, {mode: 'cors'}) : url
   event.respondWith(
     caches.match(request)
-    .then(function(response) {
+    .then((response) => {
       if (response) {
         return response
       }
@@ -75,8 +81,8 @@ self.addEventListener('fetch', function(event) {
       var fetchRequest = request.clone()
 
       // fetch 的通过信方式，得到 Request 对象，然后发送请求
-      return fetch(fetchRequest).then(
-        function(httpRes) {
+      return fetch(fetchRequest)
+        .then((httpRes) => {
           // 检查是否成功
           if(!httpRes || httpRes.status !== 200 || (httpRes.type !== 'basic' && httpRes.type !== 'cors')) {
             return httpRes
@@ -87,7 +93,7 @@ self.addEventListener('fetch', function(event) {
           // 那么返回的 response 就无法访问造成失败，所以，这里需要复制一份。
           var responseToCache = httpRes.clone()
           caches.open(VERSION)
-          .then(function(cache) {
+          .then((cache) => {
             cache.put(request, responseToCache)
           })
 
