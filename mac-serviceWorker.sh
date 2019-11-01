@@ -20,7 +20,7 @@ function readfile ()
   done
 }
 #函数定义结束，这里用来运行函数
-folder="./public"
+folder="./public/static/img"
 readfile $folder
 
 sed -i '' 's/\.\/public//g' serviceWorker.txt

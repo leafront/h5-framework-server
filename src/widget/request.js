@@ -18,7 +18,7 @@ function clearStorage () {
   }
 }
 
-export default function request (url,{
+function request (url,{
   type,
   timeout,
   dataType = 'json',

@@ -1,2 +1,2 @@
-import LoadDownloadApp from './downloadApp.vue'
-Vue.component('DownloadApp', LoadDownloadApp)
+import DownloadApp from './index.vue'
+Vue.component('DownloadApp', DownloadApp)

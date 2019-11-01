@@ -4,7 +4,7 @@ var VERSION = "CACHE_VERSION"
 
 // 当前缓存白名单，在新脚本的 install 事件里将使用白名单里的 key
 
-var cacheFileList = [CONFIG]
+var cacheFileList = [CONFIG,'/static/??vue/2.5.2/index.js,js/1.0.0/polyfill/index.js','/static/??css/1.0.0/reset.css,css/1.0.0/main.css,css/1.0.0/ui-toast.css,css/1.0.0/ui-showLoading.css,css/1.0.0/ui-dialog.css']
 self.addEventListener('install', function (event) {
   // 等待所有资源缓存完成时，才可以进行下一步
   event.waitUntil(

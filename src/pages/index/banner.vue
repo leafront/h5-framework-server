@@ -1,5 +1,5 @@
 <template>
-  <swiper :list="list" :preventDefault="preventDefault" :index="index" :itemWidth="wrapperWidth" @toggleIndex="toggleIndex" :style="{'height':itemHeight}">
+  <Swiper :list="list" :preventDefault="preventDefault" :index="index" :itemWidth="wrapperWidth" @toggleIndex="toggleIndex" :style="{'height':itemHeight}">
     <ul slot="banner" class="slideshow-item" :style="{'height':itemHeight}">
       <li v-for="item in list" :style="{'width':itemWidth + 'px'}" @click="pageAction(item.url)">
         <img :src="item.poster" :style="{'width':itemWidth + 'px', 'height':itemHeight}">
@@ -8,11 +8,9 @@
     <ul slot="dot" class="slideshow-dots">
       <li v-for="(item,$index) in bannerList" :class="{'active':$index == index-1}"></li>
     </ul>
-  </swiper>
+  </Swiper>
 </template>
 <script>
-
-  import swiper from '@/components/widget/swiper.vue'
   export default {
     data () {
       return {
@@ -29,9 +27,6 @@
           return []
         }
       }
-    },
-    components:{
-      swiper
     },
     computed: {
       list () {

@@ -2,7 +2,7 @@
  * @param {Object} options
  * @returns {Promise}
  */
-export default function ajax ({
+function ajax ({
   hostPath = location.origin,
   url,
   async = true,

@@ -1,6 +1,7 @@
 #!/bin/bash
 
-sudo npm run build
+sudo npm run build:webpack
+sudo npm run build:rollup
 
 sudo gulp sass html
 
