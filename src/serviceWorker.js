@@ -25,8 +25,8 @@ self.addEventListener('install', (event) =>  {
             // 不在白名单的缓存全部清理掉
             if (cacheName !== VERSION) {
               // 删除缓存
-              self.skipWaiting()
-              return caches.delete(cacheName)
+              self.skipWaiting() // 跳过 waiting 状态,然后会直接进入 activate 阶段
+              return caches.delete(cacheName) 
             }
           })
         )

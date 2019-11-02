@@ -1,6 +1,13 @@
 import resolve from 'rollup-plugin-node-resolve'
 import babel from 'rollup-plugin-babel'
-import {uglify} from 'rollup-plugin-uglify' 
+import commonjs from 'rollup-plugin-commonjs' 
+import {uglify} from 'rollup-plugin-uglify'
+import {minify} from 'uglify-js'
+import vue from 'rollup-plugin-vue' 
+import buble from 'rollup-plugin-buble'
+import alias from 'rollup-plugin-alias'
+import path from 'path'
+
 const pathName = 'public/static/js/'
 const config = [{
   input: 'src/serviceWorker.js',
@@ -13,7 +20,7 @@ const config = [{
     babel({
       exclude: '**/node_modules/**'
     }),
-    uglify()
+    uglify({}, minify)
   ]
 }]
 const files = {
@@ -28,23 +35,46 @@ const files = {
   '1.0.0/showModal/index.js': 'src/components/showModal/index.js',
   '1.0.0/toast/index.js': 'src/components/toast/index.js',
   '1.0.0/lazyLoad/index.js': 'src/components/lazyLoad/index.js',
+  '1.0.0/swiper/index.js': 'src/components/swiper/index.js',
+  '1.0.0/downloadApp/index.js': 'src/components/downloadApp/index.js',
+  '1.0.0/header/index.js': 'src/components/header/index.js',
+  'user/personal.js': 'src/pages/user/personal.js',
+  'index.js': 'src/pages/index/index.js',
+
 }
 
 Object.keys(files).forEach((item) => {
-  config.push({
+  const configItem = {
     input: files[item],
     output: {
       format: 'iife',
       file: pathName + item
     },
     plugins: [
+      alias({
+        resolve: [".js", ".vue"],
+        entries: [{ 
+          find:'@', 
+          replacement: path.resolve(__dirname, 'src') 
+        }]
+      }),
+      commonjs(),
+      vue({
+        template: {
+          isProduction: process.env.NODE_ENV == 'production' ? true : false
+        }
+      }),
       resolve(),
       babel({
         exclude: '**/node_modules/**'
       }),
-      uglify()
+      buble()
     ]
-  })
+  }
+  if (process.env.NODE_ENV == 'production') {
+    configItem.plugins.push(uglify({}, minify))
+  }
+  config.push(configItem)
 })
 
 export default config
