@@ -63,7 +63,11 @@ Object.keys(files).forEach((item) => {
       commonjs(),
       vue({
         template: {
-          isProduction: process.env.NODE_ENV == 'production' ? true : false
+          isProduction: process.env.NODE_ENV == 'production' ? true : false,
+          compilerOptions: {
+             preserveWhitespace: false
+          },
+          optimizeSSR: false
         },
         style: {
           postcssPlugins: [autoprefixer]
