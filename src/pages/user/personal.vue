@@ -112,11 +112,16 @@
 
 <script type="text/javascript">
 
+import Header from '@/components/header/index.vue' 
+
 export default {
   data () {
     return {
       title: '我的'
     }
+  },
+  components: {
+    Header
   },
   methods: {
     

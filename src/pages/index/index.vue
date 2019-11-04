@@ -155,6 +155,7 @@
 
 import Banner from './banner.vue'
 import PageLoading from '@/components/common/pageLoading.vue'
+import DownloadApp from '@/components/downloadApp/index.vue'
 import * as Model from '@/model/index'
 
 const { navList, bannerList, operating, hotTicket, discountTicket } = window.__NUXT__
@@ -177,7 +178,8 @@ export default {
   },
   components: {
     Banner,
-    PageLoading
+    PageLoading,
+    DownloadApp
   },
   methods: {
     loadImg (event) {

@@ -35,9 +35,9 @@ const files = {
   '1.0.0/showModal/index.js': 'src/components/showModal/index.js',
   '1.0.0/toast/index.js': 'src/components/toast/index.js',
   '1.0.0/lazyLoad/index.js': 'src/components/lazyLoad/index.js',
-  '1.0.0/swiper/index.js': 'src/components/swiper/index.js',
-  '1.0.0/downloadApp/index.js': 'src/components/downloadApp/index.js',
-  '1.0.0/header/index.js': 'src/components/header/index.js',
+  //'1.0.0/swiper/index.js': 'src/components/swiper/index.js',
+ // '1.0.0/downloadApp/index.js': 'src/components/downloadApp/index.js',
+ // '1.0.0/header/index.js': 'src/components/header/index.js',
   'user/personal.js': 'src/pages/user/personal.js',
   'index.js': 'src/pages/index/index.js',
 
@@ -60,6 +60,7 @@ Object.keys(files).forEach((item) => {
       }),
       commonjs(),
       vue({
+        compileTemplate: true,
         template: {
           isProduction: process.env.NODE_ENV == 'production' ? true : false
         }

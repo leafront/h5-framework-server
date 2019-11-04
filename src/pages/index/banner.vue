@@ -11,6 +11,7 @@
   </Swiper>
 </template>
 <script>
+  import Swiper from '@/components/swiper/index.vue'
   export default {
     data () {
       return {
@@ -27,6 +28,9 @@
           return []
         }
       }
+    },
+    components: {
+      Swiper
     },
     computed: {
       list () {
