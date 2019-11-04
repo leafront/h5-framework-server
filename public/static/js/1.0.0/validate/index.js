@@ -1,1 +1,0 @@
-!function(){"use strict";window.validate={isMobile:function(t){return/^1[3-9]\d{9}$/.test(t)},checkNumber:function(t){return/^[0-9]+.?[0-9]*$/.test(t)},isEmail:function(t){return/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/.test(t)},isZipCode:function(t){return/^[0-9]{6}$/.test(t)}}}();
