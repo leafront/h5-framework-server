@@ -6,6 +6,8 @@ import {minify} from 'uglify-js'
 import vue from 'rollup-plugin-vue' 
 import buble from 'rollup-plugin-buble'
 import alias from 'rollup-plugin-alias'
+import postcss from 'rollup-plugin-postcss'
+import autoprefixer from 'autoprefixer'
 import path from 'path'
 
 const pathName = 'public/static/js/'
@@ -60,14 +62,19 @@ Object.keys(files).forEach((item) => {
       }),
       commonjs(),
       vue({
-        compileTemplate: true,
         template: {
           isProduction: process.env.NODE_ENV == 'production' ? true : false
+        },
+        style: {
+          postcssPlugins: [autoprefixer]
         }
       }),
       resolve(),
       babel({
         exclude: '**/node_modules/**'
+      }),
+      postcss({
+        plugins: [autoprefixer]
       }),
       buble()
     ]
