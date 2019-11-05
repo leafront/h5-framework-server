@@ -2,6 +2,7 @@
 node_modules
 views/*
 public/static/js/*
+public/serviceWorker.js
 # Log files
 npm-debug.log*
 yarn-debug.log*
