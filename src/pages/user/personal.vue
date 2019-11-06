@@ -117,7 +117,7 @@ import Header from '@/components/header/index.vue'
 export default {
   data () {
     return {
-      title: '我的'
+      title: '个人中心'
     }
   },
   components: {
