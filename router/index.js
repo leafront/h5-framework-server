@@ -254,8 +254,7 @@ router.get('/', async (ctx,next) => {
         "properName": "芭蕾舞剧《天鹅湖》"
       }]
     },
-    staticPath,
-    imgPath
+    staticPath
   })
 })
 

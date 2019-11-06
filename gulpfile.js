@@ -44,6 +44,7 @@ return gulp.src('./templates/**/*.html')
   .pipe(htmlmin({collapseWhitespace: true}))
   .pipe(replace(/v=version\b/g, 'v=' + dataString))
   .pipe(replace(/\/static\/js\b/g, 'https://static.whqietu.com/static/js'))
+  .pipe(replace(/\/static\/img\b/g, 'https://img.whqietu.com/static/img'))
   .pipe(gulp.dest('./views/'))
 
 })

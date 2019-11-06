@@ -6,7 +6,6 @@ const {
 router.get('/personal', async (ctx,next) => {
   await ctx.render('user/personal',{
   	staticPath,
-  	imgPath,
   	data: {
 
   	}

@@ -7,8 +7,26 @@ import vue from 'rollup-plugin-vue'
 import buble from 'rollup-plugin-buble'
 import alias from 'rollup-plugin-alias'
 import postcss from 'rollup-plugin-postcss'
+import replace from '@rollup/plugin-replace'
 import autoprefixer from 'autoprefixer'
 import path from 'path'
+
+var date = new Date()
+var year = date.getFullYear()
+var month = date.getMonth() + 1
+var theDate = date.getDate()
+var hours = date.getHours()
+var minutes = date.getMinutes()
+var seconds = date.getSeconds()
+
+var dataString = [
+  year,
+  month >= 10 ? month :'0' + month,
+  theDate >= 10 ? theDate :'0' + theDate,
+  hours >= 10 ? hours : '0' + hours,
+  minutes >= 10 ? minutes : '0' + minutes,
+  seconds >= 10 ? seconds : '0' + seconds
+].join('')
 
 const pathName = 'public/static/js/'
 const config = [{
@@ -59,6 +77,10 @@ Object.keys(files).forEach((item) => {
           find:'@', 
           replacement: path.resolve(__dirname, 'src') 
         }]
+      }),
+      replace({ 
+        imgPath: process.env.NODE_ENV == 'production' ? 'https://img.whqietu.com/static/img' : '/static/img',
+        version: dataString
       }),
       commonjs(),
       vue({

@@ -532,7 +532,7 @@ body{
   i{
     width: .34rem;
     height: .34rem;
-    background: url(/static/img/home_sprite.png?v=version) no-repeat -.49rem -.11rem;
+    background: url(imgPath/home_sprite.png?v=version) no-repeat -.49rem -.11rem;
     background-size: 2rem auto;
   }
   span{
@@ -547,7 +547,7 @@ body{
   i{
     width: .38rem;
     height: .41rem;
-    background: url(/static/img/home_sprite.png?v=version) .02rem -.04rem no-repeat;
+    background: url(imgPath/home_sprite.png?v=version) .02rem -.04rem no-repeat;
     background-size: 2rem auto;
   }
 }
