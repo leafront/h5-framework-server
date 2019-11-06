@@ -40,13 +40,20 @@ gulp.task('sass', function () {
 })
 
 gulp.task('html', function () {
-return gulp.src('./templates/**/*.html')
-  .pipe(htmlmin({collapseWhitespace: true}))
-  .pipe(replace(/v=version\b/g, 'v=' + dataString))
-  .pipe(replace(/\/static\/js\b/g, 'https://static.whqietu.com/static/js'))
-  .pipe(replace(/\/static\/img\b/g, 'https://img.whqietu.com/static/img'))
-  .pipe(gulp.dest('./views/'))
-
+  return gulp.src('./templates/**/*.html')
+    .pipe(htmlmin({        
+        removeComments: true,//清除HTML注释
+        collapseWhitespace: true,//压缩HTML
+        removeEmptyAttributes: true,//删除所有空格作属性值 <input id="" /> ==> <input />
+        removeScriptTypeAttributes: true,//删除<script>的type="text/javascript"
+        removeStyleLinkTypeAttributes: true, //删除<style>和<link>的type="text/css"
+        minifyJS: true,//压缩页面JS
+        minifyCSS: true//压缩页面CSS
+    }))
+    .pipe(replace(/v=version\b/g, 'v=' + dataString))
+    .pipe(replace(/\/static\/js\b/g, 'https://static.whqietu.com/static/js'))
+    .pipe(replace(/\/static\/img\b/g, 'https://img.whqietu.com/static/img'))
+    .pipe(gulp.dest('./views/'))
 })
 gulp.task('default')
 
