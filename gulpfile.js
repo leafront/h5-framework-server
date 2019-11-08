@@ -34,7 +34,7 @@ gulp.task('sass', function () {
       remove: true
     }))
     .pipe(replace(/v=version\b/g, 'v=' + dataString))
-    .pipe(replace(/\/static\b/g, 'https://img.whqietu.com/static'))
+    .pipe(replace(/\/static\b/g, 'https://m.img.whqietu.com/static'))
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(gulp.dest('./public/static/css'))
 })
@@ -51,8 +51,8 @@ gulp.task('html', function () {
         minifyCSS: true//压缩页面CSS
     }))
     .pipe(replace(/v=version\b/g, 'v=' + dataString))
-    .pipe(replace(/\/static\/js\b/g, 'https://static.whqietu.com/static/js'))
-    .pipe(replace(/\/static\/img\b/g, 'https://img.whqietu.com/static/img'))
+    .pipe(replace(/\/static\/js\b/g, 'https://m.static.whqietu.com/static/js'))
+    .pipe(replace(/\/static\/img\b/g, 'https://m.img.whqietu.com/static/img'))
     .pipe(gulp.dest('./views/'))
 })
 gulp.task('default')

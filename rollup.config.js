@@ -40,6 +40,11 @@ const config = [{
     babel({
       exclude: '**/node_modules/**'
     }),
+    replace({ 
+      staticPath: process.env.NODE_ENV == 'production' ? 'https://m.static.whqietu.com' : '',
+      imgPath: process.env.NODE_ENV == 'production' ? 'https://m.img.whqietu.com' : '',
+      version: dataString
+    }),
     uglify({}, minify)
   ]
 }]
@@ -79,7 +84,7 @@ Object.keys(files).forEach((item) => {
         }]
       }),
       replace({ 
-        imgPath: process.env.NODE_ENV == 'production' ? 'https://img.whqietu.com/static/img' : '/static/img',
+        imgPath: process.env.NODE_ENV == 'production' ? 'https://m.img.whqietu.com/static/img' : '/static/img',
         version: dataString
       }),
       commonjs(),
