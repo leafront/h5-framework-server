@@ -33,16 +33,187 @@
         </div>  
       </div>  
       <div class="personal-order-title p30 bgfff">
-        <strong class="fs32">我的订单</strong>
+        <strong class="fs32 c262626">我的订单</strong>
         <div class="personal-order-arrow">
-          <i class="c999">查看全部订单</i>
+          <i class="c9 fs28">查看全部订单</i>
+          <div class="ui-right-arrow">
+          </div>  
         </div>  
+      </div>  
+      <div class="personal-order-status bgfff">
+        <div class="personal-order-status-item">
+          <i class="icon1"></i>
+          <span>待付款</span>
+        </div>
+        <div class="personal-order-status-item">
+          <i class="icon2"></i>
+          <span>待发货</span>
+        </div> 
+        <div class="personal-order-status-item">
+          <i class="icon3"></i>
+          <span>待收货</span>
+        </div>   
+      </div>
+      <div class="personal-discount mt20 bgfff">
+        <div class="personal-discount-item">
+          <i class="fs32">0</i>
+          <span>优惠券</span>
+        </div>  
+        <div class="personal-discount-item">
+          <i class="fs32">0</i>
+          <span>礼品卡</span>
+        </div> 
+      </div>
+      <div class="personal-welfare-title p30 bgfff">
+        <span class="fs32 c262626">我的福利</span>
+      </div>
+      <div class="personal-invite bgfff">
+        <div class="personal-invite-item">
+          <i class="icon1"></i>
+          <div class="personal-invite-info">
+            <span class="c262626 fs28">邀请好友</span>
+            <p class="c9 fs22">返10元现金</p>
+          </div>
+        </div>  
+        <div class="personal-invite-item">
+          <i class="icon2"></i>
+          <div class="personal-invite-info">
+            <span class="c262626 fs28">圈圈俱乐部</span>
+            <p class="c9 fs22">达人专属奖励</p>
+          </div>  
+        </div>  
+      </div>    
+      <div class="personal-nav bgfff">
+        <div class="personal-nav-item p30">
+          <span class="fs28 c262626">地址管理</span>
+          <div class="ui-right-arrow"></div>  
+        </div> 
+        <div class="personal-nav-item p30">
+          <span class="fs28 c262626">帮助与客服</span>
+          <div class="ui-right-arrow"></div>  
+        </div> 
+        <div class="personal-nav-item p30">
+          <span class="fs28 c262626">卖家招募</span>
+          <div class="ui-right-arrow"></div>  
+        </div>
+        <div class="personal-nav-item p30">
+          <span class="fs28 c262626">关于我们</span>
+          <div class="ui-right-arrow"></div>  
+        </div>
+        <div class="personal-nav-item p30">
+          <span class="fs28 c262626">联系我们</span>
+          <div class="ui-right-arrow"></div>  
+        </div>
+      </div>
+      <div class="personal-logout bgfff">
+        <span class="fs28">退出登录</span>
       </div>  
     </div>  
   </div>   
 </template> 
 
 <style lang="scss">
+  .personal-logout{
+    height: .88rem;
+    color: #ff2661;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: .2rem;
+    span{
+      color: #ff2661;
+    }
+  }
+  .personal-nav{
+    margin-top: .2rem;
+  }
+  .personal-nav-item{
+    height: .88rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: .01rem solid #ddd;
+    &:last-child{
+      border-bottom: 0;
+    }
+  }
+  .personal-invite{
+    display: flex;
+    height: 1.58rem;
+    .personal-invite-item{
+      flex: 1;
+      display: flex;
+      align-items: center;
+      i{
+        width: .96rem;
+        height: .96rem;
+        margin-left: .3rem;
+        &.icon1{
+          background: url(https://static.piaoniu.com/m/static/img/icon-redpackage.e078ab8.png) no-repeat;
+          background-size: .96rem auto;
+        }
+        &.icon2{
+          background: url(https://static.piaoniu.com/m/static/img/icon-club.959250b.png) no-repeat;
+          background-size: .96rem auto;
+        }
+      }
+    }
+    .personal-invite-info{
+      padding-left: .3rem;
+      p{
+        padding-top: .1rem;
+      }
+    }
+  }
+  .personal-welfare-title{
+    height: .78rem;
+    display: flex;
+    align-items: center;
+    margin-top: .2rem;
+    border-bottom: .01rem solid #ddd;
+  }
+  .personal-discount{
+    display: flex;
+    height: 1.4rem;
+    .personal-discount-item{
+      flex:1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      i{
+        color: #ff2661;
+        padding-bottom: .15rem;
+      }
+    }
+  }
+  .ui-right-arrow {
+    position: relative;
+    width: .24rem;
+    height: .32rem
+  }
+  .ui-right-arrow:before,.ui-right-arrow:after {
+    content: "";
+    width: .2rem;
+    height: .02rem;
+    background: #c3c3c3;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: right top
+  }
+
+  .ui-right-arrow:before {
+    transform: rotate(42.5deg)
+  }
+
+  .ui-right-arrow:after {
+    transform: rotate(-42.5deg);
+    left: -1px;
+  }
+
   body{
     background: #f6f7f9;
   }
@@ -51,9 +222,7 @@
     justify-content: space-between;
     align-items: center;
     height: .9rem;
-    strong{
-      color: #262626;
-    }
+    border-bottom: .01rem solid #ddd;
   }
   .personal-menu{
     height: 1rem;
@@ -106,6 +275,42 @@
       background-size: .1rem .2rem;
       margin-left: .1rem;
       margin-top: .05rem;
+    }
+  }
+  .personal-order-arrow{
+    display: flex;
+    align-items: center;
+    i{
+      padding-right: .1rem;
+      padding-top: .03rem;
+    }
+  }
+  .personal-order-status{
+    display: flex;
+    height: 1.36rem;
+    .personal-order-status-item{
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      i{
+        width: .48rem;
+        height: .48rem;
+        background: url(imgPath/order_status_icon.png?v=version) no-repeat;
+        background-size: 1.54rem auto;
+        margin-bottom: .15rem;
+        &.icon1{
+          background-position: -.01rem 0;
+        }
+        &.icon2{
+           background-position: -.53rem -.05rem;
+        }
+        &.icon3{
+           background-position: -1.05rem -.04rem;
+        }
+      }
+
     }
   }
 </style>
