@@ -65,6 +65,7 @@ const files = {
  // '1.0.0/header/index.js': 'src/components/header/index.js',
   'user/personal.js': 'src/pages/user/personal.js',
   'index.js': 'src/pages/index/index.js',
+  'user/login.js': 'src/pages/user/login.js'
 
 }
 

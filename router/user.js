@@ -3,12 +3,15 @@ const {
   staticPath,
   imgPath
 } = require('../config/index')
-router.get('/personal', async (ctx,next) => {
+router.get('/personal', async (ctx, next) => {
   await ctx.render('user/personal',{
-  	staticPath,
-  	data: {
+    staticPath
+  })
+})
 
-  	}
+router.get('/login', async (ctx, next) => {
+  await ctx.render('user/login',{
+    staticPath
   })
 })
 

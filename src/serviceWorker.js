@@ -8,10 +8,12 @@ var cacheFileList = [
   "imgPath/static/img/home_sprite.png?v=version",
   "imgPath/static/img/logo.png?v=version",
   "imgPath/static/img/touch-icon-iphone.png?v=version",
-  'staticPath/static/??vue/2.5.2/index.js,js/1.0.1/polyfill/index.js',
-  'staticPath/static/js/index.js?v=version',
-  'staticPath/static/js/user/personal.js?v=version',
-  'staticPath/static/??css/1.0.0/reset.css,css/1.0.0/main.css,css/1.0.0/ui-toast.css,css/1.0.0/ui-showLoading.css,css/1.0.0/ui-dialog.css'
+  "imgPath/static/img/user_pic.png.png?v=version",
+  "imgPath/static/img/order_status_icon.png?v=version",
+  "staticPath/static/??vue/2.5.2/index.js,js/1.0.1/polyfill/index.js",
+  "staticPath/static/js/index.js?v=version",
+  "staticPath/static/js/user/personal.js?v=version",
+  "staticPath/static/??css/1.0.0/reset.css,css/1.0.0/main.css,css/1.0.0/ui-toast.css,css/1.0.0/ui-showLoading.css,css/1.0.0/ui-dialog.css"
 ]
 self.addEventListener('install', (event) =>  {
   // 等待所有资源缓存完成时，才可以进行下一步

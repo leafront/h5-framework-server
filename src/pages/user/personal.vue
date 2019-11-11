@@ -4,7 +4,7 @@
     <div class="scroll-view-wrapper">
       <div class="personal-info-wrapper">
         <div class="personal-info">
-          <div class="personal-info-txt">
+          <div class="personal-info-txt" @click="pageAction">
             <div class="personal-info-img"></div>
             <span class="cfff">登录</span>
           </div> 
@@ -105,8 +105,8 @@
           <div class="ui-right-arrow"></div>  
         </div>
       </div>
-      <div class="personal-logout bgfff">
-        <span class="fs28">退出登录</span>
+      <div class="personal-logout">
+        <span class="fs32 cfff">退出登录</span>
       </div>  
     </div>  
   </div>   
@@ -119,10 +119,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: .2rem;
-    span{
-      color: #ff2661;
-    }
+    margin-top: .4rem;
+    background: #ff2661;
   }
   .personal-nav{
     margin-top: .2rem;
@@ -245,7 +243,7 @@
     align-items: center;
   }
   .personal-info-img{
-    background: url(https://static.piaoniu.com/m/static/img/defaultAvatar.99f8eed.png);
+    background: url(imgPath/user_pic.png);
     width: 1.12rem;
     height: 1.12rem;
     background-size: 1.12rem auto;
@@ -329,7 +327,9 @@ export default {
     Header
   },
   methods: {
-    
+    pageAction () {
+      location.href = '/user/login'
+    }
   }
 }
 
