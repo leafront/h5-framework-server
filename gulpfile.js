@@ -17,8 +17,7 @@ var dataString = [
   month >= 10 ? month :'0' + month,
   theDate >= 10 ? theDate :'0' + theDate,
   hours >= 10 ? hours : '0' + hours,
-  minutes >= 10 ? minutes : '0' + minutes,
-  seconds >= 10 ? seconds : '0' + seconds
+  minutes >= 10 ? minutes : '0' + minutes
 ].join('')
 
 gulp.task('sass', function () {
@@ -33,8 +32,8 @@ gulp.task('sass', function () {
       cascade: false,
       remove: true
     }))
-    .pipe(replace(/v=version\b/g, 'v=' + dataString))
-    .pipe(replace(/\/static\b/g, 'https://m.img.whqietu.com/static'))
+    //.pipe(replace(/v=version\b/g, 'v=' + dataString))
+    //.pipe(replace(/\/static\b/g, '//m.img.whqietu.com/static'))
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(gulp.dest('./public/static/css'))
 })
@@ -51,8 +50,8 @@ gulp.task('html', function () {
         minifyCSS: true//压缩页面CSS
     }))
     .pipe(replace(/v=version\b/g, 'v=' + dataString))
-    .pipe(replace(/\/static\/js\b/g, 'https://m.static.whqietu.com/static/js'))
-    .pipe(replace(/\/static\/img\b/g, 'https://m.img.whqietu.com/static/img'))
+    .pipe(replace(/\/static\/js\b/g, '//m.static.whqietu.com/static/js'))
+    .pipe(replace(/\/static\/img\b/g, '//m.img.whqietu.com/static/img'))
     .pipe(gulp.dest('./views/'))
 })
 gulp.task('default')

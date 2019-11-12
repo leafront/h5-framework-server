@@ -46,11 +46,8 @@ function request (url,{
     hostPath
   }
 
-  if (type == 'GET') {
-    options.data.times = new Date().getTime()
-  }
   let optionData = data
-
+  
   if (headers &&
     headers['Content-Type'] == 'application/json'
   ) {

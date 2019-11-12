@@ -24,8 +24,7 @@ var dataString = [
   month >= 10 ? month :'0' + month,
   theDate >= 10 ? theDate :'0' + theDate,
   hours >= 10 ? hours : '0' + hours,
-  minutes >= 10 ? minutes : '0' + minutes,
-  seconds >= 10 ? seconds : '0' + seconds
+  minutes >= 10 ? minutes : '0' + minutes
 ].join('')
 
 const pathName = 'public/static/js/'
@@ -41,8 +40,8 @@ const config = [{
       exclude: '**/node_modules/**'
     }),
     replace({ 
-      staticPath: process.env.NODE_ENV == 'production' ? 'https://m.static.whqietu.com' : '',
-      imgPath: process.env.NODE_ENV == 'production' ? 'https://m.img.whqietu.com' : '',
+      staticPath: process.env.NODE_ENV == 'production' ? '//m.static.whqietu.com' : '',
+      imgPath: process.env.NODE_ENV == 'production' ? '//m.img.whqietu.com' : '',
       version: dataString
     }),
     uglify({}, minify)
@@ -85,7 +84,7 @@ Object.keys(files).forEach((item) => {
         }]
       }),
       replace({ 
-        imgPath: process.env.NODE_ENV == 'production' ? 'https://m.img.whqietu.com/static/img' : '/static/img',
+        imgPath: process.env.NODE_ENV == 'production' ? '//m.img.whqietu.com/static/img' : '/static/img',
         version: dataString
       }),
       commonjs(),

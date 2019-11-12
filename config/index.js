@@ -1,3 +1,3 @@
 module.exports = {
-  staticPath: 'https://m.static.whqietu.com'
+  staticPath: '//m.static.whqietu.com'
 }

@@ -1,78 +1,70 @@
 
 // 当前缓存版本的唯一标识符，用当前时间代替
-var VERSION = "201911071620"
+var VERSION = "version"
 
 // 当前缓存白名单，在新脚本的 install 事件里将使用白名单里的 key
 
 var cacheFileList = [
+  "/",
   "imgPath/static/img/home_sprite.png?v=version",
   "imgPath/static/img/logo.png?v=version",
   "imgPath/static/img/touch-icon-iphone.png?v=version",
-  "imgPath/static/img/user_pic.png.png?v=version",
+  "imgPath/static/img/user_pic.png?v=version",
   "imgPath/static/img/order_status_icon.png?v=version",
-  "staticPath/static/??vue/2.5.2/index.js,js/1.0.1/polyfill/index.js",
   "staticPath/static/js/index.js?v=version",
   "staticPath/static/js/user/personal.js?v=version",
+  "staticPath/static/js/user/login.js?v=version",
+  "staticPath/static/??vue/2.5.2/index.js,js/1.0.1/polyfill/index.js",
+  "staticPath/static/??js/1.0.0/utils/index.js,js/1.0.0/ajax/index.js,js/1.0.0/store/index.js,js/1.0.0/request/index.js",
   "staticPath/static/??css/1.0.0/reset.css,css/1.0.0/main.css,css/1.0.0/ui-toast.css,css/1.0.0/ui-showLoading.css,css/1.0.0/ui-dialog.css"
 ]
 self.addEventListener('install', (event) =>  {
   // 等待所有资源缓存完成时，才可以进行下一步
   event.waitUntil(
-    Promise.all[
-      caches.open(VERSION).then((cache) => {
-        // 要缓存的文件 URL 列表
-        return cache.addAll(cacheFileList)
-      }),
-      caches.keys().then((cacheNames) => {
-        return Promise.all(
-          cacheNames.map((cacheName) => {
-            // 不在白名单的缓存全部清理掉
-            if (cacheName !== VERSION) {
-              // 删除缓存
-              self.skipWaiting() // 跳过 waiting 状态,然后会直接进入 activate 阶段
-              return caches.delete(cacheName) 
-            }
-          })
-        )
-      })
-    ]
+    caches.open(VERSION)
+    .then((cache) => {
+      // 要缓存的文件 URL 列表
+      return cache.addAll(cacheFileList)
+    })
+    .then(() => console.log('installation complete! version: ' + VERSION))
+    .then(() => self.skipWaiting())
   )
 })
 
 self.addEventListener('activate', (event) =>  {
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          // 不在白名单的缓存全部清理掉
-          if (cacheName !== VERSION) {
-            // 删除缓存
-            return caches.delete(cacheName)
-          }
-        })
-      )
-    })
+    Promise.all([
+      clients.claim(),
+      caches.keys().then((cacheNames) => {
+        return Promise.all(
+          cacheNames
+          .filter(key => !key.startsWith(VERSION))  // 过滤不需要删除的资源
+          .map(key => caches.delete(key))  // 删除旧版本资源，返回为 Promise 对象
+        )
+      }).then(() => {
+        console.log('removeOldCache completed.');
+      })
+    ])
   )
 })
 
-var isCORSRequest = function(url, host) {
+var isCORSRequest = function(url) {
   return url.indexOf(location.host) === -1
 }
 
 var isNeedCache = function(url) {
-  var CACHE_HOST = ['m.img.whqietu.com','m.static.whqietu.com','assets.piaoniu.com']
+  var CACHE_HOST = ['m.whqietu.com', 'img.piaoniu.com', 'm.img.whqietu.com', 'm.static.whqietu.com', 'assets.piaoniu.com']
   return CACHE_HOST.some((host) => {
-    return url.indexOf(host) !== -1
+    return url.indexOf(host) !== -1 && url.indexOf('https://m.whqietu.com/api') === -1
   })
 }
 self.addEventListener('fetch',(event) => {
   var url = event.request.url
-  var requestUrl = new URL(url)
-  // Ignore not GET https origin request.
-  if (event.request.method !== 'GET' || requestUrl.protocol !== 'https:' || requestUrl.origin == location.origin || !isNeedCache(url)) {
+  // Ignore not GET https request.
+  if (event.request.method !== 'GET' || new URL(url).protocol !== 'https:' || !isNeedCache(url)) {
     return
   }
-  var request = isCORSRequest(url) ? new Request(url, {mode: 'cors'}) : url
+  var request = isCORSRequest(url) ? new Request(url, {mode: 'cors'}) : event.request
   event.respondWith(
     caches.match(request)
     .then((response) => {
