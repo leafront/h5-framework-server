@@ -5,7 +5,6 @@ var VERSION = "version"
 // 当前缓存白名单，在新脚本的 install 事件里将使用白名单里的 key
 
 var cacheFileList = [
-  "/",
   "imgPath/static/img/home_sprite.png?v=version",
   "imgPath/static/img/logo.png?v=version",
   "imgPath/static/img/touch-icon-iphone.png?v=version",
@@ -53,9 +52,9 @@ var isCORSRequest = function(url) {
 }
 
 var isNeedCache = function(url) {
-  var CACHE_HOST = ['m.whqietu.com', 'img.piaoniu.com', 'm.img.whqietu.com', 'm.static.whqietu.com', 'assets.piaoniu.com']
+  var CACHE_HOST = ['img.piaoniu.com', 'm.img.whqietu.com', 'm.static.whqietu.com', 'assets.piaoniu.com']
   return CACHE_HOST.some((host) => {
-    return url.indexOf(host) !== -1 && url.indexOf('https://m.whqietu.com/api') === -1
+    return url.indexOf(host) !== -1
   })
 }
 self.addEventListener('fetch',(event) => {
