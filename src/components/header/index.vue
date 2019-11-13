@@ -1,6 +1,6 @@
 <template>
   <div class="ui-header" :class="{'ui-header-border':isBorder}">
-    <div class="ui-header-back" @click="backAction">
+    <div class="ui-header-back" @click="pageAction">
       <div class="ui-header-back_btn">
       </div>
     </div>
@@ -13,7 +13,7 @@
 
 export default {
   props: {
-    backFn: {
+    backAction: {
       default: null,
       type: Function
     },
@@ -27,9 +27,9 @@ export default {
     }
   },
   methods: {
-    backAction () {
-      if (this.backFn && typeof this.backFn == 'function') {
-        this.backFn()
+    pageAction () {
+      if (this.backAction && typeof this.backAction == 'function') {
+        this.backAction()
       } else {
         history.back()
       }

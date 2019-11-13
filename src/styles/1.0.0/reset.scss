@@ -38,7 +38,7 @@ input {
   box-shadow: none;
   border-radius: 0;
   font-size: 100%;
-  font-family: "Helvetica Neue", Tahoma, Arial, PingFangSC-Regular, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+  font-family: PingFang SC,Lantinghei SC,Roboto,Helvetica Neue,Microsoft Yahei,Hiragino Sans GB,Microsoft Sans Serif,WenQuanYi Micro Hei,sans;
 }
 
 i{
@@ -79,11 +79,11 @@ input:focus {
 
 }
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
-  color: #bbb;
+  color: #999;
 }
 
 input {
-  color: #333;
+  color: #262626;
 }
 a {
   text-decoration: none;
