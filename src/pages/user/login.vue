@@ -19,7 +19,7 @@
             <span class="fs28">获取验证码</span>
           </div>  
         </div>
-        <div class="user-login-submit">
+        <div class="user-login-submit" @click="loginAction">
           <button class="fs34 cfff">登录</button>
         </div>  
       </div> 
@@ -130,6 +130,9 @@
         } else {
           history.back()
         }
+      },
+      loginAction () {
+        this.$showLoading()
       }
     }
   }

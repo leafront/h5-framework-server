@@ -6,11 +6,9 @@ const Loading = {
     }
     Vue.prototype.$showLoading = () => {
 
-      // 如果页面有showLoading则不继续执行
       if (document.getElementById('showLoading')) {
         return
       } 
-      // 1、创建构造器，定义好提示信息的模板
       const tpl = `
         <div class="ui-showLoading" id="ui-showLoading">
           <div class="ui-showLoading-cont">
@@ -37,4 +35,4 @@ const Loading = {
   }
 }
 
-window.Loading = Loading  
+window.Vue.use(Loading)  

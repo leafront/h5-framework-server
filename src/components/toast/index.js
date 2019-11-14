@@ -27,4 +27,4 @@ const Toast = {
   }
 }
 
-window.Toast = Toast
+window.Vue.use(Toast)
