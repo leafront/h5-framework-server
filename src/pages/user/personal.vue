@@ -243,7 +243,7 @@
     align-items: center;
   }
   .personal-info-img{
-    background: url(imgPath/user_pic.png);
+    background: url(imgPath/user_pic.png?v=version);
     width: 1.12rem;
     height: 1.12rem;
     background-size: 1.12rem auto;

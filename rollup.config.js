@@ -11,22 +11,8 @@ import replace from '@rollup/plugin-replace'
 import autoprefixer from 'autoprefixer'
 import path from 'path'
 
-var date = new Date()
-var year = date.getFullYear()
-var month = date.getMonth() + 1
-var theDate = date.getDate()
-var hours = date.getHours()
-var minutes = date.getMinutes()
-var seconds = date.getSeconds()
 
-var dataString = [
-  year,
-  month >= 10 ? month :'0' + month,
-  theDate >= 10 ? theDate :'0' + theDate,
-  hours >= 10 ? hours : '0' + hours,
-  minutes >= 10 ? minutes : '0' + minutes
-].join('')
-
+const time = process.env.time
 const pathName = 'public/static/js/'
 const config = [{
   input: 'src/serviceWorker.js',
@@ -42,7 +28,7 @@ const config = [{
     replace({ 
       staticPath: process.env.NODE_ENV == 'production' ? '//m.static.whqietu.com' : '',
       imgPath: process.env.NODE_ENV == 'production' ? '//m.img.whqietu.com' : '',
-      version: dataString
+      version: time
     }),
     uglify({}, minify)
   ]
@@ -86,7 +72,7 @@ Object.keys(files).forEach((item) => {
       }),
       replace({ 
         imgPath: process.env.NODE_ENV == 'production' ? '//m.img.whqietu.com/static/img' : '/static/img',
-        version: dataString
+        version: time
       }),
       commonjs(),
       vue({

@@ -42,4 +42,4 @@ const ShowModal = {
   }
 }
 
-window.ShowModal = ShowModal 
+window.Vue.use(ShowModal)
