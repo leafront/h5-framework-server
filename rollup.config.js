@@ -49,12 +49,13 @@ const config = [{
 }]
 const files = {
   '1.0.0/utils/index.js':'src/widget/utils.js',
-  '1.0.1/polyfill/index.js': 'src/widget/polyfill.js',
+  '1.0.0/polyfill/index.js': 'src/widget/polyfill.js',
   '1.0.0/ajax/index.js': 'src/widget/ajax.js',
   '1.0.0/store/index.js': 'src/widget/store.js',
   '1.0.0/request/index.js': 'src/widget/request.js',
   '1.0.0/validate/index.js': 'src/widget/validate.js',
   '1.0.0/filter/index.js': 'src/widget/filter.js',
+  '1.0.0/scale/index.js': 'src/widget/scale.js',
   '1.0.0/loading/index.js': 'src/components/loading/index.js',
   '1.0.0/showModal/index.js': 'src/components/showModal/index.js',
   '1.0.0/toast/index.js': 'src/components/toast/index.js',

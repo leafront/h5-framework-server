@@ -1,19 +1,20 @@
 const ShowModal = {
   installed: false,
-  install (Vue,options) {
-    if(ShowModal.installed) return
+  install (Vue, options) {
+    if (ShowModal.installed) {
+      return
+    }
     Vue.prototype.$showModal = (options) => {
 
-      // 如果页面有toast则不继续执行
       if (document.querySelector('.dialog-container')) {
         return
       }
-      // 1、创建构造器，定义好提示信息的模板
       const cancelText = options.cancelText || '取消'
       const confirmText = options.confirmText || '确定'
       const toast = options.showCancel == false ? 'none' : 'block'
-
-      let tpl = `
+      const uiDialog = document.getElementById('ui-dialog')
+      
+      const tpl = `
         <div class="ui-dialog" id="ui-dialog">
           <div class="ui-dialog-mask"></div>
           <div class="ui-dialog-container">
@@ -26,7 +27,6 @@ const ShowModal = {
         </div>
       `
       utils.append(document.body, tpl)
-      const uiDialog = document.getElementById('ui-dialog')
       document.getElementById('ui-dialog-cancel').addEventListener('click',() => {
         uiDialog.parentNode.removeChild(uiDialog)
         options.cancel && options.cancel()

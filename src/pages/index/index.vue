@@ -235,11 +235,11 @@ export default {
   },
   created () {
     this.getRecommendsList()
-    window.addEventListener('scroll', this.scrollLoadList, utils.isPassive() ? {passive: true} : false)
+    window.addEventListener('scroll', this.scrollLoadList, utils.isPassive() ? {passive: true, capture: true} : true)
   },
   beforeDestroy () {
     window.cancelAnimationFrame(this.timer)
-    window.removeEventListener('scroll', this.scrollLoadList, utils.isPassive() ? {passive: true} : false)
+    window.removeEventListener('scroll', this.scrollLoadList, utils.isPassive() ? {passive: true, capture: true} : true)
   }
 }
 </script>
@@ -533,7 +533,7 @@ body{
     width: .34rem;
     height: .34rem;
     background: url(imgPath/home_sprite.png?v=version) no-repeat -.49rem -.11rem;
-    background-size: 2rem auto;
+    background-size: .86rem auto;
   }
   span{
     padding-left: .1rem;
@@ -548,7 +548,7 @@ body{
     width: .38rem;
     height: .41rem;
     background: url(imgPath/home_sprite.png?v=version) .02rem -.04rem no-repeat;
-    background-size: 2rem auto;
+    background-size: .86rem auto;
   }
 }
 .home-banner {

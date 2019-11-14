@@ -13,8 +13,8 @@ var cacheFileList = [
   "staticPath/static/js/index.js?v=version",
   "staticPath/static/js/user/personal.js?v=version",
   "staticPath/static/js/user/login.js?v=version",
-  "staticPath/static/??vue/2.5.2/index.js,js/1.0.1/polyfill/index.js",
-  "staticPath/static/??js/1.0.0/utils/index.js,js/1.0.0/ajax/index.js,js/1.0.0/store/index.js,js/1.0.0/request/index.js",
+  "staticPath/static/??vue/2.5.2/index.js,js/1.0.0/polyfill/index.js",
+  "staticPath/static/??js/1.0.0/utils/index.js,js/1.0.0/ajax/index.js,js/1.0.0/store/index.js,js/1.0.0/request/index.js,js/1.0.0/scale/index.js",
   "staticPath/static/??css/1.0.0/reset.css,css/1.0.0/main.css,css/1.0.0/ui-toast.css,css/1.0.0/ui-showLoading.css,css/1.0.0/ui-dialog.css"
 ]
 self.addEventListener('install', (event) =>  {
@@ -25,8 +25,8 @@ self.addEventListener('install', (event) =>  {
       // 要缓存的文件 URL 列表
       return cache.addAll(cacheFileList)
     })
-    .then(() => console.log('installation complete! version: ' + VERSION))
     .then(() => self.skipWaiting())
+    .then(() => console.log('installation complete! version: ' + VERSION))
   )
 })
 
@@ -52,7 +52,10 @@ var isCORSRequest = function(url) {
 }
 
 var isNeedCache = function(url) {
-  var CACHE_HOST = ['img.piaoniu.com', 'm.img.whqietu.com', 'm.static.whqietu.com', 'assets.piaoniu.com']
+  var CACHE_HOST = ['m.whqietu.com','img.piaoniu.com', 'm.img.whqietu.com', 'm.static.whqietu.com', 'assets.piaoniu.com']
+  if (url.indexOf('https://m.whqietu.com/api') > -1) {
+    return false
+  }
   return CACHE_HOST.some((host) => {
     return url.indexOf(host) !== -1
   })
