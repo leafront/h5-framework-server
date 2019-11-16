@@ -5,19 +5,13 @@ var VERSION = "version"
 // 当前缓存白名单，在新脚本的 install 事件里将使用白名单里的 key
 
 var cacheFileList = [
-  "imgPath/static/img/home_sprite.png?v=version",
-  "imgPath/static/img/logo.png?v=version",
-  "imgPath/static/img/touch-icon-iphone.png?v=version",
-  "imgPath/static/img/user_pic.png?v=version",
-  "imgPath/static/img/order_status_icon.png?v=version",
-  "imgPath/static/img/ui-loading.png?v=version",
-  "imgPath/static/img/ui-lazyload.png?v=version",
   "staticPath/static/js/index.js?v=version",
   "staticPath/static/js/user/personal.js?v=version",
   "staticPath/static/js/user/login.js?v=version",
   "staticPath/static/??vue/2.5.2/index.js,js/1.0.0/polyfill/index.js",
-  "staticPath/static/??js/1.0.0/utils/index.js,js/1.0.0/ajax/index.js,js/1.0.0/store/index.js,js/1.0.0/request/index.js,js/1.0.0/scale/index.js",
-  "staticPath/static/??css/1.0.0/reset.css,css/1.0.0/main.css,css/1.0.0/ui-toast.css,css/1.0.0/ui-showLoading.css,css/1.0.0/ui-dialog.css"
+  "staticPath/static/??js/1.0.0/utils/index.js,js/1.0.0/ajax/index.js,js/1.0.0/store/index.js,js/1.0.0/request/index.js,js/1.0.4/scale/index.js",
+  "staticPath/static/??js/1.0.0/toast/index.js,js/1.0.0/loading/index.js",
+  "staticPath/static/??css/1.0.2/reset.css,css/1.0.2/main.css,css/1.0.2/ui-toast.css,css/1.0.2/ui-showLoading.css,css/1.0.2/ui-dialog.css"
 ]
 self.addEventListener('install', (event) =>  {
   // 等待所有资源缓存完成时，才可以进行下一步
@@ -34,18 +28,15 @@ self.addEventListener('install', (event) =>  {
 
 self.addEventListener('activate', (event) =>  {
   event.waitUntil(
-    Promise.all([
-      clients.claim(),
-      caches.keys().then((cacheNames) => {
-        return Promise.all(
-          cacheNames
-          .filter(key => !key.startsWith(VERSION))  // 过滤不需要删除的资源
-          .map(key => caches.delete(key))  // 删除旧版本资源，返回为 Promise 对象
-        )
-      }).then(() => {
-        console.log('removeOldCache completed.');
-      })
-    ])
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames
+        .filter(key => !key.startsWith(VERSION))  // 过滤不需要删除的资源
+        .map(key => caches.delete(key))  // 删除旧版本资源，返回为 Promise 对象
+      )
+    }).then(() => {
+      console.log('removeOldCache completed.');
+    })
   )
 })
 
@@ -54,10 +45,7 @@ var isCORSRequest = function(url) {
 }
 
 var isNeedCache = function(url) {
-  var CACHE_HOST = ['m.whqietu.com','img.piaoniu.com', 'm.img.whqietu.com', 'm.static.whqietu.com', 'assets.piaoniu.com']
-  if (url.indexOf('https://m.whqietu.com/api') > -1) {
-    return false
-  }
+  var CACHE_HOST = ['img.piaoniu.com', 'm.img.whqietu.com', 'm.static.whqietu.com', 'assets.piaoniu.com']
   return CACHE_HOST.some((host) => {
     return url.indexOf(host) !== -1
   })

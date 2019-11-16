@@ -39,7 +39,7 @@ export default {
 </script>
 <style lang="scss">
   .ui-header ~ .scroll-view-wrapper {
-    padding-top: .88rem;
+    top: .88rem;
   }
   .ui-header {
     width: 100%;

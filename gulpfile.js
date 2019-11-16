@@ -7,11 +7,11 @@ var autoprefixer = require('gulp-autoprefixer')
 var time = process.env.time
 
 var css = {
-  "reset": "1.0.0/reset.css",
-  "main": "1.0.0/main.css",
-  "ui-toast": "1.0.0/ui-toast.css",
-  "ui-showLoading": "1.0.0/ui-showLoading.css",
-  "ui-dialog": "1.0.0/ui-dialog.css"
+  "reset": "1.0.3/reset.css",
+  "main": "1.0.3/main.css",
+  "ui-toast": "1.0.3/ui-toast.css",
+  "ui-showLoading": "1.0.3/ui-showLoading.css",
+  "ui-dialog": "1.0.3/ui-dialog.css"
 }
 
 var js = {
@@ -21,11 +21,11 @@ var js = {
   "ajax": "1.0.0/ajax/index.js",
   "store": "1.0.0/store/index.js",
   "request": "1.0.0/request/index.js",
-  "scale": "1.0.0/scale/index.js",
+  "scale": "1.0.4/scale/index.js",
   "filter": "1.0.0/filter/index.js",
   "lazyLoad": "1.0.0/lazyLoad/index.js",
   "loading": "1.0.0/loading/index.js",
-  "toast": "1.0.0/loading/index.js",
+  "toast": "1.0.0/toast/index.js",
   "showModal": "1.0.0/showModal/index.js"
 }
 
@@ -48,24 +48,46 @@ gulp.task('sass', function () {
 })
 gulp.task('cssjs:version', function () {
   return gulp.src('./templates/**/*.html')
-    .pipe(replace(/1.0.0\/reset.css\b/g, css['reset']))
-    .pipe(replace(/1.0.0\/main.css\b/g, css['main']))
-    .pipe(replace(/1.0.0\/ui-toast.css\b/g, css['ui-toast']))
-    .pipe(replace(/1.0.0\/ui-showLoading.css\b/g, css['ui-showLoading']))
-    .pipe(replace(/1.0.0\/ui-dialog.css\b/g, css['ui-dialog']))
+    .pipe(replace(/1.0.2\/reset.css\b/g, css['reset']))
+    .pipe(replace(/1.0.2\/main.css\b/g, css['main']))
+    .pipe(replace(/1.0.2\/ui-toast.css\b/g, css['ui-toast']))
+    .pipe(replace(/1.0.2\/ui-showLoading.css\b/g, css['ui-showLoading']))
+    .pipe(replace(/1.0.2\/ui-dialog.css\b/g, css['ui-dialog']))
     .pipe(replace(/2.5.2\/index.js\b/g, js['vue']))
     .pipe(replace(/1.0.0\/polyfill\/index.js\b/g, js['polyfill']))
     .pipe(replace(/1.0.0\/utils\/index.js\b/g, js['utils']))
     .pipe(replace(/1.0.0\/ajax\/index.js\b/g, js['ajax']))
     .pipe(replace(/1.0.0\/store\/index.js\b/g, js['store']))
     .pipe(replace(/1.0.0\/request\/index.js\b/g, js['request']))
-    .pipe(replace(/1.0.0\/scale\/index.js\b/g, js['scale']))
+    .pipe(replace(/1.0.3\/scale\/index.js\b/g, js['scale']))
     .pipe(replace(/1.0.0\/filter\/index.js\b/g, js['filter']))
     .pipe(replace(/1.0.0\/lazyLoad\/index.js\b/g, js['lazyLoad']))
     .pipe(replace(/1.0.0\/loading\/index.js\b/g, js['loading']))
     .pipe(replace(/1.0.0\/toast\/index.js\b/g, js['toast']))
     .pipe(replace(/1.0.0\/showModal\/index.js\b/g, js['showModal']))
     .pipe(gulp.dest('./templates/'))
+})
+
+gulp.task('sw:version', function () {
+  return gulp.src('./src/serviceWorker.js')
+    .pipe(replace(/1.0.1\/reset.css\b/g, css['reset']))
+    .pipe(replace(/1.0.1\/main.css\b/g, css['main']))
+    .pipe(replace(/1.0.1\/ui-toast.css\b/g, css['ui-toast']))
+    .pipe(replace(/1.0.1\/ui-showLoading.css\b/g, css['ui-showLoading']))
+    .pipe(replace(/1.0.1\/ui-dialog.css\b/g, css['ui-dialog']))
+    .pipe(replace(/2.5.2\/index.js\b/g, js['vue']))
+    .pipe(replace(/1.0.0\/polyfill\/index.js\b/g, js['polyfill']))
+    .pipe(replace(/1.0.0\/utils\/index.js\b/g, js['utils']))
+    .pipe(replace(/1.0.0\/ajax\/index.js\b/g, js['ajax']))
+    .pipe(replace(/1.0.0\/store\/index.js\b/g, js['store']))
+    .pipe(replace(/1.0.0\/request\/index.js\b/g, js['request']))
+    .pipe(replace(/1.0.3\/scale\/index.js\b/g, js['scale']))
+    .pipe(replace(/1.0.0\/filter\/index.js\b/g, js['filter']))
+    .pipe(replace(/1.0.0\/lazyLoad\/index.js\b/g, js['lazyLoad']))
+    .pipe(replace(/1.0.0\/loading\/index.js\b/g, js['loading']))
+    .pipe(replace(/1.0.0\/toast\/index.js\b/g, js['toast']))
+    .pipe(replace(/1.0.0\/showModal\/index.js\b/g, js['showModal']))
+    .pipe(gulp.dest('./src/'))
 })
 gulp.task('html', function () {
   return gulp.src('./templates/**/*.html')

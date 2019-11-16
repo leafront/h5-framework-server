@@ -41,7 +41,7 @@ const files = {
   '1.0.0/request/index.js': 'src/widget/request.js',
   '1.0.0/validate/index.js': 'src/widget/validate.js',
   '1.0.0/filter/index.js': 'src/widget/filter.js',
-  '1.0.0/scale/index.js': 'src/widget/scale.js',
+  '1.0.4/scale/index.js': 'src/widget/scale.js',
   '1.0.0/loading/index.js': 'src/components/loading/index.js',
   '1.0.0/showModal/index.js': 'src/components/showModal/index.js',
   '1.0.0/toast/index.js': 'src/components/toast/index.js',
@@ -71,7 +71,7 @@ Object.keys(files).forEach((item) => {
         }]
       }),
       replace({ 
-        imgPath: process.env.NODE_ENV == 'production' ? '//m.img.whqietu.com/static/img' : '/static/img',
+        imgPath: process.env.NODE_ENV == 'production' ? '//m.img.whqietu.com' : '',
         version: time
       }),
       commonjs(),

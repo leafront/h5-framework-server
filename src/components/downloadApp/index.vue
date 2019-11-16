@@ -27,7 +27,7 @@
   i {
     width: .68rem;
     height: .68rem;
-    background: url(imgPath/logo.png?v=version) no-repeat;
+    background: url(imgPath/static/img/logo.png?v=version) no-repeat;
     background-size: 100% auto;
     border-radius: .1rem;
   }

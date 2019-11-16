@@ -212,7 +212,7 @@
     left: -1px;
   }
 
-  body{
+  .scroll-view-wrapper{
     background: #f6f7f9;
   }
   .personal-order-title{
@@ -243,7 +243,7 @@
     align-items: center;
   }
   .personal-info-img{
-    background: url(imgPath/user_pic.png?v=version);
+    background: url(imgPath/static/img/user_pic.png?v=version);
     width: 1.12rem;
     height: 1.12rem;
     background-size: 1.12rem auto;
@@ -295,7 +295,7 @@
       i{
         width: .48rem;
         height: .48rem;
-        background: url(imgPath/order_status_icon.png?v=version) no-repeat;
+        background: url(imgPath/static/img/order_status_icon.png?v=version) no-repeat;
         background-size: 1.54rem auto;
         margin-bottom: .15rem;
         &.icon1{

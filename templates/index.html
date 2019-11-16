@@ -47,20 +47,23 @@
         document.addEventListener("DOMContentLoaded", function(){flex(window.devicePixelRatio)});
         document.addEventListener("resize", function(){flex(window.devicePixelRatio)});
       })(window, document);
+
+      window.__NUXT__ = <%-JSON.stringify(data)%>;
+    </script> 
+    <link rel="stylesheet" href="<%-staticPath%>/static/??css/1.0.3/reset.css,css/1.0.3/main.css,css/1.0.3/ui-toast.css,css/1.0.3/ui-showLoading.css,css/1.0.3/ui-dialog.css">
+  </head>
+  <body>
+    <div class="app-mask"></div>
+    <div id="app"></div>
+    <script type="text/javascript" src="<%-staticPath%>/static/??vue/2.5.2/index.js,js/1.0.0/polyfill/index.js" crossorigin=anonymous></script>
+    <script type="text/javascript" src="<%-staticPath%>/static/??js/1.0.0/utils/index.js,js/1.0.0/ajax/index.js,js/1.0.0/store/index.js,js/1.0.0/request/index.js,js/1.0.4/scale/index.js" crossorigin=anonymous></script>
+    <script type="text/javascript" src="<%-staticPath%>/static/??js/1.0.0/filter/index.js,js/1.0.0/lazyLoad/index.js" crossorigin=anonymous></script>
+    <script type="text/javascript" src="/static/js/index.js?v=version" crossorigin=anonymous></script>
+    <script type="text/javascript">
       if ('serviceWorker' in navigator && location.protocol == 'https:') {
         navigator.serviceWorker.register('/serviceWorker.js?v=version')
       }
-      window.__NUXT__ = <%-JSON.stringify(data)%>;
-    </script> 
-    <link rel="stylesheet" href="<%-staticPath%>/static/??css/1.0.0/reset.css,css/1.0.0/main.css,css/1.0.0/ui-toast.css,css/1.0.0/ui-showLoading.css,css/1.0.0/ui-dialog.css">
-  </head>
-  <body>
-    <div id="app"></div>
-    <!-- built files will be auto injected --> 
-    <script type="text/javascript" src="<%-staticPath%>/static/??vue/2.5.2/index.js,js/1.0.0/polyfill/index.js"></script>
-    <script type="text/javascript" src="<%-staticPath%>/static/??js/1.0.0/utils/index.js,js/1.0.0/ajax/index.js,js/1.0.0/store/index.js,js/1.0.0/request/index.js,js/1.0.0/scale/index.js" crossorigin=anonymous></script>
-    <script type="text/javascript" src="<%-staticPath%>/static/??js/1.0.0/filter/index.js,js/1.0.0/lazyLoad/index.js" crossorigin=anonymous></script>
-    <script type="text/javascript" src="/static/js/index.js?v=version" crossorigin=anonymous></script>
+    </script>
 <!--     <script type="text/javascript" src="<%-staticPath %>/static/vconsole/index.js"></script>
     <script>
       var vConsole = new VConsole()
