@@ -7,11 +7,11 @@ var autoprefixer = require('gulp-autoprefixer')
 var time = process.env.time
 
 var css = {
-  "reset": "1.0.3/reset.css",
-  "main": "1.0.3/main.css",
-  "ui-toast": "1.0.3/ui-toast.css",
-  "ui-showLoading": "1.0.3/ui-showLoading.css",
-  "ui-dialog": "1.0.3/ui-dialog.css"
+  "reset": "1.0.4/reset.css",
+  "main": "1.0.4/main.css",
+  "ui-toast": "1.0.4/ui-toast.css",
+  "ui-showLoading": "1.0.4/ui-showLoading.css",
+  "ui-dialog": "1.0.4/ui-dialog.css"
 }
 
 var js = {
@@ -34,9 +34,7 @@ gulp.task('sass', function () {
     .pipe(autoprefixer({
       overrideBrowserslist: [    
         "> 1%",
-        "not ie <= 12",
-        "Android >= 4.4",
-        "ios >= 6"
+        "ios >= 7.1"
       ],
       cascade: false,
       remove: true
@@ -48,11 +46,11 @@ gulp.task('sass', function () {
 })
 gulp.task('cssjs:version', function () {
   return gulp.src('./templates/**/*.html')
-    .pipe(replace(/1.0.2\/reset.css\b/g, css['reset']))
-    .pipe(replace(/1.0.2\/main.css\b/g, css['main']))
-    .pipe(replace(/1.0.2\/ui-toast.css\b/g, css['ui-toast']))
-    .pipe(replace(/1.0.2\/ui-showLoading.css\b/g, css['ui-showLoading']))
-    .pipe(replace(/1.0.2\/ui-dialog.css\b/g, css['ui-dialog']))
+    .pipe(replace(/1.0.3\/reset.css\b/g, css['reset']))
+    .pipe(replace(/1.0.3\/main.css\b/g, css['main']))
+    .pipe(replace(/1.0.3\/ui-toast.css\b/g, css['ui-toast']))
+    .pipe(replace(/1.0.3\/ui-showLoading.css\b/g, css['ui-showLoading']))
+    .pipe(replace(/1.0.3\/ui-dialog.css\b/g, css['ui-dialog']))
     .pipe(replace(/2.5.2\/index.js\b/g, js['vue']))
     .pipe(replace(/1.0.0\/polyfill\/index.js\b/g, js['polyfill']))
     .pipe(replace(/1.0.0\/utils\/index.js\b/g, js['utils']))

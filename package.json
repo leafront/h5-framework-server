@@ -65,8 +65,6 @@
   },
   "browserslist": [
     "> 1%",
-    "not ie <= 12",
-    "Android >= 4.4",
-    "ios >= 6"
+    "ios >= 7.1"
   ]
 }
