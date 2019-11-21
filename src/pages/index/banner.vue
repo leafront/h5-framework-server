@@ -1,15 +1,26 @@
 <template>
-  <Swiper :list="list" :preventDefault="preventDefault" :index="index" :itemWidth="wrapperWidth" @toggleIndex="toggleIndex" :style="{'height':itemHeight}">
-    <ul slot="banner" class="slideshow-item" :style="{'height':itemHeight}">
-      <li v-for="item in list" :style="{'width':itemWidth + 'px'}" @click="pageAction(item.url)">
-        <img :src="item.poster" :style="{'width':itemWidth + 'px', 'height':itemHeight}">
-      </li>
-    </ul>
-    <ul slot="dot" class="slideshow-dots">
-      <li v-for="(item,$index) in bannerList" :class="{'active':$index == index-1}"></li>
-    </ul>
+  <Swiper 
+    :style="{'height':itemHeight}"
+    :list="list" 
+    :index="index" 
+    :itemWidth="wrapperWidth" 
+    @toggleIndex="toggleIndex" 
+  >  
+    <template #banner>
+      <ul class="slideshow-item" :style="{'height':itemHeight}">
+        <li v-for="item in list" :style="{'width':itemWidth + 'px'}" @click="pageAction(item.url)">
+          <img :src="item.poster" :style="{'width':itemWidth + 'px', 'height':itemHeight}">
+        </li>
+      </ul>
+    </template> 
+    <template #dot>
+      <ul  class="slideshow-dots">
+        <li v-for="(item, $index) in bannerList" :class="{'active':$index == index-1}"></li>
+      </ul>
+    </template> 
   </Swiper>
 </template>
+
 <script>
   import Swiper from '@/components/swiper/index.vue'
   export default {
@@ -62,6 +73,8 @@
     }
   }
 </script>
+
+
 
 
 

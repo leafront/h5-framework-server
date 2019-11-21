@@ -15,7 +15,7 @@ var css = {
 }
 
 var js = {
-  "vue": "2.5.2/index.js",
+  "vue": "2.6.10/index.js",
   "polyfill": "1.0.0/polyfill/index.js",
   "utils": "1.0.0/utils/index.js",
   "ajax": "1.0.1/ajax/index.js",
@@ -51,7 +51,7 @@ gulp.task('cssjs:version', function () {
     .pipe(replace(/1.0.3\/ui-toast.css\b/g, css['ui-toast']))
     .pipe(replace(/1.0.3\/ui-showLoading.css\b/g, css['ui-showLoading']))
     .pipe(replace(/1.0.3\/ui-dialog.css\b/g, css['ui-dialog']))
-    .pipe(replace(/2.5.2\/index.js\b/g, js['vue']))
+    .pipe(replace(/2.6.10\/index.js\b/g, js['vue']))
     .pipe(replace(/1.0.0\/polyfill\/index.js\b/g, js['polyfill']))
     .pipe(replace(/1.0.0\/utils\/index.js\b/g, js['utils']))
     .pipe(replace(/1.0.0\/ajax\/index.js\b/g, js['ajax']))
@@ -73,7 +73,7 @@ gulp.task('sw:version', function () {
     .pipe(replace(/1.0.1\/ui-toast.css\b/g, css['ui-toast']))
     .pipe(replace(/1.0.1\/ui-showLoading.css\b/g, css['ui-showLoading']))
     .pipe(replace(/1.0.1\/ui-dialog.css\b/g, css['ui-dialog']))
-    .pipe(replace(/2.5.2\/index.js\b/g, js['vue']))
+    .pipe(replace(/2.6.10\/index.js\b/g, js['vue']))
     .pipe(replace(/1.0.0\/polyfill\/index.js\b/g, js['polyfill']))
     .pipe(replace(/1.0.0\/utils\/index.js\b/g, js['utils']))
     .pipe(replace(/1.0.0\/ajax\/index.js\b/g, js['ajax']))

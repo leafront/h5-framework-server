@@ -214,7 +214,6 @@ export default {
   .slideshow-item {
     width: 20000px;
   }
-
   .slideshow-item li {
     width: 7.5rem;
     float: left;

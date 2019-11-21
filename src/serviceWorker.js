@@ -8,7 +8,7 @@ var cacheFileList = [
   "staticPath/static/js/index.js?v=version",
   "staticPath/static/js/user/personal.js?v=version",
   "staticPath/static/js/user/login.js?v=version",
-  "staticPath/static/??vue/2.5.2/index.js,js/1.0.0/polyfill/index.js",
+  "staticPath/static/??vue/2.6.10/index.js,js/1.0.0/polyfill/index.js",
   "staticPath/static/??js/1.0.0/utils/index.js,js/1.0.1/ajax/index.js,js/1.0.0/store/index.js,js/1.0.0/request/index.js,js/1.0.4/scale/index.js",
   "staticPath/static/??js/1.0.0/toast/index.js,js/1.0.0/loading/index.js",
   "staticPath/static/??css/1.0.2/reset.css,css/1.0.2/main.css,css/1.0.2/ui-toast.css,css/1.0.2/ui-showLoading.css,css/1.0.2/ui-dialog.css"
