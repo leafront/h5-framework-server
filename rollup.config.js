@@ -36,7 +36,7 @@ const config = [{
 const files = {
   '1.0.0/utils/index.js':'src/widget/utils.js',
   '1.0.0/polyfill/index.js': 'src/widget/polyfill.js',
-  '1.0.0/ajax/index.js': 'src/widget/ajax.js',
+  '1.0.1/ajax/index.js': 'src/widget/ajax.js',
   '1.0.0/store/index.js': 'src/widget/store.js',
   '1.0.0/request/index.js': 'src/widget/request.js',
   '1.0.0/validate/index.js': 'src/widget/validate.js',

@@ -18,7 +18,7 @@ var js = {
   "vue": "2.5.2/index.js",
   "polyfill": "1.0.0/polyfill/index.js",
   "utils": "1.0.0/utils/index.js",
-  "ajax": "1.0.0/ajax/index.js",
+  "ajax": "1.0.1/ajax/index.js",
   "store": "1.0.0/store/index.js",
   "request": "1.0.0/request/index.js",
   "scale": "1.0.4/scale/index.js",

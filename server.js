@@ -4,18 +4,22 @@ var server = require('koa-static')
 var render = require('koa-ejs')
 var Router = require('koa-router')
 var path = require('path')
+var conditional = require('koa-conditional-get')
+var etag = require('koa-etag')
 var router = new Router()
 var error = require('./router/error/index')
 var index = require('./router/index')
 var user = require('./router/user')
 
+app.use(conditional())
+app.use(etag())
 app.use(server(__dirname + '/public'))
 //set ejs
 render(app, {
   root: path.join(__dirname,  process.env.NODE_ENV == 'production' ? 'views' : 'templates'),
   layout: false,
   viewExt: 'html',
-  cache: false,
+  cache: true,
   debug: false
 })
 app.use(async (ctx, next) => {
