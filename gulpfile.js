@@ -49,8 +49,8 @@ gulp.task('sass', function () {
 gulp.task('inject:cssjs', function () {
   var list = ['index','user/personal','user/login']
   list.forEach((item) => {
-    const dir = item.split('/').length > 1 ? item.split('/')[0] + '/' : ''
-    console.log(dir,item)
+    const arr = item.split('/')
+    const dir = arr.length > 1 ? arr.slice(0, arr.length - 1).join('/') + '/' : ''
     gulp.src(`./templates/${item}.html`)
       .pipe(
         inject(gulp.src([`./public/static/css/${item}.css`,`./public/static/js/${item}.js`]), {
