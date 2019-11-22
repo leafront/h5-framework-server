@@ -35,9 +35,7 @@
     props: {
       bannerList: {
         type: Array,
-        default () {
-          return []
-        }
+        default: []
       }
     },
     components: {

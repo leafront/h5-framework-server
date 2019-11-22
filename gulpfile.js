@@ -3,6 +3,7 @@ var sass = require('gulp-sass')
 var replace = require('gulp-replace')
 var htmlmin = require('gulp-htmlmin')
 var autoprefixer = require('gulp-autoprefixer')
+var inject = require('gulp-inject')
 
 var time = process.env.time
 
@@ -40,9 +41,42 @@ gulp.task('sass', function () {
       remove: true
     }))
     .pipe(replace(/v=version\b/g, 'v=' + time))
-    .pipe(replace(/\/static\b/g, '//m.img.whqietu.com/static'))
+    .pipe(replace(/imgPath\b/g, '//m.img.whqietu.com'))
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(gulp.dest('./public/static/css'))
+})
+
+gulp.task('inject:cssjs', function () {
+  var list = ['index','user/personal','user/login']
+  list.forEach((item) => {
+    const dir = item.split('/').length > 1 ? item.split('/')[0] + '/' : ''
+    console.log(dir,item)
+    gulp.src(`./templates/${item}.html`)
+      .pipe(
+        inject(gulp.src([`./public/static/css/${item}.css`,`./public/static/js/${item}.js`]), {
+          starttag: '<!-- inject:FileContent:{{ext}} -->',
+          endtag: '<!-- endinject -->',
+          transform: function (filePath, file) {
+            if (filePath.slice(-4) === '.css'){
+              return '<style>' + file.contents.toString('utf8') + '</style>'
+            }
+            if (filePath.slice(-3) === '.js'){
+              return '<script type="text/javascript">\n' + file.contents.toString('utf8') + '</script>'
+            }
+          }
+        })
+      )
+      .pipe(htmlmin({        
+          removeComments: true,//清除HTML注释
+          collapseWhitespace: true,//压缩HTML
+          removeEmptyAttributes: true,//删除所有空格作属性值 <input id="" /> ==> <input />
+          removeScriptTypeAttributes: true,//删除<script>的type="text/javascript"
+          removeStyleLinkTypeAttributes: true, //删除<style>和<link>的type="text/css"
+          minifyJS: true,//压缩页面JS
+          minifyCSS: true//压缩页面CSS
+      }))
+      .pipe(gulp.dest(`./views/${dir}`))
+    })
 })
 gulp.task('cssjs:version', function () {
   return gulp.src('./templates/**/*.html')
@@ -90,7 +124,7 @@ gulp.task('sw:version', function () {
 gulp.task('html', function () {
   return gulp.src('./templates/**/*.html')
     .pipe(htmlmin({        
-        removeComments: true,//清除HTML注释
+        removeComments: false,//清除HTML注释
         collapseWhitespace: true,//压缩HTML
         removeEmptyAttributes: true,//删除所有空格作属性值 <input id="" /> ==> <input />
         removeScriptTypeAttributes: true,//删除<script>的type="text/javascript"

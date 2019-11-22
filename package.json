@@ -14,6 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "gulp-inject": "^5.0.4",
     "koa": "^2.7.0",
     "koa-conditional-get": "^2.0.0",
     "koa-ejs": "^4.2.0",

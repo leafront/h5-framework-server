@@ -14,7 +14,7 @@ export default {
     },
     list:{
       type: Array,
-      default:[]
+      default: []
     },
     step: {
       type: Number,

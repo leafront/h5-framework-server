@@ -1,0 +1,80 @@
+body{
+  background: #fff;
+}
+.user-login-submit{
+  margin-top: .64rem;
+  border-radius: .06rem;
+  height: .9rem;
+  button{
+    width: 100%;
+    height: 100%;
+    background: #ff2661;
+    opacity: .4;
+    &:active{
+      background:red;
+    }
+  }
+}
+.user-login-form{
+  padding: 0 .3rem;
+}
+.user-login-form-item{
+  height: .94rem;
+  border-bottom: .01rem solid #ddd;
+  display: flex;
+  input {
+    flex: 1;
+    height: 100%;
+    padding: .1rem 0;
+  }
+}
+.user-form-code-btn{
+  padding: .15rem 0;
+  display: flex;
+  span{
+    width: 1.92rem;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    color: #ff2661;
+  }
+  i{
+    width: .01rem;
+    height: 100%;
+    background: #ddd;
+  }
+}
+.user-login-close{
+  padding: .3rem;
+  display: inline-block;
+  span{
+    position: relative;
+    width: .44rem;
+    height: .44rem;
+    display: block;
+    &:before,&:after{
+      content: '';
+      display: block;
+      width: .44rem;
+      height: .02rem;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      background: #9a9a9a;
+    }
+    &:before{
+      transform: translateX(-50%) rotate(45deg);
+    }
+    &:after{
+      transform: translateX(-50%) rotate(-45deg)
+    }
+  }
+}
+.user-login-title{
+  display: flex;
+  justify-content: center;
+  span{
+    font-size: .44rem;
+  }
+}

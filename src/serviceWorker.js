@@ -5,9 +5,6 @@ var VERSION = "version"
 // 当前缓存白名单，在新脚本的 install 事件里将使用白名单里的 key
 
 var cacheFileList = [
-  "staticPath/static/js/index.js?v=version",
-  "staticPath/static/js/user/personal.js?v=version",
-  "staticPath/static/js/user/login.js?v=version",
   "staticPath/static/??vue/2.6.10/index.js,js/1.0.0/polyfill/index.js",
   "staticPath/static/??js/1.0.0/utils/index.js,js/1.0.1/ajax/index.js,js/1.0.0/store/index.js,js/1.0.0/request/index.js,js/1.0.4/scale/index.js",
   "staticPath/static/??js/1.0.0/toast/index.js,js/1.0.0/loading/index.js",
