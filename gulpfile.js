@@ -123,15 +123,6 @@ gulp.task('sw:version', function () {
 })
 gulp.task('html', function () {
   return gulp.src('./templates/**/*.html')
-    .pipe(htmlmin({        
-        removeComments: false,//清除HTML注释
-        collapseWhitespace: true,//压缩HTML
-        removeEmptyAttributes: true,//删除所有空格作属性值 <input id="" /> ==> <input />
-        removeScriptTypeAttributes: true,//删除<script>的type="text/javascript"
-        removeStyleLinkTypeAttributes: true, //删除<style>和<link>的type="text/css"
-        minifyJS: true,//压缩页面JS
-        minifyCSS: true//压缩页面CSS
-    }))
     .pipe(replace(/v=version\b/g, 'v=' + time))
     .pipe(replace(/\/static\/js\b/g, '//m.static.whqietu.com/static/js'))
     .pipe(replace(/\/static\/img\b/g, '//m.img.whqietu.com/static/img'))
