@@ -137,7 +137,11 @@ gulp.task('html', function () {
     .pipe(replace(/\/static\/img\b/g, '//m.img.whqietu.com/static/img'))
     .pipe(gulp.dest('./views/'))
 })
-gulp.task('default')
+
+gulp.task('sass:watch', function () {
+  gulp.watch('./src/styles/**/*.scss', ['sass'])
+})
+
 
 
 
