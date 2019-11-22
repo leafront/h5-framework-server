@@ -25,16 +25,11 @@
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  i{
-    width: .52rem;
-    height: .52rem;
-    background: url(imgPath/static/img/ui-loading.png) no-repeat;
-    background-size: 100% auto;
-    animation: loading 1s steps(12, end) infinite;
-    margin-top: .15rem;
+  .ui-showLoading-icon{
+    width: .8rem;
+    height: .8rem;
   }
   p{
-
     padding-top: .15rem;
   }
 }

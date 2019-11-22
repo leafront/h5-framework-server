@@ -1,4 +1,4 @@
-window.onload = function () {
+document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener('touchstart', (event) => {
     if (event.touches.length > 1 ){
       event.preventDefault()
@@ -24,7 +24,7 @@ window.onload = function () {
     passive: false,
     capture: true
   } : true)
-}
+})
 
 document.getElementById('app').addEventListener('touchmove', () =>  {
   event.stopPropagation()
