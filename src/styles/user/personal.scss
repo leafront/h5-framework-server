@@ -1,3 +1,4 @@
+@import '../header/index.scss';
 .personal-logout{
   height: .88rem;
   color: #ff2661;
@@ -128,7 +129,7 @@
   align-items: center;
 }
 .personal-info-img{
-  background: url(imgPath/static/img/user_pic.png?v=version);
+  background: url(imgPath/static/img/user_pic.png?v=201911231702);
   width: 1.12rem;
   height: 1.12rem;
   background-size: 1.12rem auto;
@@ -180,7 +181,7 @@
     i{
       width: .48rem;
       height: .48rem;
-      background: url(imgPath/static/img/order_status_icon.png?v=version) no-repeat;
+      background: url(imgPath/static/img/order_status_icon.png?v=201911231702) no-repeat;
       background-size: 1.54rem auto;
       margin-bottom: .15rem;
       &.icon1{

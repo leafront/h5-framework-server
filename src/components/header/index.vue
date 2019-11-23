@@ -1,5 +1,5 @@
 <template>
-  <div class="ui-header" :class="{'ui-header-border':isBorder}">
+  <div class="ui-header" :class="{'ui-header-border':isBorder}" v-if="!isWeixin">
     <div class="ui-header-back" @click="pageAction">
       <div class="ui-header-back_btn">
       </div>
@@ -12,6 +12,11 @@
 <script type="text/javascript">
 
 export default {
+  data () {
+    return {
+      isWeixin: utils.weixin()
+    }
+  },
   props: {
     backAction: {
       default: null,
@@ -31,54 +36,13 @@ export default {
       if (this.backAction && typeof this.backAction == 'function') {
         this.backAction()
       } else {
-        history.back()
+        if (history.length == 1 || document.referrer == "") {
+          location.href = '/'
+        } else {
+          history.back()
+        }
       }
     }
   }
 }
 </script>
-<style lang="scss">
-.ui-header ~ .scroll-view-wrapper {
-  top: .88rem;
-}
-.ui-header {
-  width: 100%;
-  height: 0.88rem;
-  display: flex;
-  align-items: center;
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 999;
-  background: #fff;
-}
-
-.ui-header.ui-header-border {
-  border-bottom: 0.01rem solid #ddd;
-}
-.ui-header .ui-header-back {
-  height: 0.88rem;
-  padding: 0 0.3rem 0 0.3rem;
-  display: flex;
-  align-items: center;
-}
-.ui-header .ui-header-title {
-  height: 0.88rem;
-  display: flex;
-  align-items: center;
-  position: absolute;
-  left: 50%;
-  top: 0;
-  transform: translateX(-50%);
-  font-size: 0.34rem;
-  color: #525252;
-  text-align: center;
-}
-.ui-header-back_btn{
-  position:relative;
-  width: .22rem;
-  height: .38rem;
-  background: url(imgPath/static/img/back.png?v=version) no-repeat;
-  background-size: .22rem auto;
-}
-</style>

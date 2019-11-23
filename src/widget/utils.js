@@ -1,4 +1,7 @@
 const utils = {
+  weixin () {
+    return navigator.userAgent.indexOf('MicroMessenger') > -1
+  },
   /**
    * @param  {String}  value
    * @return {String}  value

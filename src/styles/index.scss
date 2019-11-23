@@ -1,3 +1,4 @@
+@import './swiper/index.scss';
 body{
   background: #fff;
 }
@@ -285,7 +286,7 @@ body{
   i{
     width: .34rem;
     height: .34rem;
-    background: url(imgPath/static/img/home_sprite.png?v=version) no-repeat -.49rem -.11rem;
+    background: url(imgPath/static/img/home_sprite.png?v=201911231702) no-repeat -.49rem -.11rem;
     background-size: .86rem auto;
   }
   span{
@@ -300,7 +301,7 @@ body{
   i{
     width: .38rem;
     height: .41rem;
-    background: url(imgPath/static/img/home_sprite.png?v=version) .02rem -.04rem no-repeat;
+    background: url(imgPath/static/img/home_sprite.png?v=201911231702) .02rem -.04rem no-repeat;
     background-size: .86rem auto;
   }
 }

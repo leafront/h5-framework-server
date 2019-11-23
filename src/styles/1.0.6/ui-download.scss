@@ -1,0 +1,31 @@
+.download-app {
+  height: 1rem;
+  background-color: rgba(0,0,0,.7);
+  padding: 0 .3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between
+}
+.download-app-logo{
+  display: flex;
+  height: .68rem;
+  i {
+    width: .68rem;
+    height: .68rem;
+    background: url(imgPath/static/img/logo.png?v=version) no-repeat;
+    background-size: 100% auto;
+    border-radius: .1rem;
+  }
+}
+.download-app-txt{
+  margin-left: .3rem;
+}
+.download-app-btn{
+  width: 1.6rem;
+  height: .6rem;
+  border-radius: .3rem;
+  background-color: #ff2661;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
