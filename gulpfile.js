@@ -12,7 +12,7 @@ var css = {
   "ui-toast": "1.0.6/ui-toast.css",
   "ui-showLoading": "1.0.6/ui-showLoading.css",
   "ui-dialog": "1.0.6/ui-dialog.css",
-  "ui-download": "1.0.6/ui-download.scss"
+  "ui-download": "1.0.6/ui-download.css"
 }
 
 var js = {
