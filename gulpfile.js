@@ -8,11 +8,8 @@ var inject = require('gulp-inject')
 var time = process.env.time
 
 var css = {
-  "main": "1.0.6/main.css",
-  "ui-toast": "1.0.6/ui-toast.css",
-  "ui-showLoading": "1.0.6/ui-showLoading.css",
-  "ui-dialog": "1.0.6/ui-dialog.css",
-  "ui-download": "1.0.6/ui-download.css"
+  "main": "1.0.8/main.css",
+  "ui-component": "1.0.8/ui-component.css"
 }
 
 var js = {
@@ -80,11 +77,8 @@ gulp.task('inject:cssjs', function () {
 })
 gulp.task('cssjs:version', function () {
   return gulp.src('./templates/**/*.html')
-    .pipe(replace(/1.0.6\/main.css\b/g, css['main']))
-    .pipe(replace(/1.0.6\/ui-toast.css\b/g, css['ui-toast']))
-    .pipe(replace(/1.0.6\/ui-showLoading.css\b/g, css['ui-showLoading']))
-    .pipe(replace(/1.0.6\/ui-dialog.css\b/g, css['ui-dialog']))
-    .pipe(replace(/1.0.6\/ui-download.css\b/g, css['ui-download']))
+    .pipe(replace(/1.0.7\/main.css\b/g, css['main']))
+    .pipe(replace(/1.0.7\/ui-component.css\b/g, css['ui-component']))
     .pipe(replace(/2.6.10\/index.js\b/g, js['vue']))
     .pipe(replace(/1.0.0\/polyfill\/index.js\b/g, js['polyfill']))
     .pipe(replace(/1.0.1\/utils\/index.js\b/g, js['utils']))

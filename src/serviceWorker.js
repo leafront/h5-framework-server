@@ -1,6 +1,6 @@
 
 // 当前缓存版本的唯一标识符，用当前时间代替
-var VERSION = "version"
+var VERSION = "201911251704"
 
 // 当前缓存白名单，在新脚本的 install 事件里将使用白名单里的 key
 
@@ -8,7 +8,7 @@ var cacheFileList = [
   "staticPath/static/??vue/2.6.10/index.js,js/1.0.0/polyfill/index.js",
   "staticPath/static/??js/1.0.1/utils/index.js,js/1.0.1/ajax/index.js,js/1.0.0/store/index.js,js/1.0.0/request/index.js,js/1.0.5/scale/index.js",
   "staticPath/static/??js/1.0.0/toast/index.js,js/1.0.1/loading/index.js",
-  "staticPath/static/??css/1.0.5/reset.css,css/1.0.5/main.css,css/1.0.5/ui-toast.css,css/1.0.5/ui-showLoading.css,css/1.0.5/ui-dialog.css,css/1.0.5/ui-download.css"
+  "staticPath/static/??css/1.0.8/main.css,css/1.0.8/ui-component.css"
 ]
 self.addEventListener('install', (event) =>  {
   // 等待所有资源缓存完成时，才可以进行下一步

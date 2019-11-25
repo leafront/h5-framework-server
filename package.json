@@ -9,7 +9,7 @@
     "build": "sudo NODE_ENV=production rollup -c",
     "dev:webpack": "sudo webpack-cli --mode development --watch",
     "build:webpack": "sudo webpack-cli --mode production",
-    "production": "sudo NODE_ENV=production pm2 start server.js --watch"
+    "production": "sudo NODE_ENV=production pm2 start server.js"
   },
   "author": "",
   "license": "ISC",
