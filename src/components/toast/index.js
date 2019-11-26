@@ -13,7 +13,6 @@ const Toast = {
       utils.append(document.body, tpl)
       const uiToast = document.getElementById('ui-toast')
       setTimeout(() => {
-        console.log(uiToast.parentNode)
         uiToast.parentNode.removeChild(uiToast)
       }, 2000)
       Toast.installed = true
