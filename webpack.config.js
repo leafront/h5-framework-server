@@ -57,7 +57,7 @@ module.exports = {
       uglifyOptions: {
         output: {
           comments: false,
-          beautify: true
+          beautify: false
         },
         compress: {},
         warnings: false

@@ -1,5 +1,6 @@
 .ui-header ~ .scroll-view-wrapper {
-  padding-top: .88rem;
+  position: relative;
+  top: .88rem;
 }
 .ui-header {
   width: 100%;

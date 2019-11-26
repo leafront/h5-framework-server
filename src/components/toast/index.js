@@ -6,22 +6,16 @@ const Toast = {
     }
     Vue.prototype.$toast = (toast) => {
 
-      if (document.querySelector('.ui-toast-mask')) {
+      if (document.getElementById('ui-toast')) {
         return
       }
-      const uiToast = document.getElementById('ui-toast')
-      const tpl = `
-       <div class="ui-toast-mask" id="ui-toast">
-         <div class="ui-toast">
-          <span>${toast}</span>
-         </div>
-       </div>  
-      `
+      const tpl = '<div class="ui-toast-mask" id="ui-toast"><div class="ui-toast"><span>'+ toast +'</span></div></div>'
       utils.append(document.body, tpl)
+      const uiToast = document.getElementById('ui-toast')
       setTimeout(() => {
+        console.log(uiToast.parentNode)
         uiToast.parentNode.removeChild(uiToast)
       }, 2000)
-
       Toast.installed = true
     }
   }

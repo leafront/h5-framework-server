@@ -19,7 +19,7 @@ render(app, {
   root: path.join(__dirname,  process.env.NODE_ENV == 'production' ? 'views' : 'templates'),
   layout: false,
   viewExt: 'html',
-  cache: true,
+  cache: false,
   debug: false
 })
 app.use(async (ctx, next) => {

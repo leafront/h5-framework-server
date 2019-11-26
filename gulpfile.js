@@ -8,8 +8,8 @@ var inject = require('gulp-inject')
 var time = process.env.time
 
 var css = {
-  "main": "1.0.8/main.css",
-  "ui-component": "1.0.8/ui-component.css"
+  "main": "1.0.9/main.css",
+  "ui-component": "1.0.9/ui-component.css"
 }
 
 var js = {
@@ -18,12 +18,12 @@ var js = {
   "utils": "1.0.1/utils/index.js",
   "ajax": "1.0.1/ajax/index.js",
   "store": "1.0.0/store/index.js",
-  "request": "1.0.0/request/index.js",
+  "request": "1.0.1/request/index.js",
   "scale": "1.0.5/scale/index.js",
   "filter": "1.0.0/filter/index.js",
   "lazyLoad": "1.0.0/lazyLoad/index.js",
   "loading": "1.0.1/loading/index.js",
-  "toast": "1.0.0/toast/index.js",
+  "toast": "1.0.3/toast/index.js",
   "showModal": "1.0.0/showModal/index.js"
 }
 
@@ -77,8 +77,8 @@ gulp.task('inject:cssjs', function () {
 })
 gulp.task('cssjs:version', function () {
   return gulp.src('./templates/**/*.html')
-    .pipe(replace(/1.0.7\/main.css\b/g, css['main']))
-    .pipe(replace(/1.0.7\/ui-component.css\b/g, css['ui-component']))
+    .pipe(replace(/1.0.8\/main.css\b/g, css['main']))
+    .pipe(replace(/1.0.8\/ui-component.css\b/g, css['ui-component']))
     .pipe(replace(/2.6.10\/index.js\b/g, js['vue']))
     .pipe(replace(/1.0.0\/polyfill\/index.js\b/g, js['polyfill']))
     .pipe(replace(/1.0.1\/utils\/index.js\b/g, js['utils']))
@@ -89,7 +89,7 @@ gulp.task('cssjs:version', function () {
     .pipe(replace(/1.0.0\/filter\/index.js\b/g, js['filter']))
     .pipe(replace(/1.0.0\/lazyLoad\/index.js\b/g, js['lazyLoad']))
     .pipe(replace(/1.0.1\/loading\/index.js\b/g, js['loading']))
-    .pipe(replace(/1.0.0\/toast\/index.js\b/g, js['toast']))
+    .pipe(replace(/1.0.2\/toast\/index.js\b/g, js['toast']))
     .pipe(replace(/1.0.0\/showModal\/index.js\b/g, js['showModal']))
     .pipe(gulp.dest('./templates/'))
 })

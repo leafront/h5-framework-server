@@ -30,7 +30,6 @@ function request (url,{
   ignoreLogin = false
 }){
 
-  const errorCode = 99
   const options = {
     type,
     data,
@@ -45,23 +44,19 @@ function request (url,{
     },
     hostPath
   }
-
-  let optionData = data
-  
   if (headers &&
     headers['Content-Type'] == 'application/json'
   ) {
     options.headers["Content-Type"] = headers["Content-Type"]
-    options.data = JSON.stringify(options.data)
+    options.data =  data ? JSON.stringify(data) : ""
   } else {
-    options.data = utils.queryStringify(options.data)
-    optionData = utils.queryStringify(optionData)
+    options.data = utils.queryStringify(data)
   }
 
   let cacheUrl = url
   if (type == 'GET' && dataType == 'json') {
-    options.url =  options.data ?  url + '?' + options.data: url
-    cacheUrl =  optionData ?  url + '?' + optionData : url
+    cacheUrl =  options.data ?  url + '?' + options.data : url
+    options.url =  cacheUrl
   }
 
   function httpRequest (resolve,reject) {

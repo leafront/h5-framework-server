@@ -2,7 +2,6 @@ import resolve from 'rollup-plugin-node-resolve'
 import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs' 
 import {uglify} from 'rollup-plugin-uglify'
-import {minify} from 'uglify-js'
 import vue from 'rollup-plugin-vue' 
 import buble from 'rollup-plugin-buble'
 import alias from 'rollup-plugin-alias'
@@ -30,7 +29,16 @@ const config = [{
       imgPath: process.env.NODE_ENV == 'production' ? '//m.img.whqietu.com' : '',
       version: time
     }),
-    uglify({}, minify)
+    uglify({
+      output: {
+        comments: false,
+        beautify: false
+      },
+      compress: {
+        drop_console: true
+      },
+      warnings: false
+    })
   ]
 }]
 const files = {
@@ -38,13 +46,13 @@ const files = {
   '1.0.0/polyfill/index.js': 'src/widget/polyfill.js',
   '1.0.1/ajax/index.js': 'src/widget/ajax.js',
   '1.0.0/store/index.js': 'src/widget/store.js',
-  '1.0.0/request/index.js': 'src/widget/request.js',
+  '1.0.1/request/index.js': 'src/widget/request.js',
   '1.0.0/validate/index.js': 'src/widget/validate.js',
   '1.0.0/filter/index.js': 'src/widget/filter.js',
   '1.0.5/scale/index.js': 'src/widget/scale.js',
   '1.0.1/loading/index.js': 'src/components/loading/index.js',
   '1.0.0/showModal/index.js': 'src/components/showModal/index.js',
-  '1.0.0/toast/index.js': 'src/components/toast/index.js',
+  '1.0.3/toast/index.js': 'src/components/toast/index.js',
   '1.0.0/lazyLoad/index.js': 'src/components/lazyLoad/index.js',
   //'1.0.0/swiper/index.js': 'src/components/swiper/index.js',
  // '1.0.0/downloadApp/index.js': 'src/components/downloadApp/index.js',
@@ -98,7 +106,16 @@ Object.keys(files).forEach((item) => {
     ]
   }
   if (process.env.NODE_ENV == 'production') {
-    configItem.plugins.push(uglify({}, minify))
+    configItem.plugins.push(uglify({
+      output: {
+        comments: false,
+        beautify: false
+      },
+      compress: {
+        drop_console: true
+      },
+      warnings: false
+    }))
   }
   config.push(configItem)
 })
