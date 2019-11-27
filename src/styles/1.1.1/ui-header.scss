@@ -19,7 +19,7 @@
 }
 .ui-header .ui-header-back {
   height: 0.88rem;
-  padding: 0 0.3rem 0 0.3rem;
+  padding: 0 .3rem 0 .15rem;
   display: flex;
   align-items: center;
 }
@@ -37,8 +37,6 @@
 }
 .ui-header-back_btn{
   position:relative;
-  width: .22rem;
-  height: .38rem;
-  background: url(imgPath/static/img/back.png?v=201911231702) no-repeat;
-  background-size: .22rem auto;
+  width: .5rem;
+  height: .5rem;
 }

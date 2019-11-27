@@ -10,7 +10,6 @@ import replace from '@rollup/plugin-replace'
 import autoprefixer from 'autoprefixer'
 import path from 'path'
 
-
 const time = process.env.time
 const pathName = 'public/static/js/'
 const config = [{
@@ -54,6 +53,7 @@ const files = {
   '1.0.0/showModal/index.js': 'src/components/showModal/index.js',
   '1.0.3/toast/index.js': 'src/components/toast/index.js',
   '1.0.0/lazyLoad/index.js': 'src/components/lazyLoad/index.js',
+  '1.0.1/skeleton/index.js': 'src/components/skeleton/index.js',
   //'1.0.0/swiper/index.js': 'src/components/swiper/index.js',
  // '1.0.0/downloadApp/index.js': 'src/components/downloadApp/index.js',
   // '1.0.0/header/index.js': 'src/components/header/index.js',

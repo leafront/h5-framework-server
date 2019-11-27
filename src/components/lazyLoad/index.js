@@ -9,7 +9,7 @@ const lazyLoad = {
     left: 0 // 元素距离左边
   },
   list: [],
-  init (el, bingind, vnode) {
+  init (el, binding, vnode) {
     this.list.push(el)
     this.scrollLoad()
   },
@@ -54,14 +54,14 @@ const lazyLoad = {
    * @param {Number} index
    */
   loadImg (el) { 
-    const imgUrl = el.dataset.src
+    const pic = el.dataset.src
     el.dataset.LazyLoadImgState = 'start'
-    if (imgUrl) {
+    if (pic) {
       const img = new Image()
-      img.src = imgUrl
+      img.src = pic
       img.addEventListener('load', () => {
         setTimeout(() => {
-          el.style.backgroundImage = 'url('+imgUrl+')'
+          el.style.backgroundImage = 'url('+pic+')'
           el.style.backgroundSize = '100% auto'
           delete el.dataset.src
           el.dataset.LazyLoadImgState = 'success'

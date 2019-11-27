@@ -141,6 +141,9 @@ body{
   background: url(imgPath/static/img/ui-lazyload.png?v=201911231702) #f0f0f0 no-repeat center center;
   background-size: contain;
 }
+.ui-lazyLoad-bgcolor{
+  background-color: #f0f0f0;
+}
 /**ui styles **/
 .ui-ellipsis{
   white-space: nowrap;

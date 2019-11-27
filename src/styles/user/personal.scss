@@ -28,16 +28,16 @@
     display: flex;
     align-items: center;
     i{
-      width: .96rem;
-      height: .96rem;
+      width: 1rem;
+      height: 1rem;
       margin-left: .3rem;
+      background-size: 2.26rem auto;
+      border-radius: 50%;
       &.icon1{
-        background: url(https://static.piaoniu.com/m/static/img/icon-redpackage.e078ab8.png) no-repeat;
-        background-size: .96rem auto;
+        background-position: -.04rem -.05rem;
       }
       &.icon2{
-        background: url(https://static.piaoniu.com/m/static/img/icon-club.959250b.png) no-repeat;
-        background-size: .96rem auto;
+        background-position: -1.16rem -.07rem;
       }
     }
   }
@@ -128,7 +128,7 @@
   align-items: center;
 }
 .personal-info-img{
-  background: url(imgPath/static/img/user_pic.png?v=201911231702);
+  background: url(imgPath/static/img/user_pic.png?v=201911231702) #f0f0f0;
   width: 1.12rem;
   height: 1.12rem;
   background-size: 1.12rem auto;
@@ -180,7 +180,6 @@
     i{
       width: .48rem;
       height: .48rem;
-      background: url(imgPath/static/img/order_status_icon.png?v=201911231702) no-repeat;
       background-size: 1.54rem auto;
       margin-bottom: .15rem;
       &.icon1{

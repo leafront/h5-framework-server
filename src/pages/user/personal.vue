@@ -42,15 +42,15 @@
       </div>  
       <div class="personal-order-status bgfff">
         <div class="personal-order-status-item">
-          <i class="icon1"></i>
+          <i class="icon1 ui-lazyLoad-pic" v-skeleton="'imgPath/static/img/order_status_icon.png?v=201911231702'"></i>
           <span>待付款</span>
         </div>
         <div class="personal-order-status-item">
-          <i class="icon2"></i>
+          <i class="icon2 ui-lazyLoad-bgcolor" v-skeleton="'imgPath/static/img/order_status_icon.png?v=201911231702'"></i>
           <span>待发货</span>
         </div> 
         <div class="personal-order-status-item">
-          <i class="icon3"></i>
+          <i class="icon3 ui-lazyLoad-bgcolor" v-skeleton="'imgPath/static/img/order_status_icon.png?v=201911231702'"></i>
           <span>待收货</span>
         </div>   
       </div>
@@ -69,14 +69,14 @@
       </div>
       <div class="personal-invite bgfff">
         <div class="personal-invite-item">
-          <i class="icon1"></i>
+          <i class="icon1 ui-lazyLoad-bgcolor"  v-skeleton="'imgPath/static/img/user_discount_icon.png?v=201911271618'"></i>
           <div class="personal-invite-info">
             <span class="c262626 fs28">邀请好友</span>
             <p class="c9 fs22">返10元现金</p>
           </div>
         </div>  
         <div class="personal-invite-item">
-          <i class="icon2"></i>
+          <i class="icon2 ui-lazyLoad-bgcolor"  v-skeleton="'imgPath/static/img/user_discount_icon.png?v=201911271618'"></i>
           <div class="personal-invite-info">
             <span class="c262626 fs28">圈圈俱乐部</span>
             <p class="c9 fs22">达人专属奖励</p>
@@ -114,7 +114,7 @@
 
 <script type="text/javascript">
 
-import Header from '@/components/header/index.vue' 
+import Header from '@/components/header/index.vue'
 
 export default {
   data () {

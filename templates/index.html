@@ -46,9 +46,9 @@
 
       window.__NUXT__ = <%-JSON.stringify(data)%>;
     </script> 
-    <link rel="stylesheet" href="<%-staticPath%>/static/??css/1.0.9/main.css,css/1.0.9/ui-component.css"/>
+    <link rel="stylesheet" href="<%-staticPath%>/static/??css/1.1.1/main.css,css/1.1.1/ui-component.css"/>
     <!-- inject:FileContent:css -->
-     <link rel="stylesheet" href="<%-staticPath%>/static/css/index.css"/>
+     <link rel="stylesheet" href="/static/css/index.css"/>
     <!-- endinject -->
   </head>
   <body>
@@ -56,13 +56,13 @@
     <div id="app"></div>
     <script type="text/javascript" src="<%-staticPath%>/static/??vue/2.6.10/index.js,js/1.0.0/polyfill/index.js" crossorigin=anonymous></script>
     <script type="text/javascript" src="<%-staticPath%>/static/??js/1.0.1/utils/index.js,js/1.0.1/ajax/index.js,js/1.0.0/store/index.js,js/1.0.1/request/index.js,js/1.0.5/scale/index.js" crossorigin=anonymous></script>
-    <script type="text/javascript" src="<%-staticPath%>/static/??js/1.0.0/filter/index.js,js/1.0.0/lazyLoad/index.js" crossorigin=anonymous></script>
+    <script type="text/javascript" src="<%-staticPath%>/static/??js/1.0.0/filter/index.js,js/1.0.0/lazyLoad/index.js,js/1.0.1/skeleton/index.js" crossorigin=anonymous></script>
     <!-- inject:FileContent:js -->
     <script type="text/javascript" src="/static/js/index.js" crossorigin=anonymous></script>
     <!-- endinject -->
     <script type="text/javascript">
       if ('serviceWorker' in navigator && location.protocol == 'https:') {
-        navigator.serviceWorker.register('/serviceWorker.js?v=201911261509')
+        navigator.serviceWorker.register('/serviceWorker.js?v=201911271745')
       }
     </script>
  <!--    <script type="text/javascript" src="<%-staticPath %>/static/vconsole/index.js"></script>

@@ -12,7 +12,7 @@
           <span class="c9 fs30">搜索明星、演出、场馆</span>
         </div>
         <div class="top-bar-user" @click="pageAction('/user/personal')">
-          <i></i>
+          <i class="ui-lazyLoad-bgcolor" v-skeleton="'imgPath/static/img/home_sprite.png?v=201911231702'"></i>
         </div>   
       </div>  
       <div class="home-banner">
