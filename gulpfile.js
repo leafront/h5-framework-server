@@ -53,10 +53,11 @@ gulp.task('inject:cssjs', function () {
       .pipe(rev({
         assetsDir: 'public'
       }))
-      .pipe(replace(/v=version\b/g, 'v=' + time))
-      .pipe(replace(/staticPath\b/g, '//m.static.whqietu.com'))
+      .pipe(replace(/v=version\b/g, 'v=' + time))  
+      .pipe(replace(/staticPath\b/g, '//m.static.whqietu.com'))  
       .pipe(replace(/\/static\b/g, '//m.static.whqietu.com/static'))
-      .pipe(replace(/imgPath\b/g, '//m.img.whqietu.com/static'))
+      .pipe(replace(/imgPath\b/g, '//m.img.whqietu.com/static')) 
+      .pipe(replace(/\$imagPath\b/g, '//m.img.whqietu.com')) 
       .pipe(
         inject(gulp.src(`./public/static/css/${item}.css`), {
           starttag: '<!-- inject:FileContent:{{ext}} -->',
