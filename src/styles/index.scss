@@ -183,6 +183,7 @@ body{
   display: flex;
   .ui-right-arrow{
     margin-left: .05rem;
+    margin-top: .01rem;
   }
 }
 .home-server{
@@ -283,11 +284,9 @@ body{
   padding-left: .3rem;
   flex: 1;
   border-radius: .32rem;
-  i{
+  .icon{
     width: .34rem;
     height: .34rem;
-    background: url(imgPath/static/img/home_sprite.png?v=201911231702) no-repeat -.49rem -.11rem;
-    background-size: .86rem auto;
   }
   span{
     padding-left: .1rem;
@@ -298,11 +297,9 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-  i{
-    width: .38rem;
-    height: .41rem;
-    background-position: .02rem -.04rem;
-    background-size: .86rem auto;
+  .icon{
+    width: .4rem;
+    height: .4rem;
   }
 }
 .home-banner {

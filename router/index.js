@@ -1,9 +1,5 @@
 const router = require('koa-router')()
 const {
-  staticPath,
-  imgPath
-} = require('../config/index')
-const {
   delay
 } = require('../common/index')
 
@@ -253,8 +249,7 @@ router.get('/', async (ctx,next) => {
         "salePrice": 335,
         "properName": "芭蕾舞剧《天鹅湖》"
       }]
-    },
-    staticPath
+    }
   })
 })
 

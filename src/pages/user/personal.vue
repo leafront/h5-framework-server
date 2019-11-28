@@ -10,7 +10,7 @@
           </div> 
           <div class="personal-info-center">
             <span class="cfff">个人主页</span>
-            <i class="arrow-left"></i>
+            <div class="ui-right-arrow"></div>
           </div>  
         </div>
         <div class="personal-menu cfff">
@@ -36,7 +36,7 @@
         <strong class="fs32 c262626">我的订单</strong>
         <div class="personal-order-arrow">
           <i class="c9 fs28">查看全部订单</i>
-          <div class="ui-right-arrow">
+          <div class="personal-ui-right-arrow ui-right-arrow">
           </div>  
         </div>  
       </div>  
@@ -86,23 +86,23 @@
       <div class="personal-nav bgfff">
         <div class="personal-nav-item p30">
           <span class="fs28 c262626">地址管理</span>
-          <div class="ui-right-arrow"></div>  
+          <div class="personal-ui-right-arrow ui-right-arrow"></div>  
         </div> 
         <div class="personal-nav-item p30">
           <span class="fs28 c262626">帮助与客服</span>
-          <div class="ui-right-arrow"></div>  
+          <div class="personal-ui-right-arrow ui-right-arrow"></div>  
         </div> 
         <div class="personal-nav-item p30">
           <span class="fs28 c262626">卖家招募</span>
-          <div class="ui-right-arrow"></div>  
+          <div class="personal-ui-right-arrow ui-right-arrow"></div>  
         </div>
         <div class="personal-nav-item p30">
           <span class="fs28 c262626">关于我们</span>
-          <div class="ui-right-arrow"></div>  
+          <div class="personal-ui-right-arrow ui-right-arrow"></div>  
         </div>
         <div class="personal-nav-item p30">
           <span class="fs28 c262626">联系我们</span>
-          <div class="ui-right-arrow"></div>  
+          <div class="personal-ui-right-arrow ui-right-arrow"></div>  
         </div>
       </div>
       <div class="personal-logout">

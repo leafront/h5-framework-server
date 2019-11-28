@@ -169,8 +169,6 @@ body{
 }
 .ui-right-arrow{
   position:relative;
-  width: .24rem;
-  height: .36rem;
   &:before,&:after{
     content: '';
     width: .12rem;
@@ -188,6 +186,7 @@ body{
   }
   &:after{
     transform: rotate(-42.5deg);
+    left: -1px;
   }
 }
 

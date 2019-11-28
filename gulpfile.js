@@ -4,7 +4,7 @@ var replace = require('gulp-replace')
 var htmlmin = require('gulp-htmlmin')
 var autoprefixer = require('gulp-autoprefixer')
 var inject = require('gulp-inject')
-
+var rev = require('gulp-rev-hash')
 var time = process.env.time
 
 var css = {
@@ -50,17 +50,24 @@ gulp.task('inject:cssjs', function () {
     const arr = item.split('/')
     const dir = arr.length > 1 ? arr.slice(0, arr.length - 1).join('/') + '/' : ''
     gulp.src(`./templates/${item}.html`)
+      .pipe(rev({
+        assetsDir: 'public'
+      }))
+      .pipe(replace(/v=version\b/g, 'v=' + time))
+      .pipe(replace(/staticPath\b/g, '//m.static.whqietu.com'))
+      .pipe(replace(/\/static\b/g, '//m.static.whqietu.com/static'))
+      .pipe(replace(/imgPath\b/g, '//m.img.whqietu.com/static'))
       .pipe(
-        inject(gulp.src([`./public/static/css/${item}.css`,`./public/static/js/${item}.js`]), {
+        inject(gulp.src(`./public/static/css/${item}.css`), {
           starttag: '<!-- inject:FileContent:{{ext}} -->',
           endtag: '<!-- endinject -->',
           transform: function (filePath, file) {
             if (filePath.slice(-4) === '.css'){
               return '<style>' + file.contents.toString('utf8') + '</style>'
             }
-            if (filePath.slice(-3) === '.js'){
-              return '<script type="text/javascript">\n' + file.contents.toString('utf8') + '</script>'
-            }
+            // if (filePath.slice(-3) === '.js'){
+            //   return '<script type="text/javascript">\n' + file.contents.toString('utf8') + '</script>'
+            // }
           }
         })
       )
@@ -68,8 +75,8 @@ gulp.task('inject:cssjs', function () {
           removeComments: true,//清除HTML注释
           collapseWhitespace: true,//压缩HTML
           removeEmptyAttributes: true,//删除所有空格作属性值 <input id="" /> ==> <input />
-          removeScriptTypeAttributes: true,//删除<script>的type="text/javascript"
-          removeStyleLinkTypeAttributes: true, //删除<style>和<link>的type="text/css"
+          removeScriptTypeAttributes: false,//删除<script>的type="text/javascript"
+          removeStyleLinkTypeAttributes: false, //删除<style>和<link>的type="text/css"
           minifyJS: true,//压缩页面JS
           minifyCSS: true//压缩页面CSS
       }))
@@ -96,13 +103,13 @@ gulp.task('cssjs:version', function () {
     .pipe(gulp.dest('./templates/'))
 })
 
-gulp.task('html', function () {
-  return gulp.src('./templates/**/*.html')
-    //.pipe(replace(/v=version\b/g, 'v=' + time))
-    .pipe(replace(/\/static\/js\b/g, '//m.static.whqietu.com/static/js'))
-    .pipe(replace(/\/static\/img\b/g, '//m.img.whqietu.com/static/img'))
-    .pipe(gulp.dest('./views/'))
-})
+// gulp.task('html', function () {
+//   return gulp.src('./templates/**/*.html')
+//    //.pipe(replace(/v=version\b/g, 'v=' + time))
+//     .pipe(replace(/\/static\/js\b/g, '//m.static.whqietu.com/static/js'))
+//     .pipe(replace(/\/static\/img\b/g, '//m.img.whqietu.com/static/img'))
+//     .pipe(gulp.dest('./views/'))
+// })
 
 gulp.task('sass:watch', function () {
   gulp.watch('./src/styles/**/*.scss', ['sass'])
