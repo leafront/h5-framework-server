@@ -1,1 +1,0 @@
-"imgPath/static/img/home_sprite.png?v=version","imgPath/static/img/logo.png?v=version","imgPath/static/img/touch-icon-iphone.png?v=version"
