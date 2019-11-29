@@ -1,0 +1,68 @@
+.ui-switch {
+  font-size: .32rem;
+  width: 1.04rem;
+  height: .64rem;
+  line-height: .64rem;
+}
+
+.ui-switch input {
+  width:1.04rem;
+  height: .64rem;
+  position: absolute;
+  z-index: 2;
+  border: 0;
+  background: 0 0;
+  -webkit-appearance: none;
+  outline: 0
+}
+
+.ui-switch input:before {
+  content: '';
+  width: 1rem;
+  height: .6rem;
+  border: .01rem solid #dfdfdf;
+  background-color: #fdfdfd;
+  border-radius: .4rem;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  -webkit-box-shadow: #dfdfdf 0 0 0 0 inset;
+  box-shadow: #dfdfdf 0 0 0 0 inset;
+  -webkit-transition: border .4s,-webkit-box-shadow .4s;
+  transition: border .4s,box-shadow .4s;
+  -webkit-background-clip: content-box;
+  background-clip: content-box
+}
+
+.ui-switch input:checked:before {
+  border-color: #ff6900;
+  -webkit-box-shadow: #ff6900 0 0 0 .32rem inset;
+  box-shadow: #ff6900 0 0 0 .32rem inset;
+  background-color: #ff6900;
+  transition: border .4s,box-shadow .4s,background-color 1.2s;
+  -webkit-transition: border .4s,-webkit-box-shadow .4s,background-color 1.2s;
+  background-color: #ff6900
+}
+
+.ui-switch input:checked:after {
+  left: .42rem;
+}
+
+.ui-switch input:after {
+  content: '';
+  width: .6rem;
+  height: .6rem;
+  position: absolute;
+  top: -.01rem;
+  left: 0;
+  border-radius: 100%;
+  background-color: #fff;
+  -webkit-box-shadow: 0 1px .06rem rgba(0,0,0,.4);
+  box-shadow: 0 1px .06rem rgba(0,0,0,.4);
+  -webkit-transition: left .2s;
+  transition: left .2s
+}
+

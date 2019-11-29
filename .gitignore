@@ -1,0 +1,20 @@
+.DS_Store
+node_modules
+views/*
+public/static/js/*
+public/static/css/*
+public/serviceWorker.js
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.sh
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
