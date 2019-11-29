@@ -158,7 +158,7 @@
         }).then((result) => {
           const success = result.success
           if (success) {
-            this.$toast('发送成功')
+            this.$showToast('发送成功')
           } 
         })
       },

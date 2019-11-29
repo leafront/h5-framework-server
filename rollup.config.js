@@ -10,12 +10,18 @@ import replace from '@rollup/plugin-replace'
 import autoprefixer from 'autoprefixer'
 import path from 'path'
 
+const time = process.env.time
 const pathName = 'public/static/js/'
 const config = [{
   input: 'src/serviceWorker.js',
   output: {
     format: 'iife',
-    file: 'public/serviceWorker.js'
+    file: 'public/serviceWorker.js',
+    banner: '/*!' + '\n' +
+    ' * LastModifyTime: '+ time +'\n'+
+    ` * Copyright(c) 2018-${new Date().getFullYear()} leafront`+'\n'+
+    ' * Released under the MIT License.\n' +
+    ' */\n'
   },
   plugins: [
     resolve(),
@@ -28,7 +34,13 @@ const config = [{
     }),
     uglify({
       output: {
-        comments: false,
+        comments: function(node, comment) {
+          if (comment.type === "comment2") {
+            // multiline comment
+            return /License/i.test(comment.value)
+          }
+          return false
+        },
         beautify: false
       },
       compress: {
@@ -41,7 +53,12 @@ const config = [{
   input: 'src/framework/index.js',
   output: {
     format: 'iife',
-    file: 'public/static/js/h5-framework/1.0.0/index.js'
+    file: 'public/static/js/h5-framework/1.0.0/index.js',
+    banner: '/*!\n' +
+    ` * h5-framework.js  v1.0.0 \n` +
+    ` * Copyright(c) 2018-${new Date().getFullYear()} leafront \n` +
+    ' * Released under the MIT License.\n' +
+    ' */'
   },
   plugins: [
     alias({
@@ -57,7 +74,13 @@ const config = [{
     }),
     uglify({
       output: {
-        comments: false,
+        comments: function(node, comment) {
+          if (comment.type === "comment2") {
+            // multiline comment
+            return /License/i.test(comment.value)
+          }
+          return false
+        },
         beautify: false
       },
       compress: {
@@ -87,7 +110,12 @@ Object.keys(files).forEach((item) => {
     input: files[item],
     output: {
       format: 'iife',
-      file: pathName + item
+      file: pathName + item,
+      banner: '/*!' + '\n' +
+      ` * ${item} \n` +
+      ` * Copyright(c) 2018-${new Date().getFullYear()} leafront`+'\n'+
+      ' * Released under the MIT License.\n' +
+      ' */'
     },
     plugins: [
       alias({
@@ -126,7 +154,13 @@ Object.keys(files).forEach((item) => {
   if (process.env.NODE_ENV == 'production') {
     configItem.plugins.push(uglify({
       output: {
-        comments: false,
+        comments: function(node, comment) {
+          if (comment.type === "comment2") {
+            // multiline comment
+            return /License/i.test(comment.value)
+          }
+          return false
+        },
         beautify: false
       },
       compress: {

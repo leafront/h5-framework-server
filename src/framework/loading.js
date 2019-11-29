@@ -18,7 +18,7 @@ export default {
         }
         e.stopPropagation()
       },utils.isPassive() ? {passive: true} : false)
-      Loading.installed = true
+      this.installed = true
     }
 
     Vue.prototype.$hideLoading = () => {

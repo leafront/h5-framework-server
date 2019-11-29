@@ -4,7 +4,7 @@ export default {
     if (this.installed) {
       return
     }
-    Vue.prototype.$toast = (toast) => {
+    Vue.prototype.$showToast = (toast) => {
 
       if (document.getElementById('ui-toast')) {
         return
