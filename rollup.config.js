@@ -10,7 +10,6 @@ import replace from '@rollup/plugin-replace'
 import autoprefixer from 'autoprefixer'
 import path from 'path'
 
-const time = process.env.time
 const pathName = 'public/static/js/'
 const config = [{
   input: 'src/serviceWorker.js',
@@ -25,8 +24,36 @@ const config = [{
     }),
     replace({ 
       staticPath: process.env.NODE_ENV == 'production' ? '//m.static.whqietu.com' : '',
-      imgPath: process.env.NODE_ENV == 'production' ? '//m.img.whqietu.com' : '',
-      version: time
+      imgPath: process.env.NODE_ENV == 'production' ? '//m.img.whqietu.com' : ''
+    }),
+    uglify({
+      output: {
+        comments: false,
+        beautify: false
+      },
+      compress: {
+        drop_console: true
+      },
+      warnings: false
+    })
+  ]
+}, {
+  input: 'src/framework/index.js',
+  output: {
+    format: 'iife',
+    file: 'public/static/js/h5-framework/1.0.0/index.js'
+  },
+  plugins: [
+    alias({
+      resolve: [".js", ".vue"],
+      entries: [{ 
+        find:'@', 
+        replacement: path.resolve(__dirname, 'src') 
+      }]
+    }),
+    resolve(),
+    babel({
+      exclude: '**/node_modules/**'
     }),
     uglify({
       output: {
@@ -41,19 +68,11 @@ const config = [{
   ]
 }]
 const files = {
-  '1.0.1/utils/index.js':'src/widget/utils.js',
-  '1.0.0/polyfill/index.js': 'src/widget/polyfill.js',
-  '1.0.1/ajax/index.js': 'src/widget/ajax.js',
-  '1.0.0/store/index.js': 'src/widget/store.js',
-  '1.0.1/request/index.js': 'src/widget/request.js',
-  '1.0.0/validate/index.js': 'src/widget/validate.js',
-  '1.0.0/filter/index.js': 'src/widget/filter.js',
-  '1.0.5/scale/index.js': 'src/widget/scale.js',
-  '1.0.1/loading/index.js': 'src/components/loading/index.js',
-  '1.0.0/showModal/index.js': 'src/components/showModal/index.js',
-  '1.0.3/toast/index.js': 'src/components/toast/index.js',
-  '1.0.0/lazyLoad/index.js': 'src/components/lazyLoad/index.js',
-  '1.0.1/skeleton/index.js': 'src/components/skeleton/index.js',
+  'polyfill/1.0.0/index.js': 'src/widget/polyfill.js',
+  //'validate/1.0.0/index.js': 'src/widget/validate.js',
+  'filter/1.0.0/index.js': 'src/widget/filter.js',
+  'lazyLoad/1.0.0/index.js': 'src/components/lazyLoad/index.js',
+  //'skeleton/1.0.0/index.js': 'src/components/skeleton/index.js',
   //'1.0.0/swiper/index.js': 'src/components/swiper/index.js',
  // '1.0.0/downloadApp/index.js': 'src/components/downloadApp/index.js',
   // '1.0.0/header/index.js': 'src/components/header/index.js',
@@ -78,11 +97,10 @@ Object.keys(files).forEach((item) => {
           replacement: path.resolve(__dirname, 'src') 
         }]
       }),
-      replace({ 
-        imgPath: process.env.NODE_ENV == 'production' ? '//m.img.whqietu.com' : '',
-        version: time
-      }),
       commonjs(),
+      replace({ 
+        imgPath: process.env.NODE_ENV == 'production' ? '//m.img.whqietu.com' : ''
+      }),
       vue({
         template: {
           isProduction: process.env.NODE_ENV == 'production' ? true : false,

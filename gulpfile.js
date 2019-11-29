@@ -5,31 +5,22 @@ var htmlmin = require('gulp-htmlmin')
 var autoprefixer = require('gulp-autoprefixer')
 var inject = require('gulp-inject')
 var rev = require('gulp-rev-hash')
-var time = process.env.time
 
+var cssVersion = '1.0.0'
 var css = {
-  "main": "1.1.1/main.css",
-  "ui-component": "1.1.1/ui-component.css"
+  "h5-framework": "h5-framework/'+cssVersion+'/index.css"
 }
 
 var js = {
-  "vue": "2.6.10/index.js",
-  "polyfill": "1.0.0/polyfill/index.js",
-  "utils": "1.0.1/utils/index.js",
-  "ajax": "1.0.1/ajax/index.js",
-  "store": "1.0.0/store/index.js",
-  "request": "1.0.1/request/index.js",
-  "scale": "1.0.5/scale/index.js",
-  "filter": "1.0.0/filter/index.js",
-  "lazyLoad": "1.0.0/lazyLoad/index.js",
-  "skeleton": "1.0.1/skeleton/index.js",
-  "loading": "1.0.1/loading/index.js",
-  "toast": "1.0.3/toast/index.js",
-  "showModal": "1.0.0/showModal/index.js"
+  "vue": "vue/2.6.10/index.js",
+  "h5-framework": "framework/1.0.0/index.js",
+  "polyfill": "polyfill/1.0.0/index.js",
+  "filter": "filter/1.0.0/index.js",
+  "lazyLoad": "lazyLoad/1.0.0/index.js"
 }
 
 gulp.task('sass', function () {
-  return gulp.src('./src/styles/**/*.scss')
+  return gulp.src('./src/styles/h5-framework/index.scss')
     .pipe(autoprefixer({
       overrideBrowserslist: [    
         "> 1%",
@@ -41,7 +32,7 @@ gulp.task('sass', function () {
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
   //.pipe(replace(/v=version\b/g, 'v=' + time))
     .pipe(replace(/imgPath\b/g, '//m.img.whqietu.com'))
-    .pipe(gulp.dest('./public/static/css'))
+    .pipe(gulp.dest('./public/static/css/h5-framework/' + cssVersion))
 })
 
 gulp.task('inject:cssjs', function () {
@@ -53,25 +44,25 @@ gulp.task('inject:cssjs', function () {
       .pipe(rev({
         assetsDir: 'public'
       }))
-      .pipe(replace(/v=version\b/g, 'v=' + time))  
+      //.pipe(replace(/v=version\b/g, 'v=' + time))  
       .pipe(replace(/staticPath\b/g, '//m.static.whqietu.com'))  
       .pipe(replace(/\/static\b/g, '//m.static.whqietu.com/static'))
       .pipe(replace(/imgPath\b/g, '//m.img.whqietu.com/static')) 
       .pipe(replace(/\$imagPath\b/g, '//m.img.whqietu.com')) 
-      .pipe(
-        inject(gulp.src(`./public/static/css/${item}.css`), {
-          starttag: '<!-- inject:FileContent:{{ext}} -->',
-          endtag: '<!-- endinject -->',
-          transform: function (filePath, file) {
-            if (filePath.slice(-4) === '.css'){
-              return '<style>' + file.contents.toString('utf8') + '</style>'
-            }
-            // if (filePath.slice(-3) === '.js'){
-            //   return '<script type="text/javascript">\n' + file.contents.toString('utf8') + '</script>'
-            // }
-          }
-        })
-      )
+      // .pipe(
+      //   inject(gulp.src(`./public/static/css/${item}.css`), {
+      //     starttag: '<!-- inject:FileContent:{{ext}} -->',
+      //     endtag: '<!-- endinject -->',
+      //     transform: function (filePath, file) {
+      //       if (filePath.slice(-4) === '.css'){
+      //         return '<style>' + file.contents.toString('utf8') + '</style>'
+      //       }
+      //       if (filePath.slice(-3) === '.js'){
+      //         return '<script type="text/javascript">\n' + file.contents.toString('utf8') + '</script>'
+      //       }
+      //     }
+      //   })
+      // )
       .pipe(htmlmin({        
           removeComments: true,//清除HTML注释
           collapseWhitespace: true,//压缩HTML
@@ -86,31 +77,14 @@ gulp.task('inject:cssjs', function () {
 })
 gulp.task('cssjs:version', function () {
   return gulp.src('./templates/**/*.html')
-    .pipe(replace(/1.1.0\/main.css\b/g, css['main']))
-    .pipe(replace(/1.1.0\/ui-component.css\b/g, css['ui-component']))
-    .pipe(replace(/2.6.10\/index.js\b/g, js['vue']))
-    .pipe(replace(/1.0.0\/polyfill\/index.js\b/g, js['polyfill']))
-    .pipe(replace(/1.0.1\/utils\/index.js\b/g, js['utils']))
-    .pipe(replace(/1.0.1\/ajax\/index.js\b/g, js['ajax']))
-    .pipe(replace(/1.0.0\/store\/index.js\b/g, js['store']))
-    .pipe(replace(/1.0.0\/request\/index.js\b/g, js['request']))
-    .pipe(replace(/1.0.5\/scale\/index.js\b/g, js['scale']))
-    .pipe(replace(/1.0.0\/filter\/index.js\b/g, js['filter']))
-    .pipe(replace(/1.0.0\/lazyLoad\/index.js\b/g, js['lazyLoad']))
-    .pipe(replace(/1.0.0\/skeleton\/index.js\b/g, js['skeleton']))
-    .pipe(replace(/1.0.1\/loading\/index.js\b/g, js['loading']))
-    .pipe(replace(/1.0.2\/toast\/index.js\b/g, js['toast']))
-    .pipe(replace(/1.0.0\/showModal\/index.js\b/g, js['showModal']))
+    .pipe(replace(/h5-framework\/1.0.0\/.css\b/g, css['h5-framework']))
+    .pipe(replace(/h5-framework\/1.0.0\/.js\b/g, js['h5-framework']))
+    .pipe(replace(/vue\/2.6.10\/index.js\b/g, js['vue']))
+    .pipe(replace(/polyfill\/1.0.0\/index.js\b/g, js['polyfill']))
+    .pipe(replace(/filter\/1.0.0\/index.js\b/g, js['filter']))
+    .pipe(replace(/lazyLoad\/1.0.0\/index.js\b/g, js['lazyLoad']))
     .pipe(gulp.dest('./templates/'))
 })
-
-// gulp.task('html', function () {
-//   return gulp.src('./templates/**/*.html')
-//    //.pipe(replace(/v=version\b/g, 'v=' + time))
-//     .pipe(replace(/\/static\/js\b/g, '//m.static.whqietu.com/static/js'))
-//     .pipe(replace(/\/static\/img\b/g, '//m.img.whqietu.com/static/img'))
-//     .pipe(gulp.dest('./views/'))
-// })
 
 gulp.task('sass:watch', function () {
   gulp.watch('./src/styles/**/*.scss', ['sass'])

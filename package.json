@@ -55,6 +55,7 @@
     "rollup-plugin-html": "^0.2.1",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-postcss": "^2.0.3",
+    "rollup-plugin-scss": "^1.0.2",
     "rollup-plugin-uglify": "^6.0.3",
     "rollup-plugin-vue": "^5.1.2",
     "sass-loader": "^7.3.1",
