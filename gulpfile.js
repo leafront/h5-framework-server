@@ -15,7 +15,6 @@ var css = {
 var js = {
   "vue": "vue/2.6.10/index.js",
   "h5-framework": "framework/1.0.0/index.js",
-  "polyfill": "polyfill/1.0.0/index.js",
   "filter": "filter/1.0.0/index.js",
   "lazyLoad": "lazyLoad/1.0.0/index.js"
 }
@@ -87,7 +86,6 @@ gulp.task('cssjs:version', function () {
     .pipe(replace(/h5-framework\/1.0.0\/.css\b/g, css['h5-framework']))
     .pipe(replace(/h5-framework\/1.0.0\/.js\b/g, js['h5-framework']))
     .pipe(replace(/vue\/2.6.10\/index.js\b/g, js['vue']))
-    .pipe(replace(/polyfill\/1.0.0\/index.js\b/g, js['polyfill']))
     .pipe(replace(/filter\/1.0.0\/index.js\b/g, js['filter']))
     .pipe(replace(/lazyLoad\/1.0.0\/index.js\b/g, js['lazyLoad']))
     .pipe(gulp.dest('./templates/'))

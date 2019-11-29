@@ -1,3 +1,5 @@
+import '@/framework/polyfill'
+import '@/framework/skeleton'
 import utils from '@/framework/utils'
 import ajax from '@/framework/ajax'
 import store from '@/framework/store'
@@ -6,7 +8,6 @@ import scale from '@/framework/scale'
 import loading from '@/framework/loading'
 import showToast from '@/framework/showToast' 
 import showModal from '@/framework/showModal'
-import '@/framework/skeleton'
 
 window.utils = utils
 window.ajax = ajax

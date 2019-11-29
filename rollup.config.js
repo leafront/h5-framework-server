@@ -92,7 +92,7 @@ const config = [{
   ]
 }]
 const files = {
-  'polyfill/1.0.0/index.js': 'src/widget/polyfill.js',
+  //'polyfill/1.0.0/index.js': 'src/widget/polyfill.js',
   //'validate/1.0.0/index.js': 'src/widget/validate.js',
   'filter/1.0.0/index.js': 'src/widget/filter.js',
   'lazyLoad/1.0.0/index.js': 'src/components/lazyLoad/index.js',
