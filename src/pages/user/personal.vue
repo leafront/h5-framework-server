@@ -293,22 +293,21 @@
 
 <script type="text/javascript">
 
-import Header from '@/components/header/index.vue'
-
-export default {
-  data () {
-    return {
-      title: '个人中心'
-    }
-  },
-  components: {
-    Header
-  },
-  methods: {
-    pageAction () {
-      location.href = '/user/login'
+  import Header from '@/components/header/index.vue'
+  
+  export default {
+    data () {
+      return {
+        title: '个人中心'
+      }
+    },
+    components: {
+      Header
+    },
+    methods: {
+      pageAction () {
+        location.href = '/user/login'
+      }
     }
   }
-}
-
 </script>  

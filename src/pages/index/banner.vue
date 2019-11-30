@@ -46,10 +46,10 @@
         const list = Object.assign([],this.bannerList)
         if (list && list.length) {
           const len = list.length
-          const firstEl = list[len - 1]
-          const lastEl = list[0]
-          list.unshift(lastEl)
-          list.push(firstEl)
+          const firstIndex = list[len - 1]
+          const lastIndex = list[0]
+          list.unshift(lastIndex)
+          list.push(firstIndex)
         }
         return list
       }
