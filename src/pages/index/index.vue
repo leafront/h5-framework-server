@@ -21,7 +21,7 @@
           </svg>
         </div>   
       </div>  
-      <div class="home-banner">
+      <div class="home-banner">f
         <Banner :bannerList="bannerList"></Banner>
       </div>
       <div class="home-nav">
@@ -132,6 +132,39 @@
     </div>   
   </div>
 </template>
+
+<script type="text/javascript">
+  import Banner from './banner.vue'
+  import DownloadApp from '@/components/downloadApp/index.vue'
+  import List from './list.vue'
+
+  const { navList, bannerList, operating, hotTicket, discountTicket } = window.__NUXT__
+
+  export default {
+    data () {
+      return {
+        navList: Object.freeze(navList),
+        bannerList: bannerList,
+        operating: Object.freeze(operating),
+        hotTicket: Object.freeze(hotTicket),
+        discountTicket: Object.freeze(discountTicket)
+      }
+    },
+    components: {
+      Banner,
+      DownloadApp,
+      List
+    },
+    methods: {
+      loadImg (event) {
+        event.currentTarget.style.backgroundColor = '#fff'
+      },
+      pageAction (url) {
+        location.href = url
+      }
+    }
+  }
+</script>
 
 <style src="../../styles/swiper/index.scss" lang="scss">
 </style>
@@ -413,37 +446,4 @@
   }
 }
 </style>
-
-<script type="text/javascript">
-  import Banner from './banner.vue'
-  import DownloadApp from '@/components/downloadApp/index.vue'
-  import List from './list.vue'
-
-  const { navList, bannerList, operating, hotTicket, discountTicket } = window.__NUXT__
-
-  export default {
-    data () {
-      return {
-        navList: Object.freeze(navList),
-        bannerList: bannerList,
-        operating: Object.freeze(operating),
-        hotTicket: Object.freeze(hotTicket),
-        discountTicket: Object.freeze(discountTicket)
-      }
-    },
-    components: {
-      Banner,
-      DownloadApp,
-      List
-    },
-    methods: {
-      loadImg (event) {
-        event.currentTarget.style.backgroundColor = '#fff'
-      },
-      pageAction (url) {
-        location.href = url
-      }
-    }
-  }
-</script>
 
