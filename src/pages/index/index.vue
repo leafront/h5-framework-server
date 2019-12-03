@@ -21,7 +21,7 @@
           </svg>
         </div>   
       </div>  
-      <div class="home-banner">f
+      <div class="home-banner">
         <Banner :bannerList="bannerList"></Banner>
       </div>
       <div class="home-nav">

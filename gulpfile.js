@@ -15,7 +15,7 @@ var css = {
 var js = {
   "vue": "vue/2.6.10/index.js",
   "h5-framework": "framework/1.0.0/index.js",
-  "filter": "filter/1.0.0/index.js",
+  "filter": "filter/1.0.1/index.js",
   "lazyLoad": "lazyLoad/1.0.0/index.js"
 }
 

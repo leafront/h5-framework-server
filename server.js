@@ -4,15 +4,12 @@ var server = require('koa-static')
 var render = require('koa-ejs')
 var Router = require('koa-router')
 var path = require('path')
-var conditional = require('koa-conditional-get')
-var etag = require('koa-etag')
+var crypto = require('crypto')
 var router = new Router()
 var error = require('./router/error/index')
 var index = require('./router/index')
 var user = require('./router/user')
 
-app.use(conditional())
-app.use(etag())
 app.use(server(__dirname + '/public'))
 //set ejs
 render(app, {
@@ -38,6 +35,8 @@ app.use(async (ctx, next) => {
       //ctx.redirect('/error/500?path='+ctx.url);
     }
   }
+  ctx.response.etag = crypto.createHash('md5').update(ctx.body).digest('hex')
+  ctx.response.lastModified = new Date()
 })
 
 router.use('/',index.routes())

@@ -24,10 +24,8 @@ export default function ajax ({
     xhr.responseType = dataType
 
     xhr.onreadystatechange = () => {
-
-      if(xhr.readyState == 4){
-
-        if((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){
+      if (xhr.readyState == 4) {
+        if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){
           resolve(xhr.response)
         } else {
           resolve({
@@ -38,8 +36,6 @@ export default function ajax ({
         }
       }
     }
-
     type == "GET" ? xhr.send(null) :    xhr.send(data)
-
   })
 }
