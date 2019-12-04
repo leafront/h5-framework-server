@@ -63,7 +63,7 @@
         <div class="home-ticket">
           <div class="home-ticket-wrapper" id="hot-ticket-wrapper">
             <div class="home-ticket-item" v-for="item in hotTicket">
-              <div class="home-ticker-pic ui-lazyLoad-pic" v-lazy :data-src="item.poster"></div>
+              <div class="home-ticker-pic ui-lazyLoad-pic" :style="{'backgroundImage': 'url('+item.poster+')','backgroundSize': '100% auto'}"></div>
               <div class="home-ticket-watch">
                 <span class="cfff">{{ item.wantWatchNum > 10000 ? parseInt(item.wantWatchNum / 10000) + '万': item.wantWatchNum}}</span>
                 <i></i>
@@ -94,7 +94,7 @@
         <div class="home-ticket">
           <div class="home-ticket-wrapper" id="discount-ticket-wrapper">
             <div class="home-ticket-item" v-for="item in discountTicket">
-              <div class="home-ticker-pic ui-lazyLoad-pic" v-lazy :data-src="item.poster"></div>  
+              <div class="home-ticker-pic ui-lazyLoad-pic" :style="{'backgroundImage': 'url('+item.poster+')','backgroundSize': '100% auto'}"></div>  
               <div class="home-ticket-watch">
                 <span class="cfff">{{ item.wantWatchNum > 10000 ? parseInt(item.wantWatchNum / 10000) + '万': item.wantWatchNum}}</span>
                 <i></i>
