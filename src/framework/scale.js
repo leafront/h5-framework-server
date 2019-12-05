@@ -5,10 +5,7 @@ const scale = {
         if (event.touches.length > 1 ){
           event.preventDefault()
         }
-      }, utils.isPassive() ? {
-        passive: false,
-        capture: true
-      } : true)
+      }, false)
       var lastTouchEnd = 0
       document.addEventListener('touchend', (event) => {
         var now = (new Date()).getTime()
@@ -16,24 +13,16 @@ const scale = {
           event.preventDefault()
         }
         lastTouchEnd = now
-      }, utils.isPassive() ? {
-        passive: false,
-        capture: true
-      } : true)
+      }, false)
       document.addEventListener('gesturestart', (event) =>  {
         event.preventDefault()
-      }, utils.isPassive() ? {
-        passive: false,
-        capture: true
-      } : true)
+      }, false)
     })
 
     document.getElementById('app').addEventListener('touchmove', () =>  {
       event.stopPropagation()
       event.preventDefault()
-    }, utils.isPassive() ? {
-      passive: false
-    } : false)
+    }, false)
   }
 }
 export default scale

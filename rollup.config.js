@@ -12,7 +12,7 @@ import path from 'path'
 
 const time = process.env.time
 const pathName = 'public/static/js/'
-const frameworkVersion = '1.0.0'
+const frameworkVersion = '1.0.1'
 const config = [{
   input: 'src/serviceWorker.js',
   output: {
