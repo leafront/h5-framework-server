@@ -15,7 +15,7 @@ export default {
       const tpl = `<div class="ui-dialog" id="ui-dialog"><div class="ui-dialog-mask"></div><div class="ui-dialog-container"><div class="ui-dialog__bd" id = "dialog-content">${options.content}</div><div class="ui-dialog__ft"><span id = "ui-dialog-cancel" style="display:${toast}" class="ui-dialog__btn ui-dialog__btn_default">${cancelText}</span><span id = "ui-dialog-confirm" class="ui-dialog__btn">${confirmText}</span></div></div></div>`
       utils.append(document.body, tpl)
       const uiDialog = document.getElementById('ui-dialog')
-      document.getElementById('ui-dialog-cancel').addEventListener('click',() => {
+      document.getElementById('ui-dialog-cancel').addEventListener('click', () => {
         uiDialog.parentNode.removeChild(uiDialog)
         options.cancel && options.cancel()
       })

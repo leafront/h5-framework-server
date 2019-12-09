@@ -1,58 +1,56 @@
 import utils from '@/framework/utils'
 
-function getStorageType (storageType) {
-  storageType = storageType == 'local' ? 'localStorage': 'sessionStorage'
-  return window[storageType]
+function getStorageType (type) {
+  type = type == 'local' ? 'localStorage': 'sessionStorage'
+  return window[type]
 }
-const store = {}
+var store = Object.create(null)
 
 if (utils.isLocalStorageSupported()) {
-  store.set = function (key, val,storageType) {
-    const storage = getStorageType(storageType)
+  store.set = (key, val, type) =>  {
+    const storage = getStorageType(type)
     if (typeof val == 'object') {
       storage[key] = utils.serialize(val)
     } else {
       storage[key] = val
     }
   }
-  store.get = function (key,storageType) {
-    const storage = getStorageType(storageType)
+  store.get = (key, type) => {
+    const storage = getStorageType(type)
     return utils.deserialize(storage[key])
   }
-  store.remove = function (key,storageType) {
-    const storage = getStorageType(storageType)
+  store.remove = (key,type) => {
+    const storage = getStorageType(type)
     delete storage[key]
   }
-  store.clear = function (storageType) {
-    const storage = getStorageType(storageType)
+  store.clear = (type) => {
+    const storage = getStorageType(type)
     storage.clear()
   }
 } else {
-	let windowStorage = {}
-	store.set = function (key, val) {
-		if (window.name) {
-			windowStorage = utils.deserialize(window.name)
-		} else {
-			windowStorage = {}
-		}
-		windowStorage[key] = val
-		window.name = utils.serialize(windowStorage)
-	}
-	store.get = function (key) {
-		if (window.name) {
-			return utils.deserialize(window.name)[key]
-		} else {
-			return null
-		}
-	}
-	store.remove = function (key) {
-		windowStorage = utils.deserialize(window.name)
-		delete windowStorage[key]
-		window.name = utils.serialize(windowStorage)
-	}
-	store.clear = function () {
-		window.name = ''
-	}
+  var windowStorage = Object.create(null)
+  store.set = (key, val) => {
+    if (window.name) {
+      windowStorage = utils.deserialize(window.name)
+    } 
+    windowStorage[key] = val
+    window.name = utils.serialize(windowStorage)
+  }
+  store.get = (key) => {
+    if (window.name) {
+      return utils.deserialize(window.name)[key]
+    } else {
+      return ''
+    }
+  }
+  store.remove = (key) => {
+    windowStorage = utils.deserialize(window.name)
+    delete windowStorage[key]
+    window.name = utils.serialize(windowStorage)
+  }
+  store.clear = () => {
+    window.name = ''
+  }
 }
 
 export default store

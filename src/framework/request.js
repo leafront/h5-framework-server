@@ -2,7 +2,7 @@ import utils from '@/framework/utils'
 import ajax from '@/framework/ajax'
 import store from '@/framework/store'
 
-function clearStorage = (times) {
+function clearStorage (times) {
   const storage = utils.isLocalStorageSupported() ? localStorage : window.name
   if (!storage) {
     return
@@ -19,14 +19,14 @@ function clearStorage = (times) {
   })
 }
 
-function httpRequest ({times, expires, cacheUrl, options, resolve, reject}) {
+function httpRequest ({cache, times, expires, cacheUrl, options, resolve, reject}) {
   ajax(options).then((results) => {
     const data = {
       times: times + expires,
       results
     }
     if (results && cache) {
-      store.set(cacheUrl, data,'local')
+      store.set(cacheUrl, data, 'local')
     }
     resolve(results)
   })
@@ -45,7 +45,7 @@ export default function request (url, {
 }){
 
   const options = {
-    type,
+    type: type.toUpperCase(),
     data,
     async: true,
     url: url,
@@ -53,7 +53,8 @@ export default function request (url, {
     dataType,
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
-      'Accept': 'application/json'
+      'Accept': 'application/json',
+      'Cache-Control': 'no-cache'
     },
     hostPath
   }
@@ -61,7 +62,7 @@ export default function request (url, {
     headers['Content-Type'] == 'application/json'
   ) {
     options.headers['Content-Type'] = 'application/json'
-    options.data =  data ? JSON.stringify(data) : ''
+    options.data = data ? JSON.stringify(data) : ''
   } else {
     options.data = utils.queryStringify(data)
   }
@@ -71,8 +72,8 @@ export default function request (url, {
     type == 'GET' && 
     dataType == 'json'
   ) {
-    cacheUrl =  options.data ?  url + '?' + options.data : url
-    options.url =  cacheUrl
+    cacheUrl = options.data ?  url + '?' + options.data : url
+    options.url = cacheUrl
   }
 
   return new Promise((resolve, reject) => {
@@ -87,6 +88,6 @@ export default function request (url, {
       } 
     } 
     store.remove(cacheUrl, 'local')
-    httpRequest ({times, expires, cacheUrl, options, resolve, reject})
+    httpRequest ({cache, times, expires, cacheUrl, options, resolve, reject})
   })
 }

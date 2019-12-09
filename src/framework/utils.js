@@ -15,26 +15,23 @@ const utils = {
    */
   append (el, html) {
 
-    var divTemp = document.createElement("div"),
+    var divTemp = document.createElement("div")
+    var nodes = null
+    var fragment = document.createDocumentFragment()
 
-      nodes = null,
+    divTemp.innerHTML = html
 
-      fragment = document.createDocumentFragment();
-
-    divTemp.innerHTML = html;
-
-    nodes = divTemp.childNodes;
+    nodes = divTemp.childNodes
 
     for (var i = 0, length = nodes.length; i < length; i += 1) {
 
-      fragment.appendChild(nodes[i].cloneNode(true));
+      fragment.appendChild(nodes[i].cloneNode(true))
     }
 
-    el.appendChild(fragment);
+    el.appendChild(fragment)
 
-    // 清除
-    nodes = null;
-    fragment = null;
+    nodes = null
+    fragment = null
   },
   /**
    * @param  {String} value
@@ -64,47 +61,60 @@ const utils = {
    * @param delay {Number}  执行间隔，单位是毫秒（ms）
    * @return {Function}     返回一个“节流”函数
    */
-  throttle(fn, threshhold) {
-    // 记录上次执行的时间
-    var last
-
-    // 定时器
-    var timer
-
-    // 默认间隔为 250ms
-    threshhold || (threshhold = 250)
-
-    // 返回的函数，每过 threshhold 毫秒就执行一次 fn 函数
+  throttle (func, wait) {
+    let lastTime = null
+    let timeout = null
     return function () {
-
-      // 保存函数调用时的上下文和参数，传递给 fn
-      var context = this
-      var args = arguments
-
-      var now = +new Date()
-
-      // 如果距离上次执行 fn 函数的时间小于 threshhold，那么就放弃
-      // 执行 fn，并重新计时
-      if (last && now < last + threshhold) {
-        clearTimeout(timer)
-
-        // 保证在当前时间区间结束后，再执行一次 fn
-        timer = setTimeout(() => {
-          last = now
-          fn.apply(context, args)
-        }, threshhold)
-
-      // 在时间区间的最开始和到达指定间隔的时候执行一次 fn
-      } else {
-        last = now
-        fn.apply(context, args)
+      let context = this
+      let now = new Date()
+      // 如果上次执行的时间和这次触发的时间大于一个执行周期，则执行
+      if (now - lastTime - wait > 0) {
+        // 如果之前有了定时任务则清除
+        if (timeout) {
+          clearTimeout(timeout)
+          timeout = null
+        }
+        func.apply(context, arguments)
+        lastTime = now
+      } else if (!timeout) {
+        timeout = setTimeout(() => {
+          func.apply(context, arguments)
+        }, wait)
       }
     }
   },
   /**
+   * @param fn {Function}   实际要执行的函数
+   * @param delay {Number}  执行间隔，单位是毫秒（ms）
+   * @return {Function}     返回一个“节流”函数
+   */
+  debounce (func, wait) {
+    let lastTime = null
+    let timeout = null
+    return function () {
+      let context = this
+      let now = new Date()
+      // 判定不是一次抖动
+      if (now - lastTime - wait > 0) {
+        setTimeout(() => {
+          func.apply(context, arguments)
+        }, wait)
+      } else {
+        if (timeout) {
+          clearTimeout(timeout)
+          timeout = null
+        }
+        timeout = setTimeout(() => {
+          func.apply(context, arguments)
+        }, wait)
+      }
+      // 注意这里lastTime是上次的触发时间
+      lastTime = now
+    }
+  },
+  /**
    * @param {Object} obj
-   * @returns {string}
-   *
+   * @returns {string} result
    */
   queryStringify (obj) {
 

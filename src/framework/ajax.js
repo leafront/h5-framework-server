@@ -14,13 +14,12 @@ export default function ajax ({
 }){
     
   return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest()
+    var xhr = new XMLHttpRequest()
     xhr.open(type, hostPath + url, async)
     xhr.timeout = timeout
-    for (var k in headers) {
-      xhr.setRequestHeader(k, headers[k])
+    for (var key in headers) {
+      xhr.setRequestHeader(key, headers[key])
     }
-    xhr.setRequestHeader("Cache-Control","no-cache")
     xhr.responseType = dataType
 
     xhr.onreadystatechange = () => {
@@ -36,6 +35,6 @@ export default function ajax ({
         }
       }
     }
-    type == "GET" ? xhr.send(null) :    xhr.send(data)
+    type == 'GET' ? xhr.send(null) : xhr.send(data)
   })
 }
