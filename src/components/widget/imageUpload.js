@@ -266,7 +266,7 @@ ImageUpload.prototype = {
   constructor: ImageUpload,
   start (imageUploadDatabase) {
     imageUploadDatabase.img = document.createElement('img')
-    imageUploadDatabase.img.onload = this.imageLoad.bind(this,imageUploadDatabase)
+    imageUploadDatabase.img.onload = this.imageLoad.bind(this, imageUploadDatabase)
     imageUploadDatabase.img.src = URL.createObjectURL(imageUploadDatabase.file)
   },
   imageLoad(imageUploadDatabase) {
@@ -385,7 +385,6 @@ ImageUpload.prototype = {
     }
 
     const fileName = imageUploadDatabase.file.name.replace(/\.png|\.jpg|\.gif|\.webp/,'.jpeg')
-
     options.data[options.fileKey] = imageUploadDatabase.formBlob
 
     for (var i in options.data) {
@@ -402,14 +401,11 @@ ImageUpload.prototype = {
 
     var blob = dataURL2Blob(base64)
     if (blob.size < imageUploadDatabase.file.size) {
-
       return blob
     } else {
-
       return imageUploadDatabase.file
     }
   }
-
 }
 
 function isEmptyObject (object) {
@@ -425,7 +421,7 @@ const ImageUploadFactory = (function () {
   let exitsImageUploads = {}
 
   return {
-    createImageUpload (file,options) {
+    createImageUpload (file, options) {
 
       if (isEmptyObject(exitsImageUploads)) {
         const imageUpload = new ImageUpload(file,options)
@@ -441,15 +437,11 @@ const ImageUploadFactory = (function () {
 
 const ImageUploadManager = (function () {
 
-  let imageUploadDatabase = {}
-
   return {
-
     start (file, options) {
 
       const imageUpload = ImageUploadFactory.createImageUpload(file, options)
-
-      imageUploadDatabase = {
+      const imageUploadDatabase = {
         file,
         options
       }
@@ -457,6 +449,7 @@ const ImageUploadManager = (function () {
       imageUpload.start(imageUploadDatabase)
     }
   }
+
 })()
 
 export default ImageUploadManager
