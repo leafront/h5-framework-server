@@ -14,7 +14,7 @@ var css = {
 
 var js = {
   "vue": "vue/2.6.10/index.js",
-  "h5-framework": "h5-framework/1.0.1/index.js",
+  "h5-framework": "h5-framework/1.0.2/index.js",
   "filter": "filter/1.0.1/index.js",
   "lazyLoad": "lazyLoad/1.0.0/index.js"
 }
@@ -84,7 +84,7 @@ gulp.task('inject:cssjs', function () {
 gulp.task('cssjs:version', function () {
   return gulp.src('./templates/**/*.html')
     .pipe(replace(/h5-framework\/1.0.0\/index.css\b/g, css['h5-framework']))
-    .pipe(replace(/h5-framework\/1.0.1\/index.js\b/g, js['h5-framework']))
+    .pipe(replace(/h5-framework\/1.0.2\/index.js\b/g, js['h5-framework']))
     .pipe(replace(/vue\/2.6.10\/index.js\b/g, js['vue']))
     .pipe(replace(/filter\/1.0.0\/index.js\b/g, js['filter']))
     .pipe(replace(/lazyLoad\/1.0.0\/index.js\b/g, js['lazyLoad']))

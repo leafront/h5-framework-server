@@ -1,21 +1,27 @@
-export default {
-  installed: false,
-  install (Vue, options) {
-    if (this.installed) {
-      return
-    }
-    Vue.prototype.$showToast = (toast) => {
+import ShowTostComponent from '@/components/showToast/index.vue'
+const ShowToastConstructor = Vue.extend(ShowTostComponent)
+const body = document.body
 
-      if (document.getElementById('ui-toast')) {
+export default {
+  install (Vue, options) {
+    Vue.prototype.$showToast = (text) => {
+      let isClick = true
+      let vm = new ShowToastConstructor({
+        el : document.createElement('div'),
+        propsData: {
+          text
+        }
+      })
+      if (!isClick) {
         return
       }
-      const tpl = '<div class="ui-toast-mask" id="ui-toast"><div class="ui-toast"><span>'+ toast +'</span></div></div>'
-      utils.append(document.body, tpl)
-      const uiToast = document.getElementById('ui-toast')
+      body.appendChild(vm.$el)
+      isClick = false
       setTimeout(() => {
-        uiToast.parentNode.removeChild(uiToast)
+        body.removeChild(vm.$el)
+        vm = null
+        isClick = true
       }, 2000)
-      this.installed = true
     }
   }
 }

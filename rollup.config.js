@@ -12,7 +12,58 @@ import path from 'path'
 
 const time = process.env.time
 const pathName = 'public/static/js/'
-const frameworkVersion = '1.0.1'
+const frameworkVersion = '1.0.2'
+const plugins = [
+  alias({
+    resolve: [".js", ".vue"],
+    entries: [{ 
+      find:'@', 
+      replacement: path.resolve(__dirname, 'src') 
+    }]
+  }),
+  commonjs(),
+  replace({ 
+    imgPath: process.env.NODE_ENV == 'production' ? '//m.img.whqietu.com' : '',
+    staticPath: process.env.NODE_ENV == 'production' ? '//m.static.whqietu.com' : '',
+  }),
+  vue({
+    template: {
+      isProduction: process.env.NODE_ENV == 'production' ? true : false,
+      compilerOptions: {
+         preserveWhitespace: false
+      },
+      optimizeSSR: false
+    },
+    style: {
+      postcssPlugins: [autoprefixer]
+    }
+  }),
+  resolve(),
+  babel({
+    exclude: '**/node_modules/**'
+  }),
+  postcss({
+    plugins: [autoprefixer]
+  }),
+  buble(),
+  uglify({
+    output: {
+      comments: function(node, comment) {
+        if (comment.type === "comment2") {
+          // multiline comment
+          return /License/i.test(comment.value)
+        }
+        return false
+      },
+      beautify: process.env.NODE_ENV == 'production' ? false : true
+    },
+    compress: {
+      drop_console: process.env.NODE_ENV == 'production' ? true : false
+    },
+    warnings: false
+  })
+]
+
 const config = [{
   input: 'src/serviceWorker.js',
   output: {
@@ -24,32 +75,7 @@ const config = [{
     ' * Released under the MIT License.\n' +
     ' */\n'
   },
-  plugins: [
-    resolve(),
-    babel({
-      exclude: '**/node_modules/**'
-    }),
-    replace({ 
-      staticPath: process.env.NODE_ENV == 'production' ? '//m.static.whqietu.com' : '',
-      imgPath: process.env.NODE_ENV == 'production' ? '//m.img.whqietu.com' : ''
-    }),
-    uglify({
-      output: {
-        comments: function(node, comment) {
-          if (comment.type === "comment2") {
-            // multiline comment
-            return /License/i.test(comment.value)
-          }
-          return false
-        },
-        beautify: false
-      },
-      compress: {
-        drop_console: true
-      },
-      warnings: false
-    })
-  ]
+  plugins,
 }, {
   input: 'src/framework/index.js',
   output: {
@@ -61,35 +87,7 @@ const config = [{
     ' * Released under the MIT License.\n' +
     ' */'
   },
-  plugins: [
-    alias({
-      resolve: [".js", ".vue"],
-      entries: [{ 
-        find:'@', 
-        replacement: path.resolve(__dirname, 'src') 
-      }]
-    }),
-    resolve(),
-    babel({
-      exclude: '**/node_modules/**'
-    }),
-    uglify({
-      output: {
-        comments: function(node, comment) {
-          if (comment.type === "comment2") {
-            // multiline comment
-            return /License/i.test(comment.value)
-          }
-          return false
-        },
-        beautify: false
-      },
-      compress: {
-        drop_console: true
-      },
-      warnings: false
-    })
-  ]
+  plugins,
 }]
 const files = {
   //'polyfill/1.0.0/index.js': 'src/widget/polyfill.js',
@@ -118,57 +116,7 @@ Object.keys(files).forEach((item) => {
       ' * Released under the MIT License.\n' +
       ' */'
     },
-    plugins: [
-      alias({
-        resolve: [".js", ".vue"],
-        entries: [{ 
-          find:'@', 
-          replacement: path.resolve(__dirname, 'src') 
-        }]
-      }),
-      commonjs(),
-      replace({ 
-        imgPath: process.env.NODE_ENV == 'production' ? '//m.img.whqietu.com' : ''
-      }),
-      vue({
-        template: {
-          isProduction: process.env.NODE_ENV == 'production' ? true : false,
-          compilerOptions: {
-             preserveWhitespace: false
-          },
-          optimizeSSR: false
-        },
-        style: {
-          postcssPlugins: [autoprefixer]
-        }
-      }),
-      resolve(),
-      babel({
-        exclude: '**/node_modules/**'
-      }),
-      postcss({
-        plugins: [autoprefixer]
-      }),
-      buble()
-    ]
-  }
-  if (process.env.NODE_ENV == 'production') {
-    configItem.plugins.push(uglify({
-      output: {
-        comments: function(node, comment) {
-          if (comment.type === "comment2") {
-            // multiline comment
-            return /License/i.test(comment.value)
-          }
-          return false
-        },
-        beautify: false
-      },
-      compress: {
-        drop_console: true
-      },
-      warnings: false
-    }))
+    plugins
   }
   config.push(configItem)
 })

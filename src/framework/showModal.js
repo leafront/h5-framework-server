@@ -1,31 +1,36 @@
+import ShowModalComponent from '@/components/showModal/index.vue'
+const ShowModalConstructor = Vue.extend(ShowModalComponent)
+const body = document.body
+
 export default {
-  installed: false,
   install (Vue, options) {
-    if (this.installed) {
-      return
-    }
-    Vue.prototype.$showModal = (options) => {
-
-      if (document.querySelector('.dialog-container')) {
-        return
-      }
-      const cancelText = options.cancelText || '取消'
-      const confirmText = options.confirmText || '确定'
-      const toast = options.showCancel == false ? 'none' : 'block'
-      const tpl = `<div class="ui-dialog" id="ui-dialog"><div class="ui-dialog-mask"></div><div class="ui-dialog-container"><div class="ui-dialog__bd" id = "dialog-content">${options.content}</div><div class="ui-dialog__ft"><span id = "ui-dialog-cancel" style="display:${toast}" class="ui-dialog__btn ui-dialog__btn_default">${cancelText}</span><span id = "ui-dialog-confirm" class="ui-dialog__btn">${confirmText}</span></div></div></div>`
-      utils.append(document.body, tpl)
-      const uiDialog = document.getElementById('ui-dialog')
-      document.getElementById('ui-dialog-cancel').addEventListener('click', () => {
-        uiDialog.parentNode.removeChild(uiDialog)
-        options.cancel && options.cancel()
+    let vm = null
+    Vue.prototype.$showModal = ({
+      content,
+      cancelText,
+      confirmText,
+      showCancel,
+      success
+    }) => {
+      vm = new ShowModalConstructor({
+        el : document.createElement('div'),
+        propsData: {
+          content,
+          cancelText,
+          confirmText,
+          showCancel,
+          success: () => {
+            success()
+            body.removeChild(vm.$el)
+            vm = null
+          },
+          cancel: () => {
+            body.removeChild(vm.$el)
+            vm = null
+          }
+        }
       })
-
-      document.getElementById('ui-dialog-confirm').addEventListener('click', () => {
-        uiDialog.parentNode.removeChild(uiDialog)
-        options.success && options.success()
-      })
-      
-      this.installed = true
+      body.appendChild(vm.$el)
     }
   }
 }

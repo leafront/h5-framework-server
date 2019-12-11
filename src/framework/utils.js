@@ -214,10 +214,10 @@ const utils = {
   trim (text) {
     return text.replace(/\s+/g, "")
   },
-  loadScript (url,success) {
+  loadScript (url, success) {
     const script = document.createElement("script")
     script.type = 'text/javascript'
-    script.src = config.staticPath + url
+    script.src =  url
     document.getElementsByTagName('head')[0].appendChild(script)
     script.onload = () => {
       success && success()
