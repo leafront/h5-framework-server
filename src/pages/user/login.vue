@@ -10,10 +10,10 @@
       </div> 
       <div class="user-login-form">
         <div class="user-login-form-item">
-          <input type="tel" v-model.trim="phone" maxlength="11" class="fs30 user-form-phone" placeholder="请输入手机号" />
+          <input type="tel" autocomplete="off" v-model.trim="phone" maxlength="11" class="fs30 user-form-phone" placeholder="请输入手机号" />
         </div>
         <div class="user-login-form-item">
-          <input type="tel" maxlength="6" v-model.trim="code" class="fs30 user-form-code" placeholder="验证码" />
+          <input type="tel" autocomplete="off" maxlength="6" v-model.trim="code" class="fs30 user-form-code" placeholder="验证码" />
           <div class="user-form-code-btn" @click="sendLoginCode">
             <i></i>
             <span class="fs28">获取验证码</span>
