@@ -83,6 +83,7 @@
           </div>  
         </div>  
       </div>    
+      <input type="tel" class="personal-tel" />
       <div class="personal-nav bgfff">
         <div class="personal-nav-item p30">
           <span class="fs28 c262626">地址管理</span>
@@ -113,6 +114,11 @@
 </template> 
 
 <style lang="scss">
+.personal-tel{
+  border: 1px solid red;
+  width: 100%;
+  height: .8rem;
+}
 .personal-logout{
   height: .88rem;
   color: #ff2661;
@@ -298,7 +304,8 @@
   export default {
     data () {
       return {
-        title: '个人中心'
+        title: '个人中心',
+        scrollTop: 0
       }
     },
     components: {
