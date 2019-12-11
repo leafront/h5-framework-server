@@ -155,9 +155,6 @@
       DownloadApp,
       List
     },
-    created () {
-      this.$showToast('sff')
-    },
     methods: {
       loadImg (event) {
         event.currentTarget.style.backgroundColor = '#fff'

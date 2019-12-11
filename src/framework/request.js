@@ -20,6 +20,7 @@ function clearStorage (times) {
 }
 
 function httpRequest ({cache, times, expires, cacheUrl, options, resolve, reject}) {
+  store.remove(cacheUrl, 'local')
   ajax(options).then((results) => {
     const data = {
       times: times + expires,
@@ -87,7 +88,6 @@ export default function request (url, {
         return
       } 
     } 
-    store.remove(cacheUrl, 'local')
     httpRequest ({cache, times, expires, cacheUrl, options, resolve, reject})
   })
 }

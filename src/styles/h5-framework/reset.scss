@@ -6,10 +6,6 @@ html{
   touch-action: manipulation;
 
 }
-article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
-  display: block;
-}
-
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,form,fieldset,input,textarea,p,button,span {
   margin: 0;
   padding: 0;
@@ -28,7 +24,7 @@ fieldset,img,button {
 img{
   vertical-align: top;
 }
-li{
+ul, ol{
   list-style: none;
 }
 
