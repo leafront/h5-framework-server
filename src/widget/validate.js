@@ -1,6 +1,6 @@
 const validate = {
   /**
-   * @param {string} phone
+   * @param {string} text
    * @return {boolean}
    */
   isMobile (text) {
@@ -8,7 +8,7 @@ const validate = {
     return pattern.test(text)
   },
   /**
-   * @param {Number || String} text
+   * @param {Number | String} text
    * @return {boolean}
    */
   checkNumber (text) {
@@ -17,7 +17,7 @@ const validate = {
   },
   /**
    * 邮箱验证
-   * @param {String} email
+   * @param {String} text
    * @return {boolean}
    */
   isEmail (text) {
@@ -25,10 +25,8 @@ const validate = {
     return pattern.test(text)
   },
   /**
-   * @param {String} zipCode
+   * @param {String} text
    * @returns {boolean}
-   * @example
-   * Lizard.isZipCode('430406')
    */
   isZipCode (text){
     var pattern = /^[0-9]{6}$/
@@ -36,4 +34,4 @@ const validate = {
   }
 }
 
-window.validate = validate
+export default validate
