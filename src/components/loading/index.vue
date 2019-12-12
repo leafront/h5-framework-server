@@ -1,4 +1,4 @@
-<template functional>
+<template>
   <div class="ui-showLoading">
     <div class="ui-showLoading-cont">
       <div class="ui-showLoading-icon">
