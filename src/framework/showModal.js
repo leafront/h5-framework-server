@@ -1,6 +1,5 @@
 import ShowModalComponent from '@/components/showModal/index.vue'
 const ShowModalConstructor = Vue.extend(ShowModalComponent)
-const body = document.body
 
 export default {
   install (Vue, options) {
@@ -21,11 +20,11 @@ export default {
           showCancel,
           success: () => {
             success()
-            body.removeChild(vm.$el)
+            document.body.removeChild(vm.$el)
             vm = null
           },
           cancel: () => {
-            body.removeChild(vm.$el)
+            document.body.removeChild(vm.$el)
             vm = null
           }
         }

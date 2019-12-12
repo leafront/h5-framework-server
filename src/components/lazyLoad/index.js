@@ -65,7 +65,7 @@ const lazyLoad = {
           el.style.backgroundSize = '100% auto'
           delete el.dataset.src
           el.dataset.LazyLoadImgState = 'success'
-          el.classList.add('ui-successImg')
+          el.classList.add('ui-success-pic')
           this.list.forEach((item, index) => {
             if (item == el) {
               this.list.splice(index, 1)

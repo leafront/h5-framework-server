@@ -83,7 +83,6 @@
           </div>  
         </div>  
       </div>    
-      <input type="tel" maxlength="11" autocomplete="off" class="personal-tel" placeholder="请输入" />
       <div class="personal-nav bgfff">
         <div class="personal-nav-item p30">
           <span class="fs28 c262626">地址管理</span>
@@ -114,11 +113,6 @@
 </template> 
 
 <style lang="scss">
-.personal-tel{
-  border: 1px solid red;
-  width: 100%;
-  height: .8rem;
-}
 .personal-logout{
   height: .88rem;
   color: #ff2661;
