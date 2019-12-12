@@ -70,7 +70,7 @@ const config = [{
     format: 'iife',
     file: 'public/serviceWorker.js',
     banner: '/*!' + '\n' +
-    ' * LastModifyTime: '+ time +'\n'+
+    ' * serviceWorker.js LastModifyTime: '+ time +'\n'+
     ` * Copyright(c) 2018-${new Date().getFullYear()} leafront`+'\n'+
     ' * Released under the MIT License.\n' +
     ' */\n'
@@ -90,14 +90,8 @@ const config = [{
   plugins,
 }]
 const files = {
-  //'polyfill/1.0.0/index.js': 'src/widget/polyfill.js',
-  //'validate/1.0.0/index.js': 'src/widget/validate.js',
   'filter/1.0.1/index.js': 'src/widget/filter.js',
   'lazyLoad/1.0.0/index.js': 'src/components/lazyLoad/index.js',
-  //'skeleton/1.0.0/index.js': 'src/components/skeleton/index.js',
-  //'1.0.0/swiper/index.js': 'src/components/swiper/index.js',
- // '1.0.0/downloadApp/index.js': 'src/components/downloadApp/index.js',
-  // '1.0.0/header/index.js': 'src/components/header/index.js',
   'user/personal.js': 'src/pages/user/personal.js',
   'index.js': 'src/pages/index/index.js',
   'user/login.js': 'src/pages/user/login.js'
