@@ -1,16 +1,16 @@
-<template>
+<template functional>
   <div class="ui-dialog">
     <div class="ui-dialog-mask"></div>
     <div class="ui-dialog-container">
       <div class="ui-dialog__bd">
-       {{content}}
+       {{props.content}}
       </div>
       <div class="ui-dialog__ft">
-        <span  v-show="!showCancel" class="ui-dialog__btn ui-dialog__btn_default" @click="cancelCallback">
-          {{cancelText}}
+        <span  v-show="!props.showCancel" class="ui-dialog__btn ui-dialog__btn_default" @click="cancelCallback">
+          {{props.cancelText}}
         </span>
         <span class="ui-dialog__btn" @click="successCallback">
-          {{confirmText}}
+          {{props.confirmText}}
         </span>
       </div>
     </div>

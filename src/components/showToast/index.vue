@@ -1,7 +1,7 @@
-<template>
+<template functional>
   <div class="ui-toast-mask">
     <div class="ui-toast">
-      <span>{{text}}</span>
+      <span>{{props.text}}</span>
     </div>
   </div>
 </template> 

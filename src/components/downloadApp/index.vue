@@ -1,4 +1,4 @@
-<template>
+<template functional>
   <div class="download-app">
     <div class="download-app-logo">
       <i></i>
