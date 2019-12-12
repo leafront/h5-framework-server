@@ -185,12 +185,12 @@ const utils = {
     var domain = (options && options.domain) || location.hostname
     var exp = new Date()
     exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000)
-    document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString() + "; path=/; domain=" + domain
+    document.cookie = name + "=" + window.encodeURIComponent(value) + ";expires=" + exp.toGMTString() + "; path=/; domain=" + domain
   },
   getCookie (name) {
     var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)")
     if (arr = document.cookie.match(reg))
-      return unescape(arr[2])
+      return window.decodeURIComponent(arr[2])
     else {
       return null
     }
