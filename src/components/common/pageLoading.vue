@@ -6,15 +6,15 @@
 <style lang="scss">
   @keyframes dotCarousel {
     0% {
-        box-shadow: 99.84rem 0 0 -1px #ff6600,100.14rem 0 0 1px #ff6600,100.44rem 0 0 -1px #ff6600
+      box-shadow: 99.84rem 0 0 -1px #ff6600,100.14rem 0 0 1px #ff6600,100.44rem 0 0 -1px #ff6600
     }
 
     50% {
-        box-shadow: 100.44rem 0 0 -1px #ff6600,99.84rem 0 0 -1px #ff6600,100.14rem 0 0 1px #ff6600
+      box-shadow: 100.44rem 0 0 -1px #ff6600,99.84rem 0 0 -1px #ff6600,100.14rem 0 0 1px #ff6600
     }
 
     100% {
-        box-shadow: 100.14rem 0 0 1px #ff6600,100.44rem 0 0 -1px #ff6600,99.84rem 0 0 -1px #ff6600
+      box-shadow: 100.14rem 0 0 1px #ff6600,100.44rem 0 0 -1px #ff6600,99.84rem 0 0 -1px #ff6600
     }
   }
 
