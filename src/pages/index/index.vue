@@ -1,5 +1,5 @@
 <template>  
-  <div class="pageView" id="app">
+  <div class="page-view" id="app">
     <div class="scroll-view-wrapper">
       <DownloadApp></DownloadApp>
       <div class="top-bar">
@@ -24,7 +24,7 @@
       <div class="home-banner">
         <Banner :bannerList="bannerList"></Banner>
       </div>
-      <div class="home-nav">
+      <div class="home-nav" v-if="defer(10)">
         <div class="home-nav-item" v-for="(item, index) in navList">
           <div class="home-nav-item-pic ui-lazyLoad-pic">
             <img v-if="index >= 4" :src="item.poster|httpsImg" @load="loadImg($event)"/>
@@ -33,7 +33,7 @@
           <p class="c4 fs26">{{item.name}}</p>
         </div>  
       </div> 
-      <div class="home-operating">
+      <div class="home-operating" v-if="defer(10)">
         <div class="home-operating-item" v-for="item in operating">
           <div class="operating-item-txt">
             <h2 class="operating-item-title" :style="{'backgroundImage': 'url('+item.title+')'}"></h2>
@@ -44,7 +44,7 @@
           </div>  
         </div>   
       </div> 
-      <div class="home-server">
+      <div class="home-server" v-if="defer(10)">
         <h4>服务保障</h4>
         <div class="home-server-item">
           <span class="c9">无票赔付</span>
@@ -52,7 +52,7 @@
           <span class="c9">配送保障</span>
         </div>
       </div> 
-      <div class="home-activities">
+      <div class="home-activities" v-if="defer(10)">
         <div class="home-hot-title">
           <h3>近期热门</h3>
           <div class="home-title-all">
@@ -116,14 +116,14 @@
           </div>  
         </div>
       </div> 
-      <div class="home-advert ui-lazyLoad-pic">
+      <div class="home-advert ui-lazyLoad-pic" v-if="defer(10)">
         <img src="https://img.piaoniu.com/banner/b5cbe1866115f85b91f3eca09dcbe1d103d92a5b.jpg"/>
       </div> 
-      <div class="home-advert-more">
+      <div class="home-advert-more" v-if="defer(10)">
         <p class="fs28">更多精彩内容待你发现</p>
         <div class="ui-right-arrow"></div>
       </div>
-      <div class="home-guess-like">
+      <div class="home-guess-like" v-if="defer(10)">
         <div class="home-guess-like-title">
           <h3>猜你喜欢</h3>
         </div>
@@ -155,6 +155,9 @@
       DownloadApp,
       List
     },
+    mixins: [
+      defer()
+    ],
     methods: {
       loadImg (event) {
         event.currentTarget.style.backgroundColor = '#fff'

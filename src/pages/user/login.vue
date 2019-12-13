@@ -1,5 +1,5 @@
 <template>  
-  <div class="pageView" id="app">
+  <div class="page-view" id="app">
     <div class="scroll-view-wrapper">
       <DownloadApp></DownloadApp>
       <div class="user-login-close" @click="pageAction">

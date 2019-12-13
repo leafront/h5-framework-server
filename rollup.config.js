@@ -8,6 +8,7 @@ import alias from 'rollup-plugin-alias'
 import postcss from 'rollup-plugin-postcss'
 import replace from '@rollup/plugin-replace'
 import autoprefixer from 'autoprefixer'
+import typescript from 'rollup-plugin-typescript2'
 import path from 'path'
 
 const time = process.env.time
@@ -22,6 +23,11 @@ const plugins = [
     }]
   }),
   commonjs(),
+  typescript({
+    typescript: require('typescript'),
+    objectHashIgnoreUnknownHack: true,
+    exclude: [ "*.d.ts", "**/*.d.ts", ".vue" ]
+  }),
   replace({ 
     imgPath: process.env.NODE_ENV == 'production' ? '//m.img.whqietu.com' : '',
     staticPath: process.env.NODE_ENV == 'production' ? '//m.static.whqietu.com' : '',
@@ -75,7 +81,7 @@ const config = [{
     ' * Released under the MIT License.\n' +
     ' */\n'
   },
-  plugins,
+  plugins
 }, {
   input: 'src/framework/index.js',
   output: {
@@ -88,6 +94,9 @@ const config = [{
     ' */'
   },
   plugins,
+  // globals: {
+  //   vue: 'Vue'
+  // }
 }]
 const files = {
   'filter/1.0.1/index.js': 'src/widget/filter.js',
@@ -95,7 +104,6 @@ const files = {
   'user/personal.js': 'src/pages/user/personal.js',
   'index.js': 'src/pages/index/index.js',
   'user/login.js': 'src/pages/user/login.js'
-
 }
 
 Object.keys(files).forEach((item) => {
@@ -110,7 +118,10 @@ Object.keys(files).forEach((item) => {
       ' * Released under the MIT License.\n' +
       ' */'
     },
-    plugins
+    plugins,
+    // globals: {
+    //   Vue: 'vue'
+    // }
   }
   config.push(configItem)
 })
