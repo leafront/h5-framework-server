@@ -24,7 +24,7 @@
       <div class="home-banner">
         <Banner :bannerList="bannerList"></Banner>
       </div>
-      <div class="home-nav" v-if="defer(10)">
+      <div class="home-nav">
         <div class="home-nav-item" v-for="(item, index) in navList">
           <div class="home-nav-item-pic ui-lazyLoad-pic">
             <img v-if="index >= 4" :src="item.poster|httpsImg" @load="loadImg($event)"/>
@@ -33,7 +33,7 @@
           <p class="c4 fs26">{{item.name}}</p>
         </div>  
       </div> 
-      <div class="home-operating" v-if="defer(10)">
+      <div class="home-operating">
         <div class="home-operating-item" v-for="item in operating">
           <div class="operating-item-txt">
             <h2 class="operating-item-title" :style="{'backgroundImage': 'url('+item.title+')'}"></h2>
@@ -44,7 +44,7 @@
           </div>  
         </div>   
       </div> 
-      <div class="home-server" v-if="defer(10)">
+      <div class="home-server">
         <h4>服务保障</h4>
         <div class="home-server-item">
           <span class="c9">无票赔付</span>
@@ -52,7 +52,7 @@
           <span class="c9">配送保障</span>
         </div>
       </div> 
-      <div class="home-activities" v-if="defer(10)">
+      <div class="home-activities">
         <div class="home-hot-title">
           <h3>近期热门</h3>
           <div class="home-title-all">
@@ -91,7 +91,7 @@
             <div class="ui-right-arrow"></div>
           </div>  
         </div> 
-        <div class="home-ticket">
+        <div class="home-ticket" v-if="defer(10)">
           <div class="home-ticket-wrapper" id="discount-ticket-wrapper">
             <div class="home-ticket-item" v-for="item in discountTicket">
               <div class="home-ticker-pic ui-lazyLoad-pic" :style="{'backgroundImage': 'url('+item.poster+')','backgroundSize': '100% auto'}"></div>  
