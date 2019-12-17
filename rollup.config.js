@@ -13,7 +13,7 @@ import path from 'path'
 
 const time = process.env.time
 const pathName = 'public/static/js/'
-const frameworkVersion = '1.0.3'
+const frameworkVersion = '1.0.4'
 const plugins = [
   alias({
     resolve: [".js", ".vue"],

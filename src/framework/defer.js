@@ -21,7 +21,6 @@ export default function (count = 50) {
         step()
       },
       defer (priority) {
-        console.log(this.displayPriority,priority)
         return this.displayPriority >= priority
       }
     }
