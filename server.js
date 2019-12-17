@@ -9,6 +9,7 @@ var router = new Router()
 var error = require('./router/error/index')
 var index = require('./router/index')
 var user = require('./router/user')
+var luck = require('./router/luck')
 
 app.use(server(__dirname + '/public'))
 //set ejs
@@ -41,6 +42,7 @@ app.use(async (ctx, next) => {
 
 router.use('/',index.routes())
 router.use('/user', user.routes())
-router.use('/error',error.routes())
+router.use('/error', error.routes())
+router.use('/luck', luck.routes())
 app.use(router.routes())
 app.listen(3000);

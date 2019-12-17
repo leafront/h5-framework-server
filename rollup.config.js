@@ -13,7 +13,7 @@ import path from 'path'
 
 const time = process.env.time
 const pathName = 'public/static/js/'
-const frameworkVersion = '1.0.2'
+const frameworkVersion = '1.0.3'
 const plugins = [
   alias({
     resolve: [".js", ".vue"],
@@ -103,7 +103,8 @@ const files = {
   'lazyLoad/1.0.0/index.js': 'src/components/lazyLoad/index.js',
   'user/personal.js': 'src/pages/user/personal.js',
   'index.js': 'src/pages/index/index.js',
-  'user/login.js': 'src/pages/user/login.js'
+  'user/login.js': 'src/pages/user/login.js',
+  'luck/draw.js': 'src/pages/luck/draw.js'
 }
 
 Object.keys(files).forEach((item) => {
