@@ -67,7 +67,7 @@
   left: 0;
   top: 0;
   &.active{
-    transform: rotate(3330deg);
+    transform: rotate(3300deg);
     transition: transform 6s linear;
   }
 }
