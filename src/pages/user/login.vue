@@ -28,9 +28,6 @@
 </template>  
 
 <style lang="scss">
-  body{
-  background: #fff;
-}
 .user-login-submit{
   margin-top: .64rem;
   border-radius: .06rem;

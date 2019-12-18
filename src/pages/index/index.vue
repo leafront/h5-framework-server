@@ -172,10 +172,6 @@
 <style src="../../styles/swiper/index.scss" lang="scss">
 </style>
 <style lang="scss">
-  body{
-  background: #fff;
-}
-
 .home-advert{
   margin: .64rem .28rem .16rem;
   img{

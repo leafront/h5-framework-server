@@ -33,9 +33,6 @@
 </template>  
 
 <style lang="scss">
-  body{
-  background: #fff;
-}
 .draw-outer-wrapper{
   position: relative;
   height: 7.1rem;
