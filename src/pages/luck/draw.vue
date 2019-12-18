@@ -66,8 +66,8 @@
   position: absolute;
   left: 0;
   top: 0;
-  transition: transform 6s ease-out;
   &.active{
+    transition: transform 6s ease-out;
     transform: rotate(3300deg);
   }
 }
