@@ -66,9 +66,9 @@
   position: absolute;
   left: 0;
   top: 0;
+  transition: transform 6s ease-out;
   &.active{
     transform: rotate(3300deg);
-    transition: transform 6s linear;
   }
 }
 .draw-inner{
