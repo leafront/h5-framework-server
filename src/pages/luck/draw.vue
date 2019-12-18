@@ -67,7 +67,7 @@
   left: 0;
   top: 0;
   &.active{
-    transition: transform 6s ease-out;
+    transition: transform 6s cubic-bezier(0.010, 0.845, 0.645, 0.960);
     transform: rotate(3300deg);
   }
 }
