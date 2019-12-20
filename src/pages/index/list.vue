@@ -133,7 +133,7 @@
 	    */
 	    scrollLoadList () {
 	      const winHeight = window.innerHeight 
-	      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+	      const scrollTop = document.scrollingElement.scrollTop
 	      const scrollViewHeight = document.querySelector('.scroll-view-wrapper').offsetHeight - 50
 	      const realFunc = () => {
 	        if (winHeight + scrollTop >= scrollViewHeight && this.list.length < this.pageTotal) {
