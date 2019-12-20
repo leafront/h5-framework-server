@@ -3,7 +3,7 @@
     <div class="scroll-view-wrapper">
       <div class="draw-outer-wrapper" ref="drawOuter">
         <div class="draw-luck-start" @click="startLuckDraw"></div>
-        <div class="draw-outer" :class="{'active': isLuckDraw}">
+        <div class="draw-outer" :class="{'active': isLuckDraw}" :style="{'transform':'rotate('+rotateLuckDraw+'deg)'}">
           <div class="draw-inner">
             <div class="draw-inner-wrapper">
               <div class="draw-inner-item draw-inner-item1">
@@ -65,7 +65,6 @@
   top: 0;
   &.active{
     transition: transform 6s cubic-bezier(0.010, 0.845, 0.645, 0.960);
-    transform: rotate(3300deg);
   }
 }
 .draw-inner{
@@ -96,37 +95,43 @@
   }
 }
 .draw-inner-item1{
-  transform: rotate(-30deg) skewY(-30deg);
+  transform: rotate(0deg) skewY(-30deg);
   background: red;
 }
 .draw-inner-item2{
-  transform: rotate(30deg) skewY(-30deg);
+  transform: rotate(60deg) skewY(-30deg);
   background: green;
 }
 .draw-inner-item3{
-  transform: rotate(90deg) skewY(-30deg);
+  transform: rotate(120deg) skewY(-30deg);
   background: pink;
 }
 .draw-inner-item4{
-  transform: rotate(150deg) skewY(-30deg);
+  transform: rotate(180deg) skewY(-30deg);
   background: blue;
 }
 .draw-inner-item5{
-  transform: rotate(210deg) skewY(-30deg);
+  transform: rotate(240deg) skewY(-30deg);
   background: orange;
 }
 .draw-inner-item6{
-  transform: rotate(270deg) skewY(-30deg);
+  transform: rotate(300deg) skewY(-30deg);
   background: aqua;
 }
 </style>
 <script type="text/javascript">
 
+  function showRandomRotate () {
+    const rotateNum = Math.ceil(Math.random() * 5)
+    return (8 + rotateNum) * 360
+  }
   export default {
     data () {
       return {
         isLuckDraw: false,
-        isStopAnimate: false
+        isStopAnimate: false,
+        rotate: 60,
+        rotateLuckDraw: 0
       }
     },
     mounted () {
@@ -137,6 +142,9 @@
         this.isStopAnimate = false
       })
     },
+    create () {
+      this.rotate = 360 / 6 //(6 根据后端配置的6个奖)
+    },
     methods: {
       startLuckDraw () {
         if (this.isStopAnimate) {
@@ -144,8 +152,12 @@
         }
         this.isStopAnimate = true
         this.isLuckDraw = false
+        this.rotateLuckDraw = 0
+        const luckDrawNumber = Math.floor(Math.random() * 5) //中奖的顺序 后端返回
+        const randomRotate = showRandomRotate()
         setTimeout(() => {
           this.isLuckDraw = true
+          this.rotateLuckDraw = randomRotate + (360 - luckDrawNumber * this.rotate + this.rotate / 2)
         }, 100)
       }
     }
