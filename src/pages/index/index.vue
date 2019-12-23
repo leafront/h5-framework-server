@@ -137,7 +137,6 @@
   import Banner from './banner.vue'
   import DownloadApp from '@/components/downloadApp/index.vue'
   import List from './list.vue'
-
   const { navList, bannerList, operating, hotTicket, discountTicket } = window.__NUXT__
 
   export default {

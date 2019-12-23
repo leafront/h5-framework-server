@@ -6,6 +6,7 @@
     "strict": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "declarationDir": "./src",
     "noImplicitAny": true,
     "allowSyntheticDefaultImports": true,
     "suppressImplicitAnyIndexErrors": true,

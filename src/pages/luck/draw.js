@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import Draw from './draw.vue'
 
 new Vue({

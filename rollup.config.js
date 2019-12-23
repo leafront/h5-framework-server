@@ -71,7 +71,7 @@ const plugins = [
   })
 ]
 
-const config = [{
+const configFile = [{
   input: 'src/serviceWorker.js',
   output: {
     format: 'iife',
@@ -94,16 +94,13 @@ const config = [{
     ' * Released under the MIT License.\n' +
     ' */'
   },
-  plugins,
-  // globals: {
-  //   vue: 'Vue'
-  // }
+  plugins
 }]
 const files = {
-  'filter/'+config.js.filter+'/index.js': 'src/widget/filter.js',
-  'lazyLoad/'+config.js.lazyLoad+'/index.js': 'src/components/lazyLoad/index.js',
+  ['filter/'+config.js.filter+'/index.js']: 'src/widget/filter.js',
+  ['lazyLoad/'+config.js.lazyLoad+'/index.js']: 'src/components/lazyLoad/index.js',
   'user/personal.js': 'src/pages/user/personal.js',
-  'index.js': 'src/pages/index/index.js',
+  'index.js': 'src/pages/index/index.ts',
   'user/login.js': 'src/pages/user/login.js',
   'luck/draw.js': 'src/pages/luck/draw.js'
 }
@@ -111,21 +108,26 @@ const files = {
 Object.keys(files).forEach((item) => {
   const configItem = {
     input: files[item],
+    external: ['vue','utils','store','defer','request'],
     output: {
       format: 'iife',
       file: pathName + item,
+      globals: {
+        vue: 'Vue',
+        utils: 'utils',
+        store: 'store',
+        defer: 'defer',
+        request: 'request'
+      },
       banner: '/*!' + '\n' +
       ` * ${item} \n` +
       ` * Copyright(c) 2018-${new Date().getFullYear()} leafront`+'\n'+
       ' * Released under the MIT License.\n' +
       ' */'
     },
-    plugins,
-    // globals: {
-    //   Vue: 'vue'
-    // }
+    plugins
   }
-  config.push(configItem)
+  configFile.push(configItem)
 })
 
-export default config
+export default configFile

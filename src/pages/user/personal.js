@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import Personal from './personal.vue'
 
 new Vue({
