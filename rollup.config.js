@@ -10,10 +10,11 @@ import replace from '@rollup/plugin-replace'
 import autoprefixer from 'autoprefixer'
 import typescript from 'rollup-plugin-typescript2'
 import path from 'path'
+var config = require('./config/index')
 
 const time = process.env.time
 const pathName = 'public/static/js/'
-const frameworkVersion = '1.0.4'
+const frameworkVersion = config.js.framework
 const plugins = [
   alias({
     resolve: [".js", ".vue"],
@@ -99,8 +100,8 @@ const config = [{
   // }
 }]
 const files = {
-  'filter/1.0.1/index.js': 'src/widget/filter.js',
-  'lazyLoad/1.0.0/index.js': 'src/components/lazyLoad/index.js',
+  'filter/'+config.js.filter+'/index.js': 'src/widget/filter.js',
+  'lazyLoad/'+config.js.lazyLoad+'/index.js': 'src/components/lazyLoad/index.js',
   'user/personal.js': 'src/pages/user/personal.js',
   'index.js': 'src/pages/index/index.js',
   'user/login.js': 'src/pages/user/login.js',

@@ -6,21 +6,19 @@ var autoprefixer = require('gulp-autoprefixer')
 var inject = require('gulp-inject')
 var rev = require('gulp-rev-hash')
 var banner = require('gulp-banner')
-
-var cssVersion = '1.0.0'
+var config = require('./config/index')
 var css = {
-  "h5-framework": "h5-framework/"+cssVersion+"/index.css"
+  "h5-framework": "h5-framework/"+config.css.framework+"/index.css"
 }
-
 var js = {
-  "vue": "vue/2.6.10/index.js",
-  "h5-framework": "h5-framework/1.0.4/index.js",
-  "filter": "filter/1.0.1/index.js",
-  "lazyLoad": "lazyLoad/1.0.0/index.js"
+  "vue": "vue/"+config.js.vue+"/index.js",
+  "h5-framework": "h5-framework/"+config.js.framework+"/index.js",
+  "filter": "filter/"+config.js.filter+"/index.js",
+  "lazyLoad": "lazyLoad/"+config.js.lazyLoad+"/index.js"
 }
 
 var comment = '/*!\n' +
-  ` * h5-framework.css  v${cssVersion} \n` +
+  ` * h5-framework.css  v${config.css.framework} \n` +
   ` * Copyright(c) 2018-${new Date().getFullYear()} leafront \n` +
   ' * Released under the MIT License.\n' +
   ' */\n'
@@ -37,13 +35,13 @@ gulp.task('sass', function () {
     }))
     .pipe(replace(/imgPath\b/g, '//m.img.whqietu.com'))
     .pipe(banner(comment))
-    .pipe(gulp.dest('./public/static/css/h5-framework/' + cssVersion))
+    .pipe(gulp.dest('./public/static/css/h5-framework/' + config.css.framework))
 })
 
 gulp.task('cssjs:version', function () {
   return gulp.src('./templates/**/*.html')
     .pipe(replace(/h5-framework\/1.0.0\/index.css\b/g, css['h5-framework']))
-    .pipe(replace(/h5-framework\/1.0.4\/index.js\b/g, js['h5-framework']))
+    .pipe(replace(/h5-framework\/1.0.5\/index.js\b/g, js['h5-framework']))
     .pipe(replace(/vue\/2.6.10\/index.js\b/g, js['vue']))
     .pipe(replace(/filter\/1.0.0\/index.js\b/g, js['filter']))
     .pipe(replace(/lazyLoad\/1.0.0\/index.js\b/g, js['lazyLoad']))
