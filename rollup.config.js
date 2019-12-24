@@ -32,6 +32,11 @@ const plugins = [
   replace({ 
     imgPath: process.env.NODE_ENV == 'production' ? '//m.img.whqietu.com' : '',
     staticPath: process.env.NODE_ENV == 'production' ? '//m.static.whqietu.com' : '',
+    swVersion: config.js.swVersion,
+    cssVersion: config.css.framework,
+    jsVersion: config.js.framework,
+    vueVersion: config.js.vue
+
   }),
   vue({
     template: {
