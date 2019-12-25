@@ -13,7 +13,7 @@ const lazyLoad = {
     this.list.push(el)
     this.scrollLoad()
   },
-   /**
+  /**
    * 滚动加载图片显示替换默认图片
    */
   scrollLoad () {

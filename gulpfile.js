@@ -22,6 +22,7 @@ var comment = '/*!\n' +
   ` * Copyright(c) 2018-${new Date().getFullYear()} leafront \n` +
   ' * Released under the MIT License.\n' +
   ' */\n'
+
 gulp.task('sass', function () {
   return gulp.src('./src/styles/h5-framework/index.scss')
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
@@ -38,16 +39,6 @@ gulp.task('sass', function () {
     .pipe(gulp.dest('./public/static/css/h5-framework/' + config.css.framework))
 })
 
-gulp.task('cssjs:version', function () {
-  return gulp.src('./templates/**/*.html')
-    .pipe(replace(/h5-framework\/1.0.0\/index.css\b/g, css['h5-framework']))
-    .pipe(replace(/h5-framework\/1.0.5\/index.js\b/g, js['h5-framework']))
-    .pipe(replace(/vue\/2.6.10\/index.js\b/g, js['vue']))
-    .pipe(replace(/filter\/1.0.0\/index.js\b/g, js['filter']))
-    .pipe(replace(/lazyLoad\/1.0.0\/index.js\b/g, js['lazyLoad']))
-    .pipe(gulp.dest('./templates/'))
-})
-
 gulp.task('html', function () {
   gulp.src(`./templates/**/*.html`)
     .pipe(rev({
@@ -56,7 +47,12 @@ gulp.task('html', function () {
     .pipe(replace(/staticPath\b/g, '//m.static.whqietu.com'))  
     .pipe(replace(/\/static\b/g, '//m.static.whqietu.com/static'))
     .pipe(replace(/imgPath\b/g, '//m.img.whqietu.com/static')) 
-    .pipe(replace(/\$imagPath\b/g, '//m.img.whqietu.com')) 
+    .pipe(replace(/\$imagPath\b/g, '//m.img.whqietu.com'))
+    .pipe(replace(/cssVersion\b/g, config.css.framework)) 
+    .pipe(replace(/vueVersion\b/g, config.js.vue)) 
+    .pipe(replace(/jsVersion\b/g, config.js.framework)) 
+    .pipe(replace(/filterVersion\b/g, config.js.filter))
+    .pipe(replace(/lazyLoadVersion\b/g, config.js.lazyLoad))  
     .pipe(htmlmin({        
         removeComments: true,//清除HTML注释
         collapseWhitespace: true,//压缩HTML

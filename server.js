@@ -14,7 +14,7 @@ var luck = require('./router/luck')
 app.use(server(__dirname + '/public'))
 //set ejs
 render(app, {
-  root: path.join(__dirname,  process.env.NODE_ENV == 'production' ? 'views' : 'templates'),
+  root: path.join(__dirname, 'views'),
   layout: false,
   viewExt: 'html',
   cache: false,
