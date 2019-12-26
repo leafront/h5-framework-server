@@ -45,23 +45,24 @@ gulp.task('html', function () {
     .pipe(rev({
       assetsDir: 'public'
     })) 
-    .pipe(replace(/staticPath\b/g, env == 'production' ? '//m.static.whqietu.com' : '/static'))  
-    .pipe(replace(/imgPath\b/g, env == 'production' ? '//m.img.whqietu.com': '/static')) 
-    .pipe(replace(/imgPath\/static\b/g, env == 'production' ? '//m.img.whqietu.com/static' : '/static')) 
     .pipe(replace(/\/static\b/g, env == 'production' ? '//m.static.whqietu.com/static' : '/static')) 
+    .pipe(replace(/imgPathHost\b/g, env == 'production' ? '//m.img.whqietu.com': '/static')) 
+    .pipe(replace(/staticPathHost\b/g, env == 'production' ? '//m.static.whqietu.com' : '/static')) 
+    .pipe(replace(/staticPath\b/g, env == 'production' ? '//m.static.whqietu.com/static' : '/static'))  
+    .pipe(replace(/imgPath\b/g, env == 'production' ? '//m.img.whqietu.com/static': '/static')) 
     .pipe(replace(/cssVersion\b/g, config.css.framework)) 
     .pipe(replace(/vueVersion\b/g, config.js.vue)) 
     .pipe(replace(/jsVersion\b/g, config.js.framework)) 
     .pipe(replace(/filterVersion\b/g, config.js.filter))
     .pipe(replace(/lazyLoadVersion\b/g, config.js.lazyLoad))  
     .pipe(htmlmin({        
-        removeComments: true,//清除HTML注释
-        collapseWhitespace: true,//压缩HTML
+        removeComments: env == 'production' ? true : false,//清除HTML注释
+        collapseWhitespace: env == 'production' ? true : false,//压缩HTML
         removeEmptyAttributes: true,//删除所有空格作属性值 <input id="" /> ==> <input />
         removeScriptTypeAttributes: false,//删除<script>的type="text/javascript"
         removeStyleLinkTypeAttributes: false, //删除<style>和<link>的type="text/css"
-        minifyJS: true,//压缩页面JS
-        minifyCSS: true//压缩页面CSS
+        minifyJS: env == 'production' ? true : false,//压缩页面JS
+        minifyCSS: env == 'production' ? true : false//压缩页面CSS
     }))
     .pipe(gulp.dest(`./views/`))
 })
