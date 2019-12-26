@@ -36,7 +36,7 @@ app.use(async (ctx, next) => {
       //ctx.redirect('/error/500?path='+ctx.url);
     }
   }
-  ctx.response.etag = crypto.createHash('md5').update(ctx.body).digest('hex')
+  ctx.response.etag = crypto.createHash('md5').update(ctx.body).digest('hex').toUpperCase()
   ctx.response.lastModified = new Date()
 })
 
