@@ -7,6 +7,7 @@ var inject = require('gulp-inject')
 var rev = require('gulp-rev-hash')
 var banner = require('gulp-banner')
 var config = require('./config/index')
+var env = process.env.NODE_ENV
 var css = {
   "h5-framework": "h5-framework/"+config.css.framework+"/index.css"
 }
@@ -44,10 +45,10 @@ gulp.task('html', function () {
     .pipe(rev({
       assetsDir: 'public'
     })) 
-    .pipe(replace(/staticPath\b/g, '//m.static.whqietu.com'))  
-    .pipe(replace(/\/static\b/g, '//m.static.whqietu.com/static'))
-    .pipe(replace(/imgPath\b/g, '//m.img.whqietu.com/static')) 
-    .pipe(replace(/\$imagPath\b/g, '//m.img.whqietu.com'))
+    .pipe(replace(/staticPath\b/g, env == 'production' ? '//m.static.whqietu.com' : '/static'))  
+    .pipe(replace(/imgPath\b/g, env == 'production' ? '//m.img.whqietu.com': '/static')) 
+    .pipe(replace(/imgPath\/static\b/g, env == 'production' ? '//m.img.whqietu.com/static' : '/static')) 
+    .pipe(replace(/\/static\b/g, env == 'production' ? '//m.static.whqietu.com/static' : '/static')) 
     .pipe(replace(/cssVersion\b/g, config.css.framework)) 
     .pipe(replace(/vueVersion\b/g, config.js.vue)) 
     .pipe(replace(/jsVersion\b/g, config.js.framework)) 
