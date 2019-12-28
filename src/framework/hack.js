@@ -16,7 +16,7 @@ function stopPageEnlarge() { // 处理iphone safari 双指放大和单击两次�
     event.preventDefault()
   }, false)
 
-  document.getElementById('app').addEventListener('touchmove', () =>  {
+  document.getElementById('app').addEventListener('touchmove', (event) =>  {
     event.stopPropagation()
     event.preventDefault()
   }, false)
