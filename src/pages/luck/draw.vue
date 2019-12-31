@@ -3,7 +3,7 @@
     <div class="scroll-view-wrapper">
       <div class="draw-outer-wrapper" ref="drawOuter">
         <div class="draw-luck-start" @click="startLuckDraw"></div>
-        <div class="draw-outer" :class="{'active': isLuckDraw}" :style="{'transform':'rotate('+rotateLuckDraw+'deg)'}">
+        <div class="draw-outer" :class="{'active': isLuckDraw}" :style="{'transform':'rotate3d(0,0,1, '+rotateLuckDraw+'deg)'}">
           <div class="draw-inner">
             <div class="draw-inner-wrapper">
               <div class="draw-inner-item draw-inner-item1">
@@ -59,10 +59,11 @@
   padding: .4rem;
   display: flex;
   align-items: center;
-  transform: rotate(0deg);
+  transform: rotate3d(0, 0, 1, 0);
   position: absolute;
   left: 0;
   top: 0;
+  backface-visibility: hidden;
   &.active{
     transition: transform 6s cubic-bezier(0.010, 0.845, 0.645, 0.960);
   }
