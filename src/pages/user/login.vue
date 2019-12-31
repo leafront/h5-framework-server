@@ -135,7 +135,7 @@
     },
     methods: {
       pageAction () {
-        const redirect = utils.query('redirect')
+        const redirect = utils.getQueryParams('redirect')
         if (redirect) {
           location.href = redirect
         } else {
