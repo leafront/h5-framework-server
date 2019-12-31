@@ -3,41 +3,17 @@ const utils = {
     return navigator.userAgent.indexOf('MicroMessenger') > -1
   },
   /**
-   * @param  {String}  value
+   * @param  {Object}  value
    * @return {String}  value
    */
-  serialize(value) {
+  serialize (value) {
     return JSON.stringify(value)
-  },
-  /**
-   * @param {Object} el
-   * @param {String} html
-   */
-  append (el, html) {
-
-    var divTemp = document.createElement("div")
-    var nodes = null
-    var fragment = document.createDocumentFragment()
-
-    divTemp.innerHTML = html
-
-    nodes = divTemp.childNodes
-
-    for (var i = 0, length = nodes.length; i < length; i += 1) {
-
-      fragment.appendChild(nodes[i].cloneNode(true))
-    }
-
-    el.appendChild(fragment)
-
-    nodes = null
-    fragment = null
   },
   /**
    * @param  {String} value
    * @return {String} value
    */
-  deserialize(value) {
+  deserialize (value) {
     if (typeof value != 'string' || value == '') return ''
     try {
       return JSON.parse(value)
@@ -45,7 +21,7 @@ const utils = {
       return ''
     }
   },
-  isLocalStorageSupported() {
+  isLocalStorageSupported () {
     var testKey = 'test'
     var storage = window.sessionStorage
     try {
@@ -126,8 +102,7 @@ const utils = {
     }
 
     let result = []
-    for (var key in obj) {
-
+    Object.keys(obj).forEach((key) => {
       key = encodeURIComponent(key)
       const values = obj[key]
       if (values && values.constructor == Array) {
@@ -141,31 +116,24 @@ const utils = {
       } else {
         result.push(toQueryPair(key,values))
       }
-    }
+    })
 
     return result.join('&')
   },
   /**
-   * @param {String || null } text
-   * @return {Object}
+   * @param {String || null } val
+   * @return {Object |  String} result
    */
-  query (strName){
-    const queryObj = Object.create(null)
-    const query = location.search.substring(1) // Get query string
-    const pairs = query.split("&") // Break at ampersand
-
-    for (let i = 0; i < pairs.length; i++) {
-      const pos = pairs[i].indexOf('=') // Look for "name=value"
-      if (pos == -1) continue // If not found, skip
-      const paramsName = pairs[i].substring(0, pos) // Extract the name
-      let value = pairs[i].substring(pos + 1) // Extract the value
-      value = decodeURIComponent(value) // Decode it, if needed
-      queryObj[paramsName] = value // Store as a property
-    }
-    if (strName) {
-      return queryObj[strName] // Return the object
+  getQueryParams (val){
+    const searchParams = new URLSearchParams(location.search)
+    const result = Object.create(null)
+    searchParams.forEach((value, key) => {
+      result[key] = value
+    })
+    if (val) {
+      return result[val]
     } else {
-      return queryObj
+      return result
     }
   },
   isPassive() {
@@ -214,23 +182,14 @@ const utils = {
   trim (text) {
     return text.replace(/\s+/g, "")
   },
-  loadScript (url, success) {
-    const script = document.createElement("script")
-    script.type = 'text/javascript'
-    script.src =  url
-    document.getElementsByTagName('head')[0].appendChild(script)
-    script.onload = () => {
-      success && success()
+  floatToBigint (val, decimal = 4) {
+    const value = val.toString()
+    const digit = '1' + new Array(decimal + 1).join('0')
+    if (!value){
+      return value
+    } else {
+      return parseInt(value * digit)
     }
-  },
-  /**
-   * @param {String} res
-   */
-  appendScript (res) {
-    const script = document.createElement('script')
-    script.type = 'text/javascript'
-    script.appendChild(document.createTextNode(res))
-    document.head.appendChild(script)
   }
 }
 

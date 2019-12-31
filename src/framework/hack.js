@@ -37,5 +37,21 @@ function changePageScroll () { // 处理iphone safari 输入框键盘抬起没�
     }, false)
   })
 }
+
+Number.prototype.toFixed = function (length) {
+  var posNum = 0
+  var value = this + ''
+  var posIndex = value.indexOf('.')
+  var precisition = value.substr(posIndex + length + 1, 1)
+  if (precisition == '') {
+    return value + '0'.repeat(length - value.substr(posIndex + 1).length)
+  } else if (precisition >= 5) {
+    posNum = 1
+  }
+  var powNum = Math.pow(10, length)
+  var result = Math.floor(this *  powNum) + posNum  
+  return result / powNum
+}
+
 stopPageEnlarge()
 changePageScroll()
