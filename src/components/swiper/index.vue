@@ -16,10 +16,6 @@ export default {
       type: Array,
       default: []
     },
-    step: {
-      type: Number,
-      default: 20
-    },
     isAutoPlay: {
       type: Boolean,
       default: true
@@ -40,10 +36,6 @@ export default {
     itemWidth: {
       type: Number,
       default: 750
-    },
-    picLazyLoad: {
-      type: Boolean,
-      default: true
     }
   },
   data () {
