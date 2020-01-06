@@ -24,16 +24,16 @@ app.use(async (ctx, next) => {
   try {
     await next();
     if (ctx.status == 404) {
-      //ctx.redirect('/error/404?path='+ctx.url);
+      //ctx.redirect('/error/404?path='+ctx.url)
     }
   } catch (err) {
     console.log(err)
     if (err.statusCode == 403 || err.statusCode == 404) {
-      //ctx.redirect('/error/404?path='+ctx.url);
+      //ctx.redirect('/error/404?path='+ctx.url)
     } else if (err.statusCode == 500) {
-      //ctx.redirect('/error/500?path='+ctx.url);
+      //ctx.redirect('/error/500?path='+ctx.url)
     } else {
-      //ctx.redirect('/error/500?path='+ctx.url);
+      //ctx.redirect('/error/500?path='+ctx.url)
     }
   }
   ctx.response.etag = crypto.createHash('md5').update(ctx.body).digest('hex').toUpperCase()
@@ -45,4 +45,4 @@ router.use('/user', user.routes())
 router.use('/error', error.routes())
 router.use('/luck', luck.routes())
 app.use(router.routes())
-app.listen(3000);
+app.listen(3000)
