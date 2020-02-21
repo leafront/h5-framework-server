@@ -105,7 +105,7 @@ const files = {
   ['filter/'+config.js.filter+'/index.js']: 'src/widget/filter.js',
   ['lazyLoad/'+config.js.lazyLoad+'/index.js']: 'src/components/lazyLoad/index.js',
   'user/personal.js': 'src/pages/user/personal.js',
-  'index.js': 'src/pages/index/index.ts',
+  'index.js': 'src/pages/index/index.js',
   'user/login.js': 'src/pages/user/login.js',
   'luck/draw.js': 'src/pages/luck/draw.js'
 }
