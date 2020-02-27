@@ -36,8 +36,22 @@
           if (clientWidth <= 1200) {
             docFontSize = (clientWidth * dpr) / 7.5 + 'px';
           }
-          metaEl.setAttribute('content', 'width=device-width,user-scalable=no,initial-scale=' + scale + ',maximum-scale=' + scale + ',minimum-scale=' + scale + ',viewport-fit=cover');
-          docElement.style.fontSize = docFontSize;
+          var Agents = ["Android", "iPhone",
+            "SymbianOS", "Windows Phone",
+            "iPad", "iPod"];
+          var isPc = true;
+          for (var v = 0; v < Agents.length; v++) {
+            if (navigator.userAgent.indexOf(Agents[v]) > 0) {
+              isPc = false;
+              break;
+            }
+          }
+          if (isPc) {
+            docElement.style.fontSize = 50 + 'px';
+          } else {
+            metaEl.setAttribute('content', 'width=device-width,user-scalable=no,initial-scale=' + scale + ',maximum-scale=' + scale + ',minimum-scale=' + scale + ',viewport-fit=cover');
+            docElement.style.fontSize = docFontSize;
+          }
         };
         flex(1);
         document.addEventListener("DOMContentLoaded", function(){flex(window.devicePixelRatio)});
