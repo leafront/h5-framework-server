@@ -409,7 +409,7 @@
   }
 }
 .home-banner {
-  padding: .3rem .3rem 0;
+  padding: .3rem 4% 0;
 }
 .home-banner-pic {
   height: 2.08rem;
